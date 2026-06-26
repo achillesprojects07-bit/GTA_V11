@@ -1,1 +1,1 @@
-{"scripts":{"test":"node tests/smoke-test.js"},"version":"12.6.0"}
+{"name":"gta-v12-7-real-phone-ux","version":"12.7.0","private":true,"scripts":{"test":"node tests/smoke-test.js"}}
