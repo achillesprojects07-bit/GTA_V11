@@ -81,3 +81,10 @@ The smoke test checks that the stable screens, V13.0 version labels, launch chec
 ## Release note
 
 V13.0 is the stable new-repository baseline. Future builds should only start after the real iPhone test confirms the core screens work online, installed, and offline.
+
+
+## V13.0.1 patch notes
+
+- Restores the durable-storage safety net: persistent-storage request, IndexedDB `latest` snapshot, seven daily snapshots, flush on `visibilitychange` / `pagehide`, and gated startup recovery only when localStorage progress is empty.
+- Adds semantic accessibility: primary navigation labels, active-page state, active screen `role=main`, and `lang="el"` spans around Greek text rendered in learning cards.
+- Preserves the existing localStorage key `gta_v12_state` for upgrade safety.
