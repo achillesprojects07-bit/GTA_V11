@@ -29,7 +29,7 @@
 .dialogueTurn{border:1px solid var(--line);border-radius:var(--radius);padding:12px;margin:10px 0;background:var(--card)}.dialogueThem{border-left:5px solid rgba(14,165,233,.55)}.dialogueYou{border-left:5px solid rgba(34,197,94,.55)}.tierPath{display:grid;gap:10px}.tierBox{border:1px solid var(--line);border-radius:var(--radius);padding:12px;background:rgba(255,255,255,.55)}.goalRhythm{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.verifyTag{display:inline-block;border:1px solid rgba(245,158,11,.4);background:rgba(245,158,11,.12);border-radius:999px;padding:4px 8px;font-size:var(--step--1);font-weight:800}
 .onTrackCard{overflow:hidden}.chartWrap{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(29,78,216,.06),rgba(148,163,184,.05));padding:10px;margin-top:10px}.progressSvg{width:100%;height:auto;display:block}.chartLegend{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;color:var(--muted);font-size:var(--step--1);font-weight:800}.legendLine,.legendBand{display:inline-flex;align-items:center;gap:6px}.legendLine:before{content:"";width:22px;height:3px;border-radius:99px;background:var(--brand);display:inline-block}.legendBand:before{content:"";width:22px;height:12px;border-radius:5px;background:rgba(29,78,216,.14);border:1px solid rgba(29,78,216,.22);display:inline-block}.effortSelect{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;margin-top:12px}.paceStatus{border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:10px;background:var(--surface)}
 
-.examBadge{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:.74rem;font-weight:850;background:var(--surface);color:var(--muted);margin:2px}.examBadge.warn{color:var(--warn);background:rgba(181,71,8,.08);border-color:rgba(181,71,8,.22)}.examBadge.ok{color:var(--good);background:rgba(8,116,67,.08);border-color:rgba(8,116,67,.22)}.examPanel{border:1px solid var(--line);border-radius:20px;padding:14px;margin:12px 0;background:rgba(29,78,216,.04)}.examQuestion{border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:10px}.examOption{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:10px;margin-top:8px}.examOption input{margin-top:4px}.examTextarea{min-height:140px}.timerBar{height:8px;border-radius:999px;background:var(--line);overflow:hidden}.timerBar span{display:block;height:100%;background:var(--brand);width:100%}
+.examBadge{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:.74rem;font-weight:850;background:var(--surface);color:var(--muted);margin:2px}.examBadge.warn{color:var(--warn);background:rgba(181,71,8,.08);border-color:rgba(181,71,8,.22)}.examBadge.ok{color:var(--good);background:rgba(8,116,67,.08);border-color:rgba(8,116,67,.22)}.examPanel{border:1px solid var(--line);border-radius:20px;padding:14px;margin:12px 0;background:rgba(29,78,216,.04)}.examQuestion{border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:10px}.examOption{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:10px;margin-top:8px}.examOption input{margin-top:4px}.examTextarea{min-height:140px}.timerBar{height:8px;border-radius:999px;background:var(--line);overflow:hidden}.timerBar span{display:block;height:100%;background:var(--brand);width:100%}.quizMeta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.quizMeta span{border:1px solid var(--line);border-radius:999px;padding:5px 8px;color:var(--muted);font-size:.78rem;font-weight:800}.quizResult{border:1px solid var(--line);border-radius:18px;padding:12px;background:rgba(29,78,216,.06);margin-top:10px}
 </style>
 </head><body>
 <header class="top"><div class="toprow"><div><div class="brand">DAILY GREEK</div><div class="title">Καθημερινά <span class="versionMini">V13.4</span></div></div><span class="pill" id="countdownPill">Daily rhythm</span></div></header>
@@ -72,6 +72,680 @@ DATA.writing=Array.isArray(DATA.writing)?DATA.writing:[{id:'w-placeholder-a1',le
 DATA.speaking=Array.isArray(DATA.speaking)?DATA.speaking:[{id:'s-placeholder-a1',level:'A1',prompt:'REPLACE WITH VERIFIED CONTENT — speaking prompt',modelAnswer:'REPLACE WITH VERIFIED CONTENT — sample response or tutor note goes here.',verified:false}];
 DATA.mock=Array.isArray(DATA.mock)?DATA.mock:[{id:'mock-placeholder-a2',level:'A2',title:'REPLACE WITH VERIFIED CONTENT — A2 mock exam',timeMinutes:25,sections:[{skill:'reading',items:['r-placeholder-a1']},{skill:'listening',items:['l-placeholder-a1']},{skill:'writing',items:['w-placeholder-a1']},{skill:'speaking',items:['s-placeholder-a1']}],verified:false}];
 
+const PRACTICE_ONLY_EXAM_BANK={
+  "reading": [
+    {
+      "id": "r-practice-a1-cafe-01",
+      "level": "A1",
+      "title": "PRACTICE ONLY — A1 reading: Στο καφέ",
+      "passage": "Η Άννα είναι στο καφέ με τον Νίκο. Πίνει καφέ και τρώει ένα μικρό τοστ. Ο Νίκος πίνει χυμό. Μετά πηγαίνουν στο μουσείο με τα πόδια. Το μουσείο είναι κοντά στο καφέ.",
+      "questions": [
+        {
+          "q": "Πού είναι η Άννα;",
+          "options": [
+            "Στο καφέ",
+            "Στο σχολείο",
+            "Στο σπίτι"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Τι πίνει ο Νίκος;",
+          "options": [
+            "Καφέ",
+            "Χυμό",
+            "Νερό"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Πώς πηγαίνουν στο μουσείο;",
+          "options": [
+            "Με ταξί",
+            "Με τα πόδια",
+            "Με λεωφορείο"
+          ],
+          "answer": 1
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "r-practice-a1-market-01",
+      "level": "A1",
+      "title": "PRACTICE ONLY — A1 reading: Στην αγορά",
+      "passage": "Ο Πέτρος πάει στην αγορά το πρωί. Θέλει ντομάτες, ψωμί και τυρί. Ρωτάει πόσο κάνει το ψωμί. Η γυναίκα λέει: δύο ευρώ. Ο Πέτρος πληρώνει και λέει ευχαριστώ.",
+      "questions": [
+        {
+          "q": "Πότε πάει ο Πέτρος στην αγορά;",
+          "options": [
+            "Το πρωί",
+            "Το βράδυ",
+            "Τη νύχτα"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Τι θέλει να αγοράσει;",
+          "options": [
+            "Καφέ και γάλα",
+            "Ντομάτες, ψωμί και τυρί",
+            "Ρούχα"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Πόσο κάνει το ψωμί;",
+          "options": [
+            "Ένα ευρώ",
+            "Δύο ευρώ",
+            "Τρία ευρώ"
+          ],
+          "answer": 1
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "r-practice-a2-message-01",
+      "level": "A2",
+      "title": "PRACTICE ONLY — A2 reading: Μήνυμα από φίλη",
+      "passage": "Γεια σου, Ελένη. Αύριο δεν μπορώ να έρθω για καφέ στις δέκα, γιατί έχω ραντεβού στον γιατρό. Μπορούμε να συναντηθούμε στις δώδεκα και μισή στην πλατεία; Αν βρέχει, πάμε στο μικρό καφέ δίπλα στο φαρμακείο. Πάρε με τηλέφωνο όταν φτάσεις.",
+      "questions": [
+        {
+          "q": "Γιατί δεν μπορεί να έρθει στις δέκα;",
+          "options": [
+            "Έχει μάθημα",
+            "Έχει ραντεβού στον γιατρό",
+            "Δεν θέλει καφέ"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Πού προτείνει να συναντηθούν;",
+          "options": [
+            "Στην πλατεία",
+            "Στο σπίτι",
+            "Στο μουσείο"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Τι θα κάνουν αν βρέχει;",
+          "options": [
+            "Θα πάνε στο μικρό καφέ",
+            "Θα ακυρώσουν",
+            "Θα πάνε στο πάρκο"
+          ],
+          "answer": 0
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "r-practice-a2-rental-01",
+      "level": "A2",
+      "title": "PRACTICE ONLY — A2 reading: Αγγελία για σπίτι",
+      "passage": "Ενοικιάζεται μικρό διαμέρισμα στο Χαλάνδρι, κοντά στο μετρό και στα καταστήματα. Έχει ένα υπνοδωμάτιο, κουζίνα, μπάνιο και μπαλκόνι. Είναι στον δεύτερο όροφο. Το ενοίκιο είναι 520 ευρώ τον μήνα. Τα κατοικίδια επιτρέπονται μόνο μετά από συμφωνία με τον ιδιοκτήτη.",
+      "questions": [
+        {
+          "q": "Πού βρίσκεται το διαμέρισμα;",
+          "options": [
+            "Στο Χαλάνδρι",
+            "Στον Πειραιά",
+            "Στην Πάτρα"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Τι έχει το διαμέρισμα;",
+          "options": [
+            "Δύο υπνοδωμάτια",
+            "Ένα υπνοδωμάτιο και μπαλκόνι",
+            "Κήπο"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Τι λέει η αγγελία για τα κατοικίδια;",
+          "options": [
+            "Δεν επιτρέπονται ποτέ",
+            "Επιτρέπονται μόνο μετά από συμφωνία",
+            "Επιτρέπονται πάντα"
+          ],
+          "answer": 1
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "r-practice-a2-travel-01",
+      "level": "A2",
+      "title": "PRACTICE ONLY — A2 reading: Ημερήσια εκδρομή",
+      "passage": "Το Σάββατο η ομάδα θα πάει εκδρομή στο Ναύπλιο. Το λεωφορείο φεύγει στις οκτώ το πρωί από το κέντρο της Αθήνας. Η επιστροφή είναι περίπου στις επτά το βράδυ. Στην τιμή περιλαμβάνεται η μεταφορά, αλλά όχι το φαγητό. Οι συμμετέχοντες πρέπει να έχουν μαζί τους νερό και άνετα παπούτσια.",
+      "questions": [
+        {
+          "q": "Πότε φεύγει το λεωφορείο;",
+          "options": [
+            "Στις οκτώ το πρωί",
+            "Στις επτά το βράδυ",
+            "Στις δώδεκα"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Τι περιλαμβάνεται στην τιμή;",
+          "options": [
+            "Το φαγητό",
+            "Η μεταφορά",
+            "Το ξενοδοχείο"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Τι πρέπει να έχουν μαζί τους οι συμμετέχοντες;",
+          "options": [
+            "Διαβατήριο",
+            "Νερό και άνετα παπούτσια",
+            "Ομπρέλα μόνο"
+          ],
+          "answer": 1
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "r-practice-a2-family-01",
+      "level": "A2",
+      "title": "PRACTICE ONLY — A2 reading: Πρόσκληση σε οικογενειακό τραπέζι",
+      "passage": "Αγαπητή Σοφία, την Κυριακή κάνουμε οικογενειακό τραπέζι στο σπίτι μας. Θα φάμε στις δύο. Αν θέλεις, μπορείς να φέρεις σαλάτα ή ένα γλυκό, αλλά δεν είναι απαραίτητο. Θα είναι και η γιαγιά, γι’ αυτό σε παρακαλώ έλα λίγο νωρίτερα για να τη βοηθήσουμε στην κουζίνα.",
+      "questions": [
+        {
+          "q": "Πότε είναι το οικογενειακό τραπέζι;",
+          "options": [
+            "Το Σάββατο",
+            "Την Κυριακή",
+            "Τη Δευτέρα"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Τι μπορεί να φέρει η Σοφία;",
+          "options": [
+            "Σαλάτα ή γλυκό",
+            "Καφέ",
+            "Ψωμί μόνο"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Γιατί της ζητούν να έρθει νωρίτερα;",
+          "options": [
+            "Για να πάνε βόλτα",
+            "Για να βοηθήσουν τη γιαγιά",
+            "Για να αγοράσει φαγητό"
+          ],
+          "answer": 1
+        }
+      ],
+      "verified": false
+    }
+  ],
+  "listening": [
+    {
+      "id": "l-practice-a1-directions-01",
+      "level": "A1",
+      "title": "PRACTICE ONLY — A1 listening: Πού είναι το φαρμακείο;",
+      "audioText": "Συγγνώμη, πού είναι το φαρμακείο; Είναι απέναντι από την τράπεζα, δίπλα στο σούπερ μάρκετ. Ευχαριστώ πολύ. Παρακαλώ.",
+      "audioUrl": "",
+      "questions": [
+        {
+          "q": "Τι ψάχνει το άτομο;",
+          "options": [
+            "Το φαρμακείο",
+            "Το μουσείο",
+            "Το ξενοδοχείο"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Πού είναι;",
+          "options": [
+            "Δίπλα στο σούπερ μάρκετ",
+            "Μέσα στην τράπεζα",
+            "Πίσω από το πάρκο"
+          ],
+          "answer": 0
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "l-practice-a1-order-01",
+      "level": "A1",
+      "title": "PRACTICE ONLY — A1 listening: Παραγγελία",
+      "audioText": "Καλημέρα. Θα ήθελα έναν καφέ και ένα νερό, παρακαλώ. Θέλετε κάτι άλλο; Ναι, ένα μικρό τοστ. Είναι όλα; Ναι, ευχαριστώ.",
+      "audioUrl": "",
+      "questions": [
+        {
+          "q": "Τι παραγγέλνει πρώτα;",
+          "options": [
+            "Έναν καφέ και ένα νερό",
+            "Μία σαλάτα",
+            "Ένα εισιτήριο"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Τι προσθέτει μετά;",
+          "options": [
+            "Ένα μικρό τοστ",
+            "Ένα γλυκό",
+            "Έναν χυμό"
+          ],
+          "answer": 0
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "l-practice-a2-appointment-01",
+      "level": "A2",
+      "title": "PRACTICE ONLY — A2 listening: Αλλαγή ραντεβού",
+      "audioText": "Καλησπέρα σας. Έχω ραντεβού αύριο στις τέσσερις, αλλά δεν μπορώ να έρθω. Υπάρχει διαθέσιμη ώρα την Παρασκευή το πρωί; Μισό λεπτό. Ναι, έχουμε στις έντεκα και μισή. Είναι εντάξει; Ναι, ευχαριστώ πολύ.",
+      "audioUrl": "",
+      "questions": [
+        {
+          "q": "Γιατί τηλεφωνεί;",
+          "options": [
+            "Για να αλλάξει ραντεβού",
+            "Για να ζητήσει διεύθυνση",
+            "Για να πληρώσει λογαριασμό"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Πότε είναι το νέο ραντεβού;",
+          "options": [
+            "Την Παρασκευή στις έντεκα και μισή",
+            "Αύριο στις τέσσερις",
+            "Τη Δευτέρα το απόγευμα"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Ποια ώρα ήθελε αρχικά;",
+          "options": [
+            "Στις τέσσερις",
+            "Στις οκτώ",
+            "Στις δώδεκα"
+          ],
+          "answer": 0
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "l-practice-a2-transport-01",
+      "level": "A2",
+      "title": "PRACTICE ONLY — A2 listening: Στο σταθμό",
+      "audioText": "Το επόμενο τρένο για το κέντρο φεύγει από την αποβάθρα δύο σε πέντε λεπτά. Οι επιβάτες για το αεροδρόμιο πρέπει να αλλάξουν γραμμή στον σταθμό Σύνταγμα. Παρακαλούμε προσέχετε τα προσωπικά σας αντικείμενα.",
+      "audioUrl": "",
+      "questions": [
+        {
+          "q": "Από ποια αποβάθρα φεύγει το τρένο για το κέντρο;",
+          "options": [
+            "Από την αποβάθρα δύο",
+            "Από την αποβάθρα τρία",
+            "Από την αποβάθρα ένα"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Πού πρέπει να αλλάξουν γραμμή οι επιβάτες για το αεροδρόμιο;",
+          "options": [
+            "Στο Σύνταγμα",
+            "Στο Μοναστηράκι",
+            "Στον Πειραιά"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Τι πρέπει να προσέχουν οι επιβάτες;",
+          "options": [
+            "Τα προσωπικά τους αντικείμενα",
+            "Το εισιτήριο του μουσείου",
+            "Τον καιρό"
+          ],
+          "answer": 0
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "l-practice-a2-family-call-01",
+      "level": "A2",
+      "title": "PRACTICE ONLY — A2 listening: Τηλεφώνημα στην οικογένεια",
+      "audioText": "Γεια σου, Μαρία. Θα αργήσω λίγο, γιατί έχει πολλή κίνηση. Μπορείς να αρχίσεις το φαγητό χωρίς εμένα. Θα είμαι σπίτι σε περίπου μισή ώρα. Μην ξεχάσεις να πάρεις ψωμί από τον φούρνο.",
+      "audioUrl": "",
+      "questions": [
+        {
+          "q": "Γιατί θα αργήσει;",
+          "options": [
+            "Έχει πολλή κίνηση",
+            "Είναι στο γιατρό",
+            "Δεν βρίσκει ταξί"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Πότε θα είναι σπίτι;",
+          "options": [
+            "Σε περίπου μισή ώρα",
+            "Σε πέντε λεπτά",
+            "Αύριο"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Τι ζητά να μην ξεχάσει η Μαρία;",
+          "options": [
+            "Να πάρει ψωμί",
+            "Να κλείσει το φως",
+            "Να αγοράσει εισιτήρια"
+          ],
+          "answer": 0
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "l-practice-a2-shop-01",
+      "level": "A2",
+      "title": "PRACTICE ONLY — A2 listening: Αλλαγή προϊόντος",
+      "audioText": "Καλημέρα σας. Αγόρασα αυτή την μπλούζα χθες, αλλά είναι μικρή. Μπορώ να την αλλάξω; Βεβαίως, έχετε την απόδειξη; Ναι, την έχω εδώ. Θέλετε μεγαλύτερο μέγεθος ή επιστροφή χρημάτων; Θα ήθελα μεγαλύτερο μέγεθος, παρακαλώ.",
+      "audioUrl": "",
+      "questions": [
+        {
+          "q": "Ποιο είναι το πρόβλημα;",
+          "options": [
+            "Η μπλούζα είναι μικρή",
+            "Η απόδειξη χάθηκε",
+            "Το κατάστημα είναι κλειστό"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Τι ζητά ο υπάλληλος;",
+          "options": [
+            "Την απόδειξη",
+            "Το διαβατήριο",
+            "Το τηλέφωνο"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Τι θέλει τελικά ο πελάτης;",
+          "options": [
+            "Μεγαλύτερο μέγεθος",
+            "Επιστροφή χρημάτων",
+            "Άλλο χρώμα"
+          ],
+          "answer": 0
+        }
+      ],
+      "verified": false
+    }
+  ],
+  "writing": [
+    {
+      "id": "w-practice-a1-note-01",
+      "level": "A1",
+      "prompt": "PRACTICE ONLY — A1 writing: Γράψε ένα σύντομο μήνυμα σε φίλο/φίλη. Πες πού είσαι, τι κάνεις και τι ώρα μπορείς να συναντηθείτε.",
+      "modelAnswer": "Γεια σου, Μαρία. Είμαι στο καφέ κοντά στο σπίτι μου. Πίνω καφέ και διαβάζω. Μπορούμε να συναντηθούμε στις έξι. Τα λέμε!",
+      "checklist": [
+        "λέει πού είσαι",
+        "λέει τι κάνεις",
+        "λέει ώρα συνάντησης",
+        "έχει χαιρετισμό και κλείσιμο"
+      ],
+      "verified": false
+    },
+    {
+      "id": "w-practice-a1-form-01",
+      "level": "A1",
+      "prompt": "PRACTICE ONLY — A1 writing: Συμπλήρωσε ένα μικρό προσωπικό κείμενο: όνομα, χώρα, γλώσσες, τι σου αρέσει στην Ελλάδα.",
+      "modelAnswer": "Με λένε Άννα. Είμαι από τις Φιλιππίνες και μένω τώρα στην Ελλάδα. Μιλάω αγγλικά και λίγα ελληνικά. Μου αρέσει η θάλασσα, το φαγητό και οι βόλτες στην Αθήνα.",
+      "checklist": [
+        "όνομα",
+        "χώρα ή πόλη",
+        "γλώσσες",
+        "ένα πράγμα που σου αρέσει"
+      ],
+      "verified": false
+    },
+    {
+      "id": "w-practice-a2-email-01",
+      "level": "A2",
+      "prompt": "PRACTICE ONLY — A2 writing: Γράψε email σε φίλη. Δεν μπορείς να πας στο ραντεβού σας. Εξήγησε γιατί, ζήτησε συγγνώμη και πρότεινε άλλη μέρα και ώρα.",
+      "modelAnswer": "Γεια σου, Ελένη. Συγγνώμη, αλλά δεν μπορώ να έρθω αύριο για καφέ, γιατί έχω ένα σημαντικό ραντεβού στη δουλειά. Μπορούμε να βρεθούμε την Παρασκευή στις πέντε το απόγευμα; Αν δεν μπορείς, γράψε μου ποια μέρα σε βολεύει. Φιλιά, Άννα.",
+      "checklist": [
+        "ζητά συγγνώμη",
+        "δίνει λόγο",
+        "προτείνει νέα μέρα και ώρα",
+        "έχει φυσικό κλείσιμο"
+      ],
+      "verified": false
+    },
+    {
+      "id": "w-practice-a2-complaint-01",
+      "level": "A2",
+      "prompt": "PRACTICE ONLY — A2 writing: Γράψε σύντομο μήνυμα σε κατάστημα. Αγόρασες κάτι αλλά υπάρχει πρόβλημα. Πες τι αγόρασες, ποιο είναι το πρόβλημα και τι θέλεις να γίνει.",
+      "modelAnswer": "Καλημέρα σας. Χθες αγόρασα ένα ζευγάρι παπούτσια από το κατάστημά σας, αλλά το ένα παπούτσι έχει πρόβλημα. Θα ήθελα να το αλλάξω με άλλο ζευγάρι ή να πάρω τα χρήματά μου πίσω. Έχω την απόδειξη. Ευχαριστώ πολύ.",
+      "checklist": [
+        "αναφέρει τι αγοράστηκε",
+        "περιγράφει το πρόβλημα",
+        "ζητά λύση",
+        "κρατά ευγενικό τόνο"
+      ],
+      "verified": false
+    },
+    {
+      "id": "w-practice-a2-family-01",
+      "level": "A2",
+      "prompt": "PRACTICE ONLY — A2 writing: Γράψε μήνυμα στην οικογένεια του/της συντρόφου σου. Ευχαρίστησέ τους για το φαγητό και πες τι σου άρεσε.",
+      "modelAnswer": "Σας ευχαριστώ πολύ για το όμορφο τραπέζι σήμερα. Το φαγητό ήταν υπέροχο και χάρηκα πολύ που περάσαμε χρόνο μαζί. Μου άρεσε ιδιαίτερα η σαλάτα και το γλυκό. Ελπίζω να σας δω ξανά σύντομα.",
+      "checklist": [
+        "ευχαριστεί",
+        "αναφέρει το φαγητό ή τη φιλοξενία",
+        "λέει τι άρεσε",
+        "κλείνει ευγενικά"
+      ],
+      "verified": false
+    },
+    {
+      "id": "w-practice-a2-trip-01",
+      "level": "A2",
+      "prompt": "PRACTICE ONLY — A2 writing: Γράψε σύντομη περιγραφή μιας ημερήσιας εκδρομής. Πού πήγες, με ποιον, τι έκανες και πώς ένιωσες;",
+      "modelAnswer": "Το Σάββατο πήγα εκδρομή στο Ναύπλιο με δύο φίλους. Φύγαμε το πρωί με λεωφορείο και περπατήσαμε στην παλιά πόλη. Φάγαμε σε μια μικρή ταβέρνα κοντά στη θάλασσα. Ήταν μια ήρεμη και όμορφη μέρα και γύρισα στην Αθήνα πολύ χαρούμενη.",
+      "checklist": [
+        "τόπος",
+        "παρέα",
+        "δραστηριότητες",
+        "συναίσθημα ή γνώμη"
+      ],
+      "verified": false
+    }
+  ],
+  "speaking": [
+    {
+      "id": "s-practice-a1-intro-01",
+      "level": "A1",
+      "prompt": "PRACTICE ONLY — A1 speaking: Παρουσίασε τον εαυτό σου. Πες το όνομά σου, από πού είσαι, πού μένεις και τι σου αρέσει.",
+      "modelAnswer": "Με λένε Άννα. Είμαι από τις Φιλιππίνες και μένω στην Αθήνα. Μιλάω αγγλικά και μαθαίνω ελληνικά. Μου αρέσει ο καφές, η θάλασσα και οι βόλτες στην πόλη.",
+      "verified": false
+    },
+    {
+      "id": "s-practice-a1-shop-01",
+      "level": "A1",
+      "prompt": "PRACTICE ONLY — A1 speaking role-play: Είσαι σε φούρνο. Ζήτησε ψωμί, ρώτησε την τιμή και ευχαρίστησε.",
+      "modelAnswer": "Καλημέρα σας. Θα ήθελα ένα ψωμί, παρακαλώ. Πόσο κάνει; Εντάξει, ορίστε. Ευχαριστώ πολύ. Γεια σας.",
+      "verified": false
+    },
+    {
+      "id": "s-practice-a2-roleplay-doctor-01",
+      "level": "A2",
+      "prompt": "PRACTICE ONLY — A2 speaking role-play: Τηλεφωνείς για να κλείσεις ραντεβού στον γιατρό. Πες ποιο είναι το πρόβλημα, πότε μπορείς και επιβεβαίωσε την ώρα.",
+      "modelAnswer": "Καλημέρα σας. Θα ήθελα να κλείσω ένα ραντεβού με τον γιατρό, γιατί δεν αισθάνομαι καλά και έχω βήχα. Μπορώ την Τρίτη το πρωί ή την Πέμπτη το απόγευμα. Ωραία, την Τρίτη στις δέκα είναι εντάξει. Ευχαριστώ πολύ.",
+      "verified": false
+    },
+    {
+      "id": "s-practice-a2-roleplay-family-01",
+      "level": "A2",
+      "prompt": "PRACTICE ONLY — A2 speaking: Μίλησε με την οικογένεια στο τραπέζι. Πες ότι το φαγητό είναι ωραίο, ρώτησε για μια συνταγή και πες κάτι για τη μέρα σου.",
+      "modelAnswer": "Το φαγητό είναι πολύ ωραίο, σας ευχαριστώ. Πώς το φτιάχνετε αυτό; Θα ήθελα να μάθω τη συνταγή. Σήμερα πήγα μια βόλτα στο κέντρο και είδα πολλά όμορφα μέρη.",
+      "verified": false
+    },
+    {
+      "id": "s-practice-a2-problem-01",
+      "level": "A2",
+      "prompt": "PRACTICE ONLY — A2 speaking role-play: Είσαι σε κατάστημα. Το προϊόν που αγόρασες έχει πρόβλημα. Εξήγησε τι έγινε και ζήτησε αλλαγή.",
+      "modelAnswer": "Καλημέρα σας. Αγόρασα αυτό χθες, αλλά δυστυχώς δεν λειτουργεί καλά. Έχω την απόδειξη μαζί μου. Μπορώ να το αλλάξω με ένα καινούριο; Ευχαριστώ για τη βοήθειά σας.",
+      "verified": false
+    },
+    {
+      "id": "s-practice-a2-opinion-01",
+      "level": "A2",
+      "prompt": "PRACTICE ONLY — A2 speaking: Πες τι σου αρέσει και τι σε δυσκολεύει στην Ελλάδα. Δώσε δύο παραδείγματα.",
+      "modelAnswer": "Μου αρέσει πολύ η Ελλάδα γιατί έχει όμορφη θάλασσα, καλό φαγητό και ζεστούς ανθρώπους. Με δυσκολεύει η γλώσσα, ειδικά όταν οι άνθρωποι μιλούν γρήγορα. Επίσης μερικές φορές δεν καταλαβαίνω τις πινακίδες ή τις ανακοινώσεις.",
+      "verified": false
+    }
+  ],
+  "mock": [
+    {
+      "id": "mock-practice-a1-everyday-01",
+      "level": "A1",
+      "title": "PRACTICE ONLY — A1 Mock 1: Everyday basics",
+      "timeMinutes": 45,
+      "sections": [
+        {
+          "skill": "speaking",
+          "items": [
+            "s-practice-a1-intro-01",
+            "s-practice-a1-shop-01"
+          ]
+        },
+        {
+          "skill": "listening",
+          "items": [
+            "l-practice-a1-directions-01",
+            "l-practice-a1-order-01"
+          ]
+        },
+        {
+          "skill": "reading",
+          "items": [
+            "r-practice-a1-cafe-01",
+            "r-practice-a1-market-01"
+          ]
+        },
+        {
+          "skill": "writing",
+          "items": [
+            "w-practice-a1-note-01",
+            "w-practice-a1-form-01"
+          ]
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "mock-practice-a2-daily-life-01",
+      "level": "A2",
+      "title": "PRACTICE ONLY — A2 Mock 1: Daily life and errands",
+      "timeMinutes": 90,
+      "sections": [
+        {
+          "skill": "speaking",
+          "items": [
+            "s-practice-a2-roleplay-doctor-01",
+            "s-practice-a2-problem-01"
+          ]
+        },
+        {
+          "skill": "listening",
+          "items": [
+            "l-practice-a2-appointment-01",
+            "l-practice-a2-shop-01"
+          ]
+        },
+        {
+          "skill": "reading",
+          "items": [
+            "r-practice-a2-message-01",
+            "r-practice-a2-rental-01"
+          ]
+        },
+        {
+          "skill": "writing",
+          "items": [
+            "w-practice-a2-email-01",
+            "w-practice-a2-complaint-01"
+          ]
+        }
+      ],
+      "verified": false
+    },
+    {
+      "id": "mock-practice-a2-family-trip-01",
+      "level": "A2",
+      "title": "PRACTICE ONLY — A2 Mock 2: Family, home, and travel",
+      "timeMinutes": 90,
+      "sections": [
+        {
+          "skill": "speaking",
+          "items": [
+            "s-practice-a2-roleplay-family-01",
+            "s-practice-a2-opinion-01"
+          ]
+        },
+        {
+          "skill": "listening",
+          "items": [
+            "l-practice-a2-family-call-01",
+            "l-practice-a2-transport-01"
+          ]
+        },
+        {
+          "skill": "reading",
+          "items": [
+            "r-practice-a2-family-01",
+            "r-practice-a2-travel-01"
+          ]
+        },
+        {
+          "skill": "writing",
+          "items": [
+            "w-practice-a2-family-01",
+            "w-practice-a2-trip-01"
+          ]
+        }
+      ],
+      "verified": false
+    }
+  ]
+};
+function appendPracticeOnlyExamBank(){
+  ['reading','listening','writing','speaking','mock'].forEach(kind=>{
+    DATA[kind]=Array.isArray(DATA[kind])?DATA[kind]:[];
+    const seen=new Set(DATA[kind].map(x=>x&&x.id).filter(Boolean));
+    (PRACTICE_ONLY_EXAM_BANK[kind]||[]).forEach(item=>{
+      if(!seen.has(item.id)){DATA[kind].push(item);seen.add(item.id)}
+    });
+  });
+}
+appendPracticeOnlyExamBank();
+
 const SRS_LADDER=[1,3,7,21,60];
 const LS='gta_v12_state';
 const SURVIVAL_CATS={
@@ -83,7 +757,7 @@ const SURVIVAL_CATS={
   'Shopping':{icon:'🛍️',hint:'Point, ask, choose, pay.',first:['How much is this?','This one, please.','Can I pay by card?'],terms:['Shopping','Grocery','Paying','Numbers']}
 };
 const SURVIVAL_PRIORITY=['Conversation Repair','Taverna','Restaurant','Directions','Taxi','Transport','Pharmacy','Health','Emergency','Café & Drinks','Shopping','Grocery','Phone / Wi-Fi','Family / Home','Must Know'];
-let state=loadState();state.settings=Object.assign({scriptTrack:false,recordCompare:true,remindersEnabled:false,reminderTime:'09:00',reminderDays:'daily',dailyMinutes:30},state.settings||{});state.recordings=state.recordings||{};state.itemMeta=state.itemMeta&&typeof state.itemMeta==='object'?state.itemMeta:{};state.examAnswers=state.examAnswers&&typeof state.examAnswers==='object'?state.examAnswers:{};state.mockRuns=state.mockRuns&&typeof state.mockRuns==='object'?state.mockRuns:{};state.custom=Array.isArray(state.custom)?state.custom:[];state.nudges=Object.assign({lastSessionDone:'',lastVisit:Date.now(),nextTimerAt:0},state.nudges||{});let currentCard=null;let currentMode='recognize';let currentSurvival='Taverna';let survivalQuery='';let deferredPrompt=null;let mediaRecorder=null;let recordingChunks=[];let recordingUrls={};
+let state=loadState();state.settings=Object.assign({scriptTrack:false,recordCompare:true,remindersEnabled:false,reminderTime:'09:00',reminderDays:'daily',dailyMinutes:30},state.settings||{});state.recordings=state.recordings||{};state.itemMeta=state.itemMeta&&typeof state.itemMeta==='object'?state.itemMeta:{};state.examAnswers=state.examAnswers&&typeof state.examAnswers==='object'?state.examAnswers:{};state.mockRuns=state.mockRuns&&typeof state.mockRuns==='object'?state.mockRuns:{};state.quizRuns=Array.isArray(state.quizRuns)?state.quizRuns:[];state.custom=Array.isArray(state.custom)?state.custom:[];state.nudges=Object.assign({lastSessionDone:'',lastVisit:Date.now(),nextTimerAt:0},state.nudges||{});let currentCard=null;let currentMode='recognize';let currentSurvival='Taverna';let survivalQuery='';let deferredPrompt=null;let mediaRecorder=null;let recordingChunks=[];let recordingUrls={};
 function $(id){return document.getElementById(id)}
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function gr(t){return '<span lang="el">'+esc(t)+'</span>'}
@@ -91,11 +765,11 @@ function today(){let d=new Date();d.setHours(0,0,0,0);return d}
 function iso(d){return d.toISOString().slice(0,10)}
 function parseDate(x){if(!x)return null;let d=new Date(x+'T00:00:00');return isNaN(d)?null:d}
 function daysUntilTrip(){let d=parseDate(state.tripDate);if(!d)return null;return Math.ceil((d-today())/86400000)}
-function loadState(){try{let st=Object.assign({marks:{},srs:{},understood:{},recall:{},seen:{},tripDate:'',goalLabel:'next visit',dailyKey:'',dailyIds:[],saved:[],onboarded:false,history:[],sessionCount:0,settings:{scriptTrack:false,recordCompare:true,dailyMinutes:30},recordings:{},reviewMeta:{},itemMeta:{},examAnswers:{},mockRuns:{},reviewSafeOnly:true,custom:[],checkins:{},captures:[]},JSON.parse(localStorage.getItem(LS)||'{}'));st.goalLabel=st.goalLabel||'next visit';st.custom=Array.isArray(st.custom)?st.custom:[];st.checkins=st.checkins&&typeof st.checkins==='object'?st.checkins:{};st.captures=Array.isArray(st.captures)?st.captures:[];st.itemMeta=st.itemMeta&&typeof st.itemMeta==='object'?st.itemMeta:{};st.examAnswers=st.examAnswers&&typeof st.examAnswers==='object'?st.examAnswers:{};st.mockRuns=st.mockRuns&&typeof st.mockRuns==='object'?st.mockRuns:{};return st}catch(e){return {marks:{},srs:{},understood:{},recall:{},seen:{},tripDate:'',goalLabel:'next visit',dailyKey:'',dailyIds:[],saved:[],onboarded:false,history:[],sessionCount:0,settings:{scriptTrack:false,recordCompare:true,remindersEnabled:false,reminderTime:'09:00',reminderDays:'daily',dailyMinutes:30},recordings:{},reviewMeta:{},itemMeta:{},examAnswers:{},mockRuns:{},reviewSafeOnly:true,custom:[],checkins:{},captures:[],nudges:{lastSessionDone:'',lastVisit:0,nextTimerAt:0}}}}
+function loadState(){try{let st=Object.assign({marks:{},srs:{},understood:{},recall:{},seen:{},tripDate:'',goalLabel:'next visit',dailyKey:'',dailyIds:[],saved:[],onboarded:false,history:[],sessionCount:0,settings:{scriptTrack:false,recordCompare:true,dailyMinutes:30},recordings:{},reviewMeta:{},itemMeta:{},examAnswers:{},mockRuns:{},quizRuns:[],reviewSafeOnly:true,custom:[],checkins:{},captures:[]},JSON.parse(localStorage.getItem(LS)||'{}'));st.goalLabel=st.goalLabel||'next visit';st.custom=Array.isArray(st.custom)?st.custom:[];st.checkins=st.checkins&&typeof st.checkins==='object'?st.checkins:{};st.captures=Array.isArray(st.captures)?st.captures:[];st.itemMeta=st.itemMeta&&typeof st.itemMeta==='object'?st.itemMeta:{};st.examAnswers=st.examAnswers&&typeof st.examAnswers==='object'?st.examAnswers:{};st.mockRuns=st.mockRuns&&typeof st.mockRuns==='object'?st.mockRuns:{};st.quizRuns=Array.isArray(st.quizRuns)?st.quizRuns:[];return st}catch(e){return {marks:{},srs:{},understood:{},recall:{},seen:{},tripDate:'',goalLabel:'next visit',dailyKey:'',dailyIds:[],saved:[],onboarded:false,history:[],sessionCount:0,settings:{scriptTrack:false,recordCompare:true,remindersEnabled:false,reminderTime:'09:00',reminderDays:'daily',dailyMinutes:30},recordings:{},reviewMeta:{},itemMeta:{},examAnswers:{},mockRuns:{},quizRuns:[],reviewSafeOnly:true,custom:[],checkins:{},captures:[],nudges:{lastSessionDone:'',lastVisit:0,nextTimerAt:0}}}}
 function save(){localStorage.setItem(LS,JSON.stringify(state));renderCountdown();try{window.__gtaAutoBackup&&window.__gtaAutoBackup()}catch(e){}}
 let ITEMS=[];function ensureItemMetaState(){state.itemMeta=state.itemMeta&&typeof state.itemMeta==='object'?state.itemMeta:{};return state.itemMeta}
-function itemMetaFor(id){ensureItemMetaState();let m=state.itemMeta[id]||{};return {level:m.level==='A1'||m.level==='A2'?m.level:null,verified:m.verified===true,grammarNote:m.grammarNote||''}}
-function applyItemMeta(it){let m=itemMetaFor(it.id);it.level=m.level||it.level||null;it.verified=m.verified||it.verified===true;it.grammarNote=m.grammarNote||it.grammarNote||'';return it}
+function itemMetaFor(id){ensureItemMetaState();let m=state.itemMeta[id]||{},allowed=['unreviewed','tutor-checked','official-source','practice-only'];let source=allowed.includes(m.source)?m.source:(m.verified===true?'tutor-checked':'unreviewed');return {level:m.level==='A1'||m.level==='A2'?m.level:null,verified:m.verified===true,grammarNote:m.grammarNote||'',source,sourceNote:m.sourceNote||''}}
+function applyItemMeta(it){let m=itemMetaFor(it.id);it.level=m.level||it.level||null;it.verified=m.verified||it.verified===true;it.grammarNote=m.grammarNote||it.grammarNote||'';it.source=m.source||it.source||'unreviewed';it.sourceNote=m.sourceNote||it.sourceNote||'';return it}
 function normalizeCustomItem(c,i){return applyItemMeta({id:c.id||('c'+Date.now()+i),kind:'custom',category:'My Phrases',english:c.english||'',greek:c.greek||'',casual:c.casual||c.greek||'',formal:c.formal||c.greek||'',pron:c.pron||'',note:c.note||'machine-translated — verify',created:c.created||Date.now(),level:c.level||null,verified:c.verified===true,grammarNote:c.grammarNote||''})}
 function dialogueTurnItems(){return (DATA.dialogues||[]).flatMap((d,di)=>(d.turns||[]).map((t,ti)=>applyItemMeta({id:'d'+di+'t'+ti,kind:'dialogue',dialogueId:d.id||('dlg'+di),dialogueIndex:di,turnIndex:ti,speaker:t.speaker,category:'Real exchanges',english:t.en||'',greek:t.gr||'',casual:t.gr||'',formal:t.gr||'',pron:'',note:(d.nativeReview?'':'starter dialogue — native review needed'),domain:d.domain||'Conversation',level:d.level||t.level||null,verified:d.verified===true||t.verified===true,grammarNote:t.grammarNote||''}))) }
 function buildItems(){state.custom=Array.isArray(state.custom)?state.custom.map(normalizeCustomItem):[];ITEMS=[...DATA.phrases.map((p,i)=>applyItemMeta({id:'p'+i,kind:'phrase',category:p.category||'Phrases',english:p.english,greek:p.formal||p.casual||p.greek,casual:p.casual,formal:p.formal,pron:p.pronFormal||p.pronCasual||p.pron,note:p.note||'',level:p.level||null,verified:p.verified===true,grammarNote:p.grammarNote||''})),...DATA.vocab.map((v,i)=>applyItemMeta({id:'v'+i,kind:'vocab',category:v.category||'Vocabulary',english:v.english,greek:v.greek,pron:v.pron,note:v.clue||'',level:v.level||null,verified:v.verified===true,grammarNote:v.grammarNote||''})),...dialogueTurnItems(),...state.custom];return ITEMS}
@@ -119,11 +793,11 @@ function copyReviewCsv(){let csv=reviewCsv();if(navigator.clipboard){navigator.c
 function parseReviewImport(raw){let obj=JSON.parse(raw);let rows=Array.isArray(obj)?obj:(obj.rows||[]);if(!Array.isArray(rows))throw new Error('Import must contain a rows array.');return rows}
 function importReviewFile(){let raw=$('reviewImportBox')?.value||'';if(!raw.trim()){alert('Paste reviewed JSON first.');return}try{let rows=parseReviewImport(raw);ensureReviewState();let updated=0;rows.forEach(r=>{if(!r.id||!byId(r.id))return;let confidence=r.current_confidence||r.confidence||'Needs review';if(!REVIEW_CONFIDENCE.includes(confidence))confidence='Needs review';state.reviewMeta[r.id]={confidence,notes:r.review_notes||r.notes||'',suggested:r.suggested_replacement||r.suggested||'',reviewer:r.reviewer||'native review',updated:Date.now()};updated++});save();toast(updated+' review records imported.');renderMore()}catch(e){alert('Could not import review: '+(e.message||'invalid JSON'))}}
 function setReviewSafeOnly(v){state.reviewSafeOnly=!!v;save();renderSurvival();toast(state.reviewSafeOnly?'Survival now prioritizes verified/safe phrases.':'Survival includes unverified phrases again.')}
-function saveReview(id){ensureReviewState();ensureItemMetaState();let conf=$('conf_'+id)?.value||'Needs review';let notes=$('notes_'+id)?.value||'';let suggested=$('sugg_'+id)?.value||'';let reviewer=$('rev_'+id)?.value||'';let level=$('level_'+id)?.value||'';let verified=$('verified_'+id)?.checked===true;let grammarNote=$('grammar_'+id)?.value||'';state.reviewMeta[id]={confidence:conf,notes,suggested,reviewer,updated:Date.now()};state.itemMeta[id]={level:(level==='A1'||level==='A2')?level:null,verified,grammarNote,updated:Date.now()};buildItems();save();toast('Review saved.');renderContentReview()}
+function saveReview(id){ensureReviewState();ensureItemMetaState();let conf=$('conf_'+id)?.value||'Needs review';let notes=$('notes_'+id)?.value||'';let suggested=$('sugg_'+id)?.value||'';let reviewer=$('rev_'+id)?.value||'';let level=$('level_'+id)?.value||'';let verified=$('verified_'+id)?.checked===true;let grammarNote=$('grammar_'+id)?.value||'';let source=$('source_'+id)?.value||'unreviewed';let sourceNote=$('sourceNote_'+id)?.value||'';state.reviewMeta[id]={confidence:conf,notes,suggested,reviewer,updated:Date.now()};state.itemMeta[id]={level:(level==='A1'||level==='A2')?level:null,verified,grammarNote,source,sourceNote,updated:Date.now()};buildItems();save();toast('Review saved.');renderContentReview()}
 function reviewSummary(){ensureReviewState();let rows=reviewRows();let verified=rows.filter(r=>r.current_confidence==='Verified').length;let avoid=rows.filter(r=>r.current_confidence==='Avoid in field').length;let needs=rows.length-verified-avoid;let survival=rows.filter(r=>r.survival_priority<99);let safeSurvival=survival.filter(r=>r.current_confidence==='Verified').length;return {total:rows.length,verified,needs,avoid,survival:survival.length,safeSurvival}}
 function renderContentReview(){let host=$('contentReviewArea');if(!host)return;let q=($('reviewSearch')?.value||'').toLowerCase().trim();let filter=$('reviewFilter')?.value||'all';let arr=ITEMS.filter(it=>{let r=reviewFor(it.id);let hay=(it.id+' '+it.category+' '+it.english+' '+it.greek+' '+(it.pron||'')).toLowerCase();if(q&&!hay.includes(q))return false;if(filter==='survival'&&!isSurvival(it))return false;if(filter==='needs'&&r.confidence!=='Needs review')return false;if(filter==='verified'&&r.confidence!=='Verified')return false;if(filter==='avoid'&&r.confidence!=='Avoid in field')return false;return true}).slice(0,60);host.innerHTML=`<div class="list">${arr.map(reviewCard).join('')||'<div class="empty">No review items match.</div>'}</div>`}
-function reviewCard(it){let r=reviewFor(it.id);let rec=reviewRecord(it);let meta=itemMetaFor(it.id);let opts=REVIEW_CONFIDENCE.map(c=>`<option value="${esc(c)}" ${r.confidence===c?'selected':''}>${esc(c)}</option>`).join('');let levelOpts=['','A1','A2'].map(l=>`<option value="${esc(l)}" ${meta.level===l?'selected':''}>${l?esc(l):'No level yet'}</option>`).join('');return `<div class="reviewCard"><div class="row"><div><div class="sectionLabel">${esc(it.id)} · ${esc(rec.situation)} · ${esc(rec.register)}</div><h3>${esc(it.english)}</h3></div><span class="reviewBadge ${confidenceClass(r.confidence)}">${esc(r.confidence)}</span></div><div><div class="phrase">${gr(it.greek)}</div><div class="pron">${esc(it.pron||'')}</div><p class="muted tight">${esc(it.category)} · ${it.kind==='phrase'?'Phrase':'Vocabulary'} · level ${esc(meta.level||'unset')} · ${meta.verified?'verified flag':'unverified flag'} · survival priority ${rec.survival_priority}</p></div><div class="reviewForm"><select class="input" id="conf_${it.id}">${opts}</select><select class="input" id="level_${it.id}">${levelOpts}</select><label class="toggleRow"><span>Verified content flag</span><input type="checkbox" id="verified_${it.id}" ${meta.verified?'checked':''}></label><textarea class="input" id="grammar_${it.id}" placeholder="Optional grammar / why note shown on the card">${esc(meta.grammarNote)}</textarea><textarea class="input" id="notes_${it.id}" placeholder="Native speaker notes: unnatural, too formal, wrong context...">${esc(r.notes)}</textarea><textarea class="input" id="sugg_${it.id}" placeholder="Suggested replacement phrase">${esc(r.suggested)}</textarea><input class="input" id="rev_${it.id}" placeholder="Reviewer name / initials" value="${esc(r.reviewer)}"><button class="btn primary" onclick="saveReview('${it.id}')">Save review</button></div></div>`}
-function contentReviewPanel(){let s=reviewSummary();return `<div class="card reviewPanel"><div class="sectionLabel">V12.7 content trust layer</div><h2>Native Review + Field-Safe Content</h2><p class="muted">This is for a fluent/native Greek reviewer. It does not erase learner progress. It only records phrase confidence, notes, and suggested corrections.</p><div class="truthGrid"><div class="truthStat"><b>${s.verified}</b><small>Verified</small></div><div class="truthStat"><b>${s.needs}</b><small>Needs review / nuanced</small></div><div class="truthStat"><b>${s.safeSurvival}/${s.survival}</b><small>Verified survival phrases</small></div><div class="truthStat"><b>${s.avoid}</b><small>Avoid in field</small></div></div><label class="safeOnly" style="margin-top:12px"><input type="checkbox" ${state.reviewSafeOnly?'checked':''} onchange="setReviewSafeOnly(this.checked)"> In “I’m here now,” prioritize field-safe phrases first</label><div class="reviewTools"><input id="reviewSearch" class="input" placeholder="Search review content" oninput="renderContentReview()"><select id="reviewFilter" class="input" onchange="renderContentReview()"><option value="all">All content</option><option value="survival">Survival only</option><option value="needs">Needs review</option><option value="verified">Verified</option><option value="avoid">Avoid in field</option></select></div><div class="grid2" style="margin-top:10px"><button class="btn primary" onclick="renderContentReview()">Open content review</button><button class="btn" onclick="exportReviewCsv()">Export review CSV</button><button class="btn" onclick="exportReviewJson()">Export review JSON</button><button class="btn" onclick="copyReviewCsv()">Copy CSV</button></div><textarea id="reviewExportBox" class="input csvBox" placeholder="CSV preview appears here after export/copy."></textarea><div class="divider"></div><h3>Import reviewed JSON</h3><p class="muted">Paste a reviewed JSON export. This updates only phrase review metadata and suggested corrections, not SRS progress.</p><textarea id="reviewImportBox" class="input csvBox" placeholder='{"rows":[{"id":"p0","current_confidence":"Verified","review_notes":"Natural.","suggested_replacement":""}]}'></textarea><button class="btn warn" onclick="importReviewFile()">Import review metadata only</button><div id="contentReviewArea" style="margin-top:12px"></div></div>`}
+function reviewCard(it){let r=reviewFor(it.id);let rec=reviewRecord(it);let meta=itemMetaFor(it.id);let opts=REVIEW_CONFIDENCE.map(c=>`<option value="${esc(c)}" ${r.confidence===c?'selected':''}>${esc(c)}</option>`).join('');let levelOpts=['','A1','A2'].map(l=>`<option value="${esc(l)}" ${meta.level===l?'selected':''}>${l?esc(l):'No level yet'}</option>`).join('');let sourceOpts=['unreviewed','tutor-checked','official-source','practice-only'].map(v=>`<option value="${esc(v)}" ${meta.source===v?'selected':''}>${esc(v)}</option>`).join('');return `<div class="reviewCard"><div class="row"><div><div class="sectionLabel">${esc(it.id)} · ${esc(rec.situation)} · ${esc(rec.register)}</div><h3>${esc(it.english)}</h3></div><span class="reviewBadge ${confidenceClass(r.confidence)}">${esc(r.confidence)}</span></div><div><div class="phrase">${gr(it.greek)}</div><div class="pron">${esc(it.pron||'')}</div><p class="muted tight">${esc(it.category)} · ${it.kind==='phrase'?'Phrase':'Vocabulary'} · level ${esc(meta.level||'unset')} · ${meta.verified?'verified flag':'unverified flag'} · source ${esc(meta.source)} · survival priority ${rec.survival_priority}</p></div><div class="reviewForm"><select class="input" id="conf_${it.id}">${opts}</select><select class="input" id="level_${it.id}">${levelOpts}</select><select class="input" id="source_${it.id}">${sourceOpts}</select><label class="toggleRow"><span>Verified content flag</span><input type="checkbox" id="verified_${it.id}" ${meta.verified?'checked':''}></label><textarea class="input" id="sourceNote_${it.id}" placeholder="Source note: tutor initials, book/page, official paper, or practice-only reason">${esc(meta.sourceNote)}</textarea><textarea class="input" id="grammar_${it.id}" placeholder="Optional grammar / why note shown on the card">${esc(meta.grammarNote)}</textarea><textarea class="input" id="notes_${it.id}" placeholder="Native speaker notes: unnatural, too formal, wrong context...">${esc(r.notes)}</textarea><textarea class="input" id="sugg_${it.id}" placeholder="Suggested replacement phrase">${esc(r.suggested)}</textarea><input class="input" id="rev_${it.id}" placeholder="Reviewer name / initials" value="${esc(r.reviewer)}"><button class="btn primary" onclick="saveReview('${it.id}')">Save review</button></div></div>`}
+function contentReviewPanel(){let s=reviewSummary();return `<div class="card reviewPanel"><div class="sectionLabel">V12.7 content trust layer</div><h2>Native Review + Field-Safe Content</h2><p class="muted">This is for a fluent/native Greek reviewer. It does not erase learner progress. It records phrase confidence, source status, notes, and suggested corrections.</p><div class="truthGrid"><div class="truthStat"><b>${s.verified}</b><small>Verified</small></div><div class="truthStat"><b>${s.needs}</b><small>Needs review / nuanced</small></div><div class="truthStat"><b>${s.safeSurvival}/${s.survival}</b><small>Verified survival phrases</small></div><div class="truthStat"><b>${s.avoid}</b><small>Avoid in field</small></div></div><label class="safeOnly" style="margin-top:12px"><input type="checkbox" ${state.reviewSafeOnly?'checked':''} onchange="setReviewSafeOnly(this.checked)"> In “I’m here now,” prioritize field-safe phrases first</label><div class="reviewTools"><input id="reviewSearch" class="input" placeholder="Search review content" oninput="renderContentReview()"><select id="reviewFilter" class="input" onchange="renderContentReview()"><option value="all">All content</option><option value="survival">Survival only</option><option value="needs">Needs review</option><option value="verified">Verified</option><option value="avoid">Avoid in field</option></select></div><div class="grid2" style="margin-top:10px"><button class="btn primary" onclick="renderContentReview()">Open content review</button><button class="btn" onclick="exportReviewCsv()">Export review CSV</button><button class="btn" onclick="exportReviewJson()">Export review JSON</button><button class="btn" onclick="copyReviewCsv()">Copy CSV</button></div><textarea id="reviewExportBox" class="input csvBox" placeholder="CSV preview appears here after export/copy."></textarea><div class="divider"></div><h3>Import reviewed JSON</h3><p class="muted">Paste a reviewed JSON export. This updates only phrase review metadata and suggested corrections, not SRS progress.</p><textarea id="reviewImportBox" class="input csvBox" placeholder='{"rows":[{"id":"p0","current_confidence":"Verified","review_notes":"Natural.","suggested_replacement":""}]}'></textarea><button class="btn warn" onclick="importReviewFile()">Import review metadata only</button><div id="contentReviewArea" style="margin-top:12px"></div></div>`}
 
 function byId(id){return ITEMS.find(x=>x.id===id)}
 function categories(){return [...new Set(ITEMS.map(x=>x.category))].sort()}
@@ -208,7 +882,7 @@ function onTrackProgressPanel(){let curve=actualFieldReadyCurve(),expected=progr
 function progressTruthPanel(){let x=progressSnapshot();let f=reviewForecast();let survivalPct=pct(x.survivalReady,x.survival);let lastLine=x.last===0?'Practiced today':x.last===1?'Practiced yesterday':x.last===null?'No completed daily loop yet':'Last daily loop: '+x.last+' days ago';return `<div class="card" id="truthPanel"><div class="sectionLabel">Progress truth</div><h2>Honest readiness dashboard</h2><p class="muted">Καθημερινά now shows what is actually ready, not just what looked correct once.</p><div class="truthGrid"><div class="truthStat"><b>${x.seen}</b><small>Seen cards</small></div><div class="truthStat"><b>${x.understood}</b><small>Understood by app</small></div><div class="truthStat"><b>${x.remembered}</b><small>Remembered</small></div><div class="truthStat"><b>${x.ready}</b><small>Field-ready</small></div></div><div class="truthBars">${truthBar('Survival field-ready',x.survivalReady,x.survival,'Taverna, taxi, pharmacy, lost, home, and shopping phrases.')}${truthBar('Whole library field-ready',x.ready,x.total,'Useful, but real exchange readiness matters more than vanity progress.')}</div><div class="auditList"><div class="auditItem">✅<span><b>${lastLine}</b><br>Return rhythm is based on finished sessions, not opening the app.</span></div><div class="auditItem">⏰<span><b>${x.due} due now</b><br>Due cards should be handled before browsing.</span></div><div class="auditItem">🔥<span><b>${x.st.streak}-day streak</b><br>${x.st.total} total practice days saved locally.</span></div></div><div class="miniSchedule">${f.map(r=>`<div class="rowItem"><b>${r.key.slice(5)}</b><span>${r.count} scheduled review${r.count===1?'':'s'}</span></div>`).join('')}</div></div>`}
 function dataHealth(){let raw=localStorage.getItem(LS)||'';let kb=Math.round(raw.length/1024);let hasBackup=raw.length>100;let last=state.nudges?.lastSessionDone||'not yet';return {kb,hasBackup,last}}
 function dataSafetyPanel(){let h=dataHealth();return `<div class="card"><div class="sectionLabel">Data safety</div><h2>Protect this phone’s progress.</h2><p class="muted">Progress is private and stored in this browser. Export before changing phones, clearing Safari data, or replacing the repository.</p><div class="safetyBox"><b>Local save health</b><br><span class="muted">Saved state size: ${h.kb} KB · Last completed loop: ${esc(h.last)}</span></div><div class="grid2" style="margin-top:10px"><button class="btn" onclick="exportBackup()">Show backup text</button><button class="btn primary" onclick="downloadBackup()">Download backup file</button></div><textarea class="input" id="backupBox" rows="6" placeholder="Backup appears here, or paste backup JSON to restore"></textarea><div class="grid2" style="margin-top:10px"><button class="btn" onclick="copyBackup()">Copy backup</button><button class="btn primary" onclick="restoreBackup()">Validate + restore</button></div></div><div class="card dangerZone"><div class="sectionLabel">Reset protection</div><h2>Reset only when intentional.</h2><p class="muted">This clears practice progress on this device, but keeps settings, custom phrases, and milestone. Export first if unsure.</p><button class="btn warn" onclick="resetPracticeProgress()">Reset practice progress</button></div>`}
-function validateBackup(obj){if(!obj||typeof obj!=='object')throw new Error('Backup is not an object.');['marks','srs','seen','itemMeta','examAnswers','mockRuns'].forEach(k=>{if(obj[k]&&typeof obj[k]!=='object')throw new Error('Backup field '+k+' is invalid.')});return true}
+function validateBackup(obj){if(!obj||typeof obj!=='object')throw new Error('Backup is not an object.');['marks','srs','seen','itemMeta','examAnswers','mockRuns','quizRuns'].forEach(k=>{if(obj[k]&&typeof obj[k]!=='object')throw new Error('Backup field '+k+' is invalid.')});return true}
 function isEmptyProgress(st){try{return ['srs','recall','seen','understood','marks'].every(k=>!Object.keys(st[k]||{}).length)&&!(st.saved||[]).length&&!(st.custom||[]).length&&!(st.captures||[]).length&&!Object.keys(st.checkins||{}).length}catch(e){return false}}
 const GTA_IDB_DB='gta-durable-state-v1',GTA_IDB_STORE='snapshots';let gtaLastAutoBackup=0;
 function gtaStoragePersist(){try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{})}catch(e){}}
@@ -225,9 +899,10 @@ window.addEventListener('pagehide',gtaFlushDurableBackup);
 async function gtaRecoverIfEmpty(){try{if(!isEmptyProgress(state))return;let snap=await gtaIdbGet('latest');let recovered=snap&&snap.state?snap.state:null;if(!recovered)return;validateBackup(recovered);if(!isEmptyProgress(state))return;state=Object.assign(loadState(),recovered);state.goalLabel=state.goalLabel||'next visit';state.custom=Array.isArray(state.custom)?state.custom:[];buildItems();save();renderCountdown();renderHome();toast('Progress recovered — please export a backup.')}catch(e){}}
 function downloadBackup(){let txt=JSON.stringify(state,null,2);let blob=new Blob([txt],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);state.lastBackup=iso(today());save();a.download='gta-v13-4-backup-'+iso(today())+'.json';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);toast('Backup file created.')}
 async function copyBackup(){let txt=JSON.stringify(state,null,2);let box=$('backupBox');if(box)box.value=txt;try{await navigator.clipboard.writeText(txt);toast('Backup copied.')}catch(e){toast('Backup shown. Copy manually.')}}
-function resetPracticeProgress(){if(!confirm('Export a backup first. Reset practice progress on this device?'))return;let keep={tripDate:state.tripDate,goalLabel:state.goalLabel,onboarded:state.onboarded,settings:state.settings,nudges:state.nudges,custom:state.custom||[],checkins:state.checkins||{},captures:state.captures||[],itemMeta:state.itemMeta||{},examAnswers:state.examAnswers||{},mockRuns:state.mockRuns||{}};state=Object.assign(loadState(),keep,{marks:{},srs:{},understood:{},recall:{},seen:{},saved:[],history:[],sessionCount:0,recordings:{}});state.custom=Array.isArray(state.custom)?state.custom:[];buildItems();save();toast('Practice progress reset.');renderHome();}
+function resetPracticeProgress(){if(!confirm('Export a backup first. Reset practice progress on this device?'))return;let keep={tripDate:state.tripDate,goalLabel:state.goalLabel,onboarded:state.onboarded,settings:state.settings,nudges:state.nudges,custom:state.custom||[],checkins:state.checkins||{},captures:state.captures||[],itemMeta:state.itemMeta||{},examAnswers:state.examAnswers||{},mockRuns:state.mockRuns||{},quizRuns:state.quizRuns||[]};state=Object.assign(loadState(),keep,{marks:{},srs:{},understood:{},recall:{},seen:{},saved:[],history:[],sessionCount:0,recordings:{}});state.custom=Array.isArray(state.custom)?state.custom:[];state.quizRuns=Array.isArray(state.quizRuns)?state.quizRuns:[];buildItems();save();toast('Practice progress reset.');renderHome();}
 
 function renderHome(){if(!state.onboarded){renderOnboarding();return}let due=dueItems(), daily=getDailyIds().map(byId).filter(Boolean), ready=ITEMS.filter(x=>fieldReady(x.id)).length, remembered=ITEMS.filter(x=>masteryLabel(x.id)==='Remembered').length;let d=daysUntilTrip(), g=goalLabel();let pct=Math.min(100,Math.round((ready/Math.max(1,ITEMS.length))*100));let focus=d===null?'Daily rhythm':d>0?d+' days until '+g:d===0?g+' today':'Daily rhythm';$('home').innerHTML=`<div class="hero todayHero"><div class="sectionLabel">Today’s conversation loop</div><div class="grid2"><button class="btn primary" onclick="startDaily()">Start Today’s 5</button><button class="btn" onclick="startDue()">Due Now (${due.length})</button><button class="btn" onclick="startDialogueList()">Practice an exchange</button><button class="btn" aria-label="Search all phrases" onclick="openSearch()">🔍 Search</button></div></div>
+<div class="card"><div class="sectionLabel">Today’s quiz</div><h2>5-minute mixed review</h2><p class="muted">A short auto-scored quiz from due, recent, and weak cards. It feeds the same SRS.</p><button class="btn primary" onclick="startDailyQuiz()">Start Today’s Quiz</button></div>
 <div class="card"><div class="row"><div><div class="sectionLabel">Milestone focus</div><h2>${esc(focus)}</h2><p class="muted">Use a date only when you have a real visit, family moment, move, or relationship milestone. No date means full long-term SRS for durable conversation.</p></div></div><div class="grid2"><input class="input" id="goalLabelInput" placeholder="next visit, meeting the family, moving…" value="${esc(goalLabel())}"><input class="input" id="tripInput" type="date" value="${esc(state.tripDate||'')}"><button class="btn primary" onclick="saveGoalFromHome()">Save milestone</button><button class="btn" onclick="state.tripDate='';state.dailyIds=[];save();renderHome()">Use daily rhythm</button></div></div>
 ${conversationCaptureCard()}${capturesToTranslatePanel()}${conversationTierPanel()}
 <div class="grid3"><div class="stat"><b>${due.length}</b>Due now</div><div class="stat"><b>${remembered}</b>Remembered</div><div class="stat"><b>${ready}</b>Field-ready</div></div>${phoneUxMini()}${progressTruthMini()}${returnNudgeCard()}
@@ -236,7 +911,23 @@ ${conversationCaptureCard()}${capturesToTranslatePanel()}${conversationTierPanel
 <div class="notice warn"><b>Honest mastery:</b> speech match only means “the app understood you.” A phrase becomes field-ready only after you recall it in a later session.</div>`;renderCountdown()}
 
 function cardMini(it){return `<div class="tight"><b>${esc(it.english)}</b><br><span class="muted">${esc(it.category)} · ${masteryLabel(it.id)}</span><br><span class="whyTag">${reasonForToday(it)}</span></div>`}
-function renderPractice(){let due=dueItems().length;$('practice').innerHTML=`<div class="card"><div class="sectionLabel">Practice depth</div><h2>One practice room, four depths — plus real exchanges.</h2><p class="muted">Choose how close you want to get to a real conversation with your partner today.</p><div class="grid2"><button class="btn" aria-label="Search all phrases" onclick="openSearch()">🔍 Search all phrases</button><button class="btn primary" onclick="startDialogueList()">Practice partner roleplay</button></div><div class="tabs" style="margin-top:12px">${['recognize','recall','speak','converse'].map(m=>`<button class="tab ${currentMode===m?'active':''}" onclick="currentMode='${m}';renderPractice()">${labelMode(m)}</button>`).join('')}</div></div><div class="card"><div class="sectionLabel">Ellinomatheia A1/A2</div><h2>Exam prep</h2><p class="muted">Grammar, Reading, Listening, Writing, Speaking, mock exams, and per-level readiness live here. Daily practice stays unchanged.</p><button class="btn primary" onclick="renderExamPrep()">Open Exam prep</button></div>${conversationTierPanel()}<div id="practiceArea"></div><div class="card"><button class="btn" onclick="renderCategoryBrowser()">More ways to practice by category</button><button class="btn" onclick="startDue()">Due Now (${due})</button></div>`;renderModeStart()}
+
+function quizHubPanel(){let recent=(state.quizRuns||[]).slice(-1)[0];let last=recent?`Last quiz: ${recent.right}/${recent.total} · ${new Date(recent.finished).toLocaleDateString()}`:'No quiz run yet.';return `<div class="card"><div class="sectionLabel">Quizzes</div><h2>Daily, milestone, and weak-spots quizzes</h2><p class="muted">Short quizzes reuse your existing cards and the same SRS. No new Greek is invented here.</p><div class="grid2"><button class="btn primary" onclick="startDailyQuiz()">Today’s Quiz</button><button class="btn" onclick="startQuiz('weak')">Weak Spots Quiz</button><button class="btn" onclick="startQuiz('milestone','A1')">A1 Milestone Quiz</button><button class="btn" onclick="startQuiz('milestone','A2')">A2 Milestone Quiz</button><button class="btn" onclick="startQuiz('consolidated')">Consolidated Review</button><button class="btn" onclick="renderExamPrep()">Exam Prep</button></div><p class="muted tight">${esc(last)}</p><div id="quizArea"></div></div>`}
+function startDailyQuiz(){startQuiz('daily')}
+function quizItemText(it){return {greek:(it.greek||it.formal||it.casual||'').trim(),english:(it.english||'').trim()}}
+function quizEligibleItems(kind,level){let base=ITEMS.filter(it=>{let t=quizItemText(it);return t.greek&&t.english});if(level)base=base.filter(it=>it.level===level);let due=new Set(dueItems().map(x=>x.id));let daily=new Set(getDailyIds());let weak=new Set((state.history||[]).filter(h=>h&&h.ok===false).map(h=>h.id));let picked=[];if(kind==='daily')picked=base.filter(it=>due.has(it.id)||daily.has(it.id)||weak.has(it.id));
+else if(kind==='weak')picked=base.filter(it=>due.has(it.id)||weak.has(it.id)||state.marks[it.id]==='review'||!fieldReady(it.id));
+else if(kind==='milestone')picked=base.filter(it=>!level||it.level===level);
+else picked=base.filter(it=>due.has(it.id)||weak.has(it.id)||!fieldReady(it.id));
+let pool=picked.length>=5?picked:base;let verifiedPool=pool.filter(it=>it.verified===true);let rest=pool.filter(it=>it.verified!==true);return verifiedPool.length?[...verifiedPool,...rest]:pool}
+function quizShuffle(arr,seed){let out=arr.slice();let n=seed||Date.now();for(let i=out.length-1;i>0;i--){n=(n*9301+49297)%233280;let j=Math.floor((n/233280)*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out}
+function quizDistractors(correct,all,field){let opts=[correct];for(let it of quizShuffle(all,correct.length+field.length)){let t=quizItemText(it)[field];if(t&&t!==correct&&!opts.includes(t))opts.push(t);if(opts.length>=4)break}return quizShuffle(opts,correct.length*17+opts.length).map((text,i)=>({text,correct:text===correct}))}
+function buildQuizQuestions(kind,level){let candidates=quizEligibleItems(kind,level),all=ITEMS.filter(it=>{let t=quizItemText(it);return t.greek&&t.english});let count=kind==='daily'?10:kind==='weak'?15:kind==='milestone'?25:30;let picked=quizShuffle(candidates,Date.now()).slice(0,Math.min(count,candidates.length));return picked.map((it,i)=>{let t=quizItemText(it),mode=i%2?'englishToGreek':'greekToEnglish',field=mode==='greekToEnglish'?'english':'greek',correct=mode==='greekToEnglish'?t.english:t.greek,opts=quizDistractors(correct,all,field);return {id:it.id,mode,prompt:mode==='greekToEnglish'?t.greek:t.english,options:opts.map(o=>o.text),answer:opts.findIndex(o=>o.correct),level:it.level||'',category:it.category||'',verified:it.verified===true,source:sourceLabel(it)}})}
+function startQuiz(kind,level){if(!$('practice').classList.contains('active'))nav('practice');let questions=buildQuizQuestions(kind||'daily',level||'');window.quizSession={kind:kind||'daily',level:level||'',questions,started:Date.now()};renderQuizSession()}
+function renderQuizSession(){let s=window.quizSession,area=$('quizArea')||$('practiceArea');if(!s||!area)return;if(!s.questions.length){area.innerHTML=`<div class="card"><div class="sectionLabel">Quiz</div><h2>No quiz items available yet</h2><p class="muted">Add level tags or practice more cards, then try again.</p></div>`;return}let title=s.kind==='daily'?'Today’s Quiz':s.kind==='weak'?'Weak Spots Quiz':s.kind==='milestone'?`${s.level||''} Milestone Quiz`:'Consolidated Review';area.innerHTML=`<div class="card"><div class="sectionLabel">${esc(title)}</div><h2>${esc(title)}</h2><p class="muted">${s.questions.length} questions · auto-scored · feeds the same SRS.</p><div class="quizMeta"><span>${esc(s.level||'mixed levels')}</span><span>${esc(s.kind)}</span><span>${s.questions.some(q=>q.verified)?'verified preferred':'practice only'}</span></div>${s.questions.map((q,i)=>`<div class="examQuestion"><b>${i+1}. ${q.mode==='greekToEnglish'?'Choose the English meaning':'Choose the Greek phrase'}</b><p class="phrase smallGreek">${q.mode==='greekToEnglish'?gr(q.prompt):esc(q.prompt)}</p>${q.options.map((op,oi)=>`<label class="examOption"><input type="radio" name="quiz_${i}" value="${oi}"><span>${q.mode==='englishToGreek'?gr(op):esc(op)}</span></label>`).join('')}<p class="muted tight">${esc(q.level||'No level')} · ${esc(q.category||'General')}</p></div>`).join('')}<button class="btn primary" onclick="finishQuiz()">Finish quiz</button></div>`}
+function finishQuiz(){let s=window.quizSession,area=$('quizArea')||$('practiceArea');if(!s||!area)return;let right=0,total=s.questions.length,rows=[];s.questions.forEach((q,i)=>{let chosen=document.querySelector(`input[name="quiz_${i}"]:checked`),val=chosen?Number(chosen.value):-1,ok=val===Number(q.answer);if(ok)right++;nextDueDate(q.id,ok,ok?4:1);rows.push({q,ok,val})});state.quizRuns=Array.isArray(state.quizRuns)?state.quizRuns:[];state.quizRuns.push({kind:s.kind,level:s.level,right,total,finished:Date.now()});state.quizRuns=state.quizRuns.slice(-40);save();let pct=total?Math.round((right/total)*100):0,passed=pct>=75;area.innerHTML=`<div class="card"><div class="sectionLabel">Quiz result</div><h2>${right}/${total} correct · ${pct}%</h2><p class="muted">${passed?'Milestone-ready signal. Keep going.':'Review needed. Missed items were sent back into SRS.'}</p><div class="quizResult"><b>${passed?'Ready':'Almost there'}</b><br><span class="muted">Correct answers moved forward; missed answers will resurface.</span></div><div class="list" style="margin-top:12px">${rows.map((r,i)=>`<div class="itemRow"><div><b>${r.ok?'✓':'↻'} Question ${i+1}</b><br><span class="muted">Correct answer: ${r.q.mode==='englishToGreek'?gr(r.q.options[r.q.answer]||''):esc(r.q.options[r.q.answer]||'')}</span></div></div>`).join('')}</div><div class="grid2" style="margin-top:12px"><button class="btn primary" onclick="startQuiz('${esc(s.kind)}','${esc(s.level)}')">Retake similar quiz</button><button class="btn" onclick="renderPractice()">Back to Practice</button></div></div>`;window.quizSession=null}
+
+function renderPractice(){let due=dueItems().length;$('practice').innerHTML=`<div class="card"><div class="sectionLabel">Practice depth</div><h2>One practice room, four depths — plus real exchanges.</h2><p class="muted">Choose how close you want to get to a real conversation with your partner today.</p><div class="grid2"><button class="btn" aria-label="Search all phrases" onclick="openSearch()">🔍 Search all phrases</button><button class="btn primary" onclick="startDialogueList()">Practice partner roleplay</button></div><div class="tabs" style="margin-top:12px">${['recognize','recall','speak','converse'].map(m=>`<button class="tab ${currentMode===m?'active':''}" onclick="currentMode='${m}';renderPractice()">${labelMode(m)}</button>`).join('')}</div></div>${quizHubPanel()}<div class="card"><div class="sectionLabel">Ellinomatheia A1/A2</div><h2>Exam prep</h2><p class="muted">Grammar, Reading, Listening, Writing, Speaking, mock exams, and per-level readiness live here. Daily practice stays unchanged.</p><button class="btn primary" onclick="renderExamPrep()">Open Exam prep</button></div>${conversationTierPanel()}<div id="practiceArea"></div><div class="card"><button class="btn" onclick="renderCategoryBrowser()">More ways to practice by category</button><button class="btn" onclick="startDue()">Due Now (${due})</button></div>`;renderModeStart()}
 
 function labelMode(m){return ({recognize:'Recognize',recall:'Recall',speak:'Speak',converse:'Converse'})[m]}
 function renderModeStart(){let pool=currentMode==='recall'?poolForToday().filter(x=>state.marks[x.id]!=='mastered').slice(0,20):poolForToday().slice(0,20);$('practiceArea').innerHTML=`<div class="card"><h2>${labelMode(currentMode)}</h2><p class="muted">${modeHelp(currentMode)}</p><button class="btn primary" onclick="startPool('${currentMode}')">Start ${labelMode(currentMode)}</button></div>`}
@@ -289,7 +980,7 @@ function releaseEmptyStatesPanel(){let due=dueItems().length;let reviewed=Object
 function stableLaunchPanel(){let steps=['Upload only the V13.4 folder files to the new repository','Enable GitHub Pages from the repository root','Open the Pages URL on iPhone Safari','Add to Home Screen after the first online load','Open Today, Practice, I’m Here, Progress, and More','Play normal and slow Greek audio once','Export a backup file','Turn airplane mode on and reopen the installed app'];return `<div class="card"><div class="sectionLabel">Stable launch checklist</div><h2>Ready for the new repository.</h2><p class="muted">V13.4 keeps the conversation-capture loop and adds the exam-prep scaffold. Test it on the real phone before adding more content.</p><div class="stepList">${steps.map(x=>`<div class="stepItem"><div class="stepIcon">✓</div><div><b>${esc(x)}</b><br><span class="muted">Launch-readiness check for the conversation companion build.</span></div></div>`).join('')}</div></div>`}
 function buildIntegrityPanel(){let raw=localStorage.getItem(LS)||'';let sw=('serviceWorker' in navigator)?'Supported':'Unavailable';let storage=raw.length?Math.round(raw.length/1024)+' KB saved':'No saved practice state yet';let backup=state.lastBackup||'not yet';let checks=['Today view renders','Practice view renders','I’m Here view renders','Progress view renders','Settings view renders','Dialogue practice renders','Custom phrase builder present','Conversation capture loop present','On-track SVG progress tracker present','Pending translation queue present','Backup tools present'];return `<div class="card"><div class="sectionLabel">Build integrity</div><h2>V13.4 exam prep integrity panel</h2><div class="integrityGrid"><div class="integrityItem"><b>V13.4</b><span class="muted">Version label</span></div><div class="integrityItem"><b>${DATA.phrases.length}</b><span class="muted">Phrase records</span></div><div class="integrityItem"><b>${DATA.vocab.length}</b><span class="muted">Vocabulary records</span></div><div class="integrityItem"><b>${(DATA.dialogues||[]).length}</b><span class="muted">Starter dialogues</span></div><div class="integrityItem"><b>${pendingCaptures().length}</b><span class="muted">Captures waiting</span></div><div class="integrityItem"><b>${ITEMS.length}</b><span class="muted">Total learnable cards</span></div><div class="integrityItem"><b>${storage}</b><span class="muted">Storage status</span></div><div class="integrityItem"><b>${sw}</b><span class="muted">Service worker status</span></div><div class="integrityItem"><b>${esc(backup)}</b><span class="muted">Last backup date</span></div></div><div class="divider"></div><div class="stepList">${checks.map(x=>`<div class="stepItem"><div class="stepIcon">✓</div><div><b>${esc(x)}</b><br><span class="muted">Included in the V13.4 exam prep build.</span></div></div>`).join('')}</div></div>`}
 
-function renderProgress(){let x=progressSnapshot();let due=dueItems();$('progress').innerHTML=`<div class="hero"><div class="sectionLabel">Progress · stable release</div><h1>Trust conversation progress, not vanity numbers.</h1><p class="muted">This screen separates exposure from true field readiness so you do not walk into a real conversation overconfident.</p><div class="grid2"><button class="btn primary" onclick="startDaily()">Practice Today’s 5</button><button class="btn" onclick="nav('more')">Open Settings</button></div></div>${realConversationStatsPanel()}${onTrackProgressPanel()}${progressTruthPanel()}${levelProgressPanel()}${releaseEmptyStatesPanel()}${stableLaunchPanel()}${buildIntegrityPanel()}<div class="card"><div class="sectionLabel">Next action</div><h2>${due.length?'Handle Due Now':'No reviews due now'}</h2><p class="muted">${due.length?'You have '+due.length+' due cards. Do these before browsing.':'Nothing is due right now. Today’s 5 will keep your conversation practice moving.'}</p><div class="grid2"><button class="btn primary" onclick="startDaily()">Today’s 5</button><button class="btn" onclick="startDue()">Due Now (${due.length})</button></div></div>`;renderCountdown()}
+function renderProgress(){let x=progressSnapshot();let due=dueItems();$('progress').innerHTML=`<div class="hero"><div class="sectionLabel">Progress · stable release</div><h1>Trust conversation progress, not vanity numbers.</h1><p class="muted">This screen separates exposure from true field readiness so you do not walk into a real conversation overconfident.</p><div class="grid2"><button class="btn primary" onclick="startDaily()">Practice Today’s 5</button><button class="btn" onclick="nav('more')">Open Settings</button></div></div>${realConversationStatsPanel()}${onTrackProgressPanel()}${progressTruthPanel()}${levelProgressPanel()}${verificationPipelinePanel()}${releaseEmptyStatesPanel()}${stableLaunchPanel()}${buildIntegrityPanel()}<div class="card"><div class="sectionLabel">Next action</div><h2>${due.length?'Handle Due Now':'No reviews due now'}</h2><p class="muted">${due.length?'You have '+due.length+' due cards. Do these before browsing.':'Nothing is due right now. Today’s 5 will keep your conversation practice moving.'}</p><div class="grid2"><button class="btn primary" onclick="startDaily()">Today’s 5</button><button class="btn" onclick="startDue()">Due Now (${due.length})</button></div></div>`;renderCountdown()}
 function reminderSettingsPanel(){return `<div class="settingsGroup"><div class="sectionLabel">Reminder rhythm</div><h3>Gentle nudges</h3><p class="muted">Use reminders only to return to Today’s 5. iPhone PWA notification support depends on iOS/browser settings.</p><div class="nudgeStatus"><span class="dot ${state.settings.remindersEnabled?'ok':'warn'}"></span><span><b>${state.settings.remindersEnabled?'Reminders on':'Reminders off'}</b> · ${reminderSupportText()}</span></div><div class="grid2" style="margin-top:10px"><input id="reminderTime" class="input" type="time" value="${esc(state.settings.reminderTime||'09:00')}"><button class="btn" onclick="saveReminderTime()">Save time</button></div><div class="grid2" style="margin-top:10px">${state.settings.remindersEnabled?'<button class="btn warn" onclick="disableReminders()">Turn reminders off</button>':'<button class="btn primary" onclick="enableReminders()">Enable reminder</button>'}<button class="btn" onclick="installApp()">Install / Add to Home</button></div></div>`}
 function depthSettingsPanel(){return `<div class="settingsGroup"><div class="sectionLabel">Practice depth</div><h3>Optional support</h3><label class="toggleRow"><span><b>Hear-your-progress comparison</b><br><span class="muted">Record yourself and compare with native audio.</span></span><input type="checkbox" ${state.settings.recordCompare?'checked':''} onchange="toggleSetting('recordCompare',this.checked)"></label><label class="toggleRow"><span><b>Optional Greek-script track</b><br><span class="muted">Show Greek letters and quick sound hints below cards.</span></span><input type="checkbox" ${state.settings.scriptTrack?'checked':''} onchange="toggleSetting('scriptTrack',this.checked)"></label></div>`}
 function tripSettingsPanel(){let d=daysUntilTrip(),g=goalLabel();return `<div class="settingsGroup"><div class="sectionLabel">Milestone</div><h3>${d===null?'Daily rhythm':d>0?d+' days until '+esc(g):d===0?esc(g)+' today':'Daily rhythm'}</h3><p class="muted">A date compresses reviews only while it is in the future. Without a future date, the app uses the full SRS ladder for long-term conversation.</p><div class="grid2"><input class="input" id="settingsGoalLabel" placeholder="next visit, meeting the family, moving…" value="${esc(g)}"><input class="input" id="settingsTripInput" type="date" value="${esc(state.tripDate||'')}"><button class="btn primary" onclick="state.goalLabel=($('settingsGoalLabel').value||'next visit').trim()||'next visit';state.tripDate=$('settingsTripInput').value;state.dailyIds=[];save();renderMore();renderCountdown()">Save milestone</button><button class="btn" onclick="state.tripDate='';state.dailyIds=[];save();renderMore();renderCountdown()">Use daily rhythm</button></div></div>`}
@@ -326,11 +1017,14 @@ function editCustomPhrase(id){state.custom=Array.isArray(state.custom)?state.cus
 function deleteCustomPhrase(id){if(!confirm('Delete this custom phrase? Practice progress for this phrase may remain in backup history.'))return;state.custom=(state.custom||[]).filter(x=>x.id!==id);state.dailyIds=[];buildItems();save();toast('Custom phrase deleted.');renderMore()}
 
 function examVerifiedBadge(x){let ok=x&&x.verified===true;return `<span class="examBadge ${ok?'ok':'warn'}">${ok?'verified':'unverified'}</span>`}
+function sourceLabel(x){let src=(x&&x.source)||((x&&x.verified===true)?'tutor-checked':'unreviewed');if((x&&String(x.id||'').includes('practice'))||(x&&String(x.title||'').includes('PRACTICE ONLY')))src='practice-only';return src}
+function verificationStats(){let core=ITEMS||[],examKinds=['grammar','reading','listening','writing','speaking','mock'],exam=examKinds.flatMap(k=>examItems(k).map(x=>Object.assign({examKind:k},x)));let all=[...core,...exam],verified=all.filter(x=>x.verified===true).length,official=all.filter(x=>sourceLabel(x)==='official-source').length,tutor=all.filter(x=>sourceLabel(x)==='tutor-checked'||x.verified===true).length,practice=all.filter(x=>sourceLabel(x)==='practice-only').length;return {coreTotal:core.length,coreVerified:core.filter(x=>x.verified===true).length,examTotal:exam.length,examVerified:exam.filter(x=>x.verified===true).length,total:all.length,verified,official,tutor,practice,unreviewed:Math.max(0,all.length-verified-practice)}}
+function verificationPipelinePanel(){let v=verificationStats();return `<div class="card"><div class="sectionLabel">Content verification pipeline</div><h2>Better engine, not new fuel yet</h2><p class="muted">Quizzes and mocks make your current material more practiceable. They are not a verified Ellinomatheia readiness score until official or tutor-checked content is loaded.</p><div class="truthGrid"><div class="truthStat"><b>${v.coreVerified}/${v.coreTotal}</b><small>core cards verified</small></div><div class="truthStat"><b>${v.examVerified}/${v.examTotal}</b><small>exam scaffold verified</small></div><div class="truthStat"><b>${v.practice}</b><small>practice-only items</small></div><div class="truthStat"><b>${v.official}</b><small>official-source items</small></div></div><div class="notice warn"><b>Current boundary:</b> verified:true may still be 0. That is okay. It means the engine is ready and the verified fuel still needs to be added from official papers, published books, or a tutor/native reviewer.</div><div class="stepList"><div class="stepItem"><div class="stepIcon">1</div><div><b>Review current cards</b><br><span class="muted">Mark unreviewed, tutor-checked, official-source, or practice-only in Content Review.</span></div></div><div class="stepItem"><div class="stepIcon">2</div><div><b>Load verified exam content</b><br><span class="muted">Only set verified:true when the content came from a trusted source or tutor.</span></div></div><div class="stepItem"><div class="stepIcon">3</div><div><b>Quiz preference</b><br><span class="muted">When verified cards exist, quizzes prefer them before filling with practice-only or unreviewed material.</span></div></div></div></div>`}
 function levelProgress(level){let arr=ITEMS.filter(x=>x.level===level);return {level,total:arr.length,ready:arr.filter(x=>fieldReady(x.id)).length}}
 function levelProgressPanel(){let a=levelProgress('A1'),b=levelProgress('A2');return `<div class="card"><div class="sectionLabel">A1/A2 exam readiness</div><h2>Field-ready by level</h2><div class="grid2"><div class="stat"><b>A1: ${a.ready} of ${a.total}</b>field-ready</div><div class="stat"><b>A2: ${b.ready} of ${b.total}</b>field-ready</div></div><p class="muted tight">Counts use the existing fieldReady(id) delayed-recall rule. Items without A1/A2 level tags are not counted here.</p></div>`}
 function examId(skill,id){return 'exam_'+skill+'_'+id}
 function examItems(kind){return Array.isArray(DATA[kind])?DATA[kind]:[]}
-function renderExamPrep(){if(!$('practice').classList.contains('active'))nav('practice');$('practiceArea').innerHTML=`<div class="hero"><div class="sectionLabel">Ellinomatheia A1/A2</div><h1>Exam prep, without polluting daily practice.</h1><p class="muted">This is scaffolding for tutor-verified content. Unverified placeholders remain visibly flagged until you mark them verified.</p></div>${levelProgressPanel()}${grammarPanel()}${skillHubPanel()}${mockExamPanel()}`}
+function renderExamPrep(){if(!$('practice').classList.contains('active'))nav('practice');$('practiceArea').innerHTML=`<div class="hero"><div class="sectionLabel">Ellinomatheia A1/A2</div><h1>Exam prep, without polluting daily practice.</h1><p class="muted">This is scaffolding for tutor-verified content. Unverified placeholders remain visibly flagged until you mark them verified.</p></div>${levelProgressPanel()}${verificationPipelinePanel()}${grammarPanel()}${skillHubPanel()}${mockExamPanel()}`}
 function grammarPanel(){let units=examItems('grammar');let groups=['A1','A2',null].map(l=>{let arr=units.filter(u=>(u.level||null)===l);if(!arr.length)return '';return `<h3>${esc(l||'No level')}</h3><div class="list">${arr.map(grammarUnitCard).join('')}</div>`}).join('');return `<div class="card"><div class="sectionLabel">Grammar reference</div><h2>Rules and “why” notes</h2><p class="muted">Add verified grammar explanations here. Vocabulary cards can also carry a small grammar note from Content Review.</p>${groups||'<div class="empty">No grammar units yet.</div>'}</div>`}
 function grammarUnitCard(u){return `<details class="examPanel"><summary><b>${esc(u.title||'Untitled grammar unit')}</b> ${examVerifiedBadge(u)} <span class="examBadge">${esc(u.level||'No level')}</span></summary><p class="muted">${esc(u.explanation||'')}</p><div class="list">${(u.examples||[]).map(ex=>`<div class="examQuestion"><div class="phrase smallGreek">${gr(ex.gr||'')}</div><div>${esc(ex.en||'')}</div><p class="muted tight">${esc(ex.note||'')}</p></div>`).join('')}</div></details>`}
 function skillHubPanel(){return `<div class="card"><div class="sectionLabel">Four skills</div><h2>Practice by exam skill</h2><div class="grid2"><button class="btn" onclick="renderSkillList('reading')">Reading</button><button class="btn" onclick="renderSkillList('listening')">Listening</button><button class="btn" onclick="renderSkillList('writing')">Writing</button><button class="btn" onclick="renderSkillList('speaking')">Speaking</button></div><div id="skillArea"></div></div>`}
@@ -346,7 +1040,7 @@ function writingCard(item){let ans=(state.examAnswers[examId('writing',item.id)]
 function revealWriting(id){let item=examItems('writing').find(x=>x.id===id);if(!item)return;let answer=$('write_'+id)?.value||'';state.examAnswers[examId('writing',id)]={answer,updated:Date.now()};save();$('writeResult').innerHTML=`<div class="notice"><b>Model answer:</b><br>${esc(item.modelAnswer||'')}</div><div class="selfCheck">${(item.checklist||[]).map(c=>`<label><input type="checkbox">${esc(c)}</label>`).join('')}</div><p class="muted">Self-comparison only. Have a tutor mark a few written answers.</p><div class="grid3"><button class="btn good" onclick="selfGradeExam('writing','${esc(id).replace(/'/g,'&#39;')}',true,5)">Correct</button><button class="btn" onclick="selfGradeExam('writing','${esc(id).replace(/'/g,'&#39;')}',true,3)">Partly</button><button class="btn warn" onclick="selfGradeExam('writing','${esc(id).replace(/'/g,'&#39;')}',false,1)">Again</button></div>`}
 function speakingCard(item){return `<div class="card"><div class="sectionLabel">Speaking · ${esc(item.level||'No level')}</div><h2>${esc(item.prompt||item.id)} ${examVerifiedBadge(item)}</h2><p class="muted">Use the existing speak/record-compare habit. Self-score against the model or a tutor note.</p><div class="notice"><b>Model / tutor note:</b><br>${esc(item.modelAnswer||'')}</div>${recordComparePanel({id:examId('speaking',item.id),greek:item.prompt||''})}<div class="grid3"><button class="btn good" onclick="selfGradeExam('speaking','${esc(item.id).replace(/'/g,'&#39;')}',true,5)">Correct</button><button class="btn" onclick="selfGradeExam('speaking','${esc(item.id).replace(/'/g,'&#39;')}',true,3)">Partly</button><button class="btn warn" onclick="selfGradeExam('speaking','${esc(item.id).replace(/'/g,'&#39;')}',false,1)">Again</button></div></div>`}
 function selfGradeExam(skill,id,ok,quality){nextDueDate(examId(skill,id),ok,quality);state.examAnswers[examId(skill,id)]=Object.assign(state.examAnswers[examId(skill,id)]||{},{skill,id,self:quality,ok,updated:Date.now()});save();toast(ok?'Saved to SRS.':'Marked again; will resurface.');renderExamPrep()}
-function mockExamPanel(){let rows=examItems('mock').map(m=>`<div class="itemRow"><div><b>${esc(m.title||m.id)}</b> ${examVerifiedBadge(m)}<br><span class="muted">${esc(m.level||'No level')} · ${Number(m.timeMinutes||0)} minutes · ${(m.sections||[]).length} sections</span></div><div class="rowActions"><button class="btn small primary" onclick="startMock('${esc(m.id).replace(/'/g,'&#39;')}')">Start mock</button></div></div>`).join('')||'<div class="empty">No mock exams yet.</div>';return `<div class="card"><div class="sectionLabel">Mock exams</div><h2>Timed four-skill run</h2><p class="muted">Order: Reading → Listening → Writing → Speaking. Objective sections auto-score; productive sections self-score.</p><div class="list">${rows}</div><div id="mockArea"></div></div>`}
+function mockExamPanel(){let rows=examItems('mock').map(m=>`<div class="itemRow"><div><b>${esc(m.title||m.id)}</b> ${examVerifiedBadge(m)}<br><span class="muted">${esc(m.level||'No level')} · ${Number(m.timeMinutes||0)} minutes · ${(m.sections||[]).length} sections</span></div><div class="rowActions"><button class="btn small primary" onclick="startMock('${esc(m.id).replace(/'/g,'&#39;')}')">Start mock</button></div></div>`).join('')||'<div class="empty">No mock exams yet.</div>';return `<div class="card"><div class="sectionLabel">Mock exams</div><h2>Timed four-skill run</h2><p class="muted">Practice mocks can run Speaking → Listening → Reading → Writing. Objective sections auto-score; productive sections self-score.</p><div class="list">${rows}</div><div id="mockArea"></div></div>`}
 function startMock(id){let m=examItems('mock').find(x=>x.id===id);if(!m)return;window.mockSession={mock:m,sectionIndex:0,started:Date.now(),scores:[]};renderMockStep()}
 function renderMockStep(){let s=window.mockSession;if(!s)return;let m=s.mock,sec=(m.sections||[])[s.sectionIndex];let area=$('mockArea')||$('practiceArea');if(!sec){let total=s.scores.reduce((a,b)=>a+(b.right||0),0),max=s.scores.reduce((a,b)=>a+(b.total||0),0);state.mockRuns[m.id]={scores:s.scores,finished:Date.now()};save();area.innerHTML=`<div class="card"><div class="sectionLabel">Mock summary</div><h2>${esc(m.title||m.id)}</h2><p class="muted">Objective/self score: ${total}/${max}. Writing and Speaking are self-comparison scores unless a tutor marks them.</p><div class="list">${s.scores.map(x=>`<div class="itemRow"><b>${esc(x.skill)}</b><span>${x.right}/${x.total}</span></div>`).join('')}</div><button class="btn primary" onclick="renderExamPrep()">Back to Exam prep</button></div>`;return}let ids=sec.items||[],items=ids.map(id=>examItems(sec.skill).find(x=>x.id===id)).filter(Boolean);area.innerHTML=`<div class="card"><div class="sectionLabel">Mock section ${s.sectionIndex+1} · ${esc(sec.skill)}</div><h2>${esc(m.title||m.id)} ${examVerifiedBadge(m)}</h2><div class="timerBar"><span></span></div><p class="muted">Timed target: ${Number(m.timeMinutes||0)} minutes total. Use a real timer if strict exam timing matters.</p>${items.map((it,idx)=>mockItemBlock(sec.skill,it,idx)).join('')}<button class="btn primary" onclick="finishMockSection()">Finish section</button></div>`}
 function mockItemBlock(skill,it,idx){if(skill==='reading')return `<div class="examPanel"><h3>${esc(it.title||it.id)}</h3><p>${esc(it.passage||'')}</p>${mcqBlock('mock_reading_'+idx,it)}</div>`;if(skill==='listening')return `<div class="examPanel"><h3>${esc(it.title||it.id)}</h3>${it.audioUrl?`<audio controls src="${esc(it.audioUrl)}"></audio>`:`<div class="notice warn">Synthetic audio fallback. Attach a verified recording later.</div><button class="btn" onclick="speakExamListening('${esc(it.id).replace(/'/g,'&#39;')}')">Play TTS fallback</button>`}${mcqBlock('mock_listening_'+idx,it)}</div>`;if(skill==='writing')return `<div class="examPanel"><h3>${esc(it.prompt||it.id)}</h3><textarea class="input examTextarea" id="mock_write_${idx}"></textarea><details><summary>Reveal model after writing</summary><p>${esc(it.modelAnswer||'')}</p></details></div>`;return `<div class="examPanel"><h3>${esc(it.prompt||it.id)}</h3><p class="muted">Speak aloud, record if desired, then self-score.</p><details><summary>Reveal model / tutor note</summary><p>${esc(it.modelAnswer||'')}</p></details></div>`}
@@ -354,11 +1048,11 @@ function finishMockSection(){let s=window.mockSession;if(!s)return;let sec=(s.mo
 function renderMockSelfScore(sec,items){let s=window.mockSession,area=$('mockArea')||$('practiceArea'),total=items.length;if(!s||!area)return;area.innerHTML=`<div class="card"><div class="sectionLabel">Mock self-score · ${esc(sec.skill)}</div><h2>How did this section go?</h2><p class="muted">Use self-comparison only. Writing and Speaking should be checked by a tutor when possible.</p><div class="grid3"><button class="btn good" onclick="completeMockSelfScore('${esc(sec.skill)}','correct')">Got it</button><button class="btn" onclick="completeMockSelfScore('${esc(sec.skill)}','partly')">Partly</button><button class="btn warn" onclick="completeMockSelfScore('${esc(sec.skill)}','again')">Again</button></div></div>`}
 function completeMockSelfScore(skill,val){let s=window.mockSession;if(!s)return;let sec=(s.mock.sections||[])[s.sectionIndex];if(!sec||sec.skill!==skill)return;let items=(sec.items||[]).map(id=>examItems(sec.skill).find(x=>x.id===id)).filter(Boolean),total=items.length,right=val==='correct'?total:val==='again'?0:Math.ceil(total/2),quality=val==='correct'?5:val==='again'?1:3;items.forEach(it=>nextDueDate(examId(sec.skill,it.id),right>0,quality));s.scores.push({skill:sec.skill,right,total});s.sectionIndex++;renderMockStep()}
 
-function renderMore(){ensureReviewState();$('more').innerHTML=`<div class="hero"><div class="sectionLabel">More · settings</div><h1>One clean control room.</h1><p class="muted">Milestone, practice depth, reminders, backup, reset, content review, phrase capture, and build integrity live here.</p><span class="rcBadge">On-track progress release</span></div>${stableLaunchPanel()}${tripSettingsPanel()}${depthSettingsPanel()}${reminderSettingsPanel()}${dataSafetyPanel()}${contentReviewPanel()}${buildIntegrityPanel()}${capturesToTranslatePanel()}${phraseBuilderPanel()}<div class="card"><div class="sectionLabel">Search</div><h2>Find any phrase</h2><input id="searchInput" class="input" placeholder="Search English, Greek, category..." oninput="searchAll(this.value)"><div id="searchResults" class="list"></div></div><div class="card"><div class="sectionLabel">Content library</div><h2>Browse categories</h2><p class="muted">${ITEMS.length} total cards · ${DATA.phrases.length} phrases · ${DATA.vocab.length} vocabulary items · ${(DATA.grammar||[]).length} grammar units · ${(DATA.reading||[]).length} reading · ${(DATA.listening||[]).length} listening · ${(DATA.writing||[]).length} writing · ${(state.custom||[]).length} custom phrases · ${pendingCaptures().length} waiting captures.</p><button class="btn" onclick="renderCategoryBrowser()">Browse categories</button><div id="categoryBrowser"></div></div><div class="footerNote">${APP_VERSION} · on-track progress release · offline-first single-file PWA</div>`;renderCountdown()}
+function renderMore(){ensureReviewState();$('more').innerHTML=`<div class="hero"><div class="sectionLabel">More · settings</div><h1>One clean control room.</h1><p class="muted">Milestone, practice depth, reminders, backup, reset, content review, phrase capture, and build integrity live here.</p><span class="rcBadge">On-track progress release</span></div>${stableLaunchPanel()}${tripSettingsPanel()}${depthSettingsPanel()}${reminderSettingsPanel()}${dataSafetyPanel()}${verificationPipelinePanel()}${contentReviewPanel()}${buildIntegrityPanel()}${capturesToTranslatePanel()}${phraseBuilderPanel()}<div class="card"><div class="sectionLabel">Search</div><h2>Find any phrase</h2><input id="searchInput" class="input" placeholder="Search English, Greek, category..." oninput="searchAll(this.value)"><div id="searchResults" class="list"></div></div><div class="card"><div class="sectionLabel">Content library</div><h2>Browse categories</h2><p class="muted">${ITEMS.length} total cards · ${verificationStats().coreVerified} verified core · ${verificationStats().examVerified} verified exam · ${DATA.phrases.length} phrases · ${DATA.vocab.length} vocabulary items · ${(DATA.grammar||[]).length} grammar units · ${(DATA.reading||[]).length} reading · ${(DATA.listening||[]).length} listening · ${(DATA.writing||[]).length} writing · ${(state.custom||[]).length} custom phrases · ${(state.quizRuns||[]).length} quiz runs · ${pendingCaptures().length} waiting captures.</p><button class="btn" onclick="renderCategoryBrowser()">Browse categories</button><div id="categoryBrowser"></div></div><div class="footerNote">${APP_VERSION} · on-track progress release · offline-first single-file PWA</div>`;renderCountdown()}
 function renderCategoryBrowser(){if(!$('more').classList.contains('active'))nav('more');let el=$('categoryBrowser');if(!el)return;el.innerHTML='<div class="chips">'+categories().map(c=>`<button class="chip" onclick="showCategory('${esc(c).replace(/'/g,'&#39;')}')">${esc(c)}</button>`).join('')+'</div><div id="catResults"></div>'}
 function showCategory(c){let arr=ITEMS.filter(x=>x.category===c).slice(0,80);$('catResults').innerHTML='<h3>'+esc(c)+'</h3>'+arr.map(survivalCard).join('')}
 function exportBackup(){let b=$('backupBox');if(b)b.value=JSON.stringify(state,null,2);toast('Backup text shown.')}
-function restoreBackup(){try{let obj=JSON.parse($('backupBox').value);validateBackup(obj);state=Object.assign(loadState(),obj);state.goalLabel=state.goalLabel||'next visit';state.custom=Array.isArray(state.custom)?state.custom:[];state.checkins=state.checkins&&typeof state.checkins==='object'?state.checkins:{};state.captures=Array.isArray(state.captures)?state.captures:[];state.itemMeta=state.itemMeta&&typeof state.itemMeta==='object'?state.itemMeta:{};state.examAnswers=state.examAnswers&&typeof state.examAnswers==='object'?state.examAnswers:{};state.mockRuns=state.mockRuns&&typeof state.mockRuns==='object'?state.mockRuns:{};buildItems();save();alert('Backup restored.');renderMore()}catch(e){alert('Could not restore backup: '+(e.message||'invalid JSON'))}}
+function restoreBackup(){try{let obj=JSON.parse($('backupBox').value);validateBackup(obj);state=Object.assign(loadState(),obj);state.goalLabel=state.goalLabel||'next visit';state.custom=Array.isArray(state.custom)?state.custom:[];state.checkins=state.checkins&&typeof state.checkins==='object'?state.checkins:{};state.captures=Array.isArray(state.captures)?state.captures:[];state.itemMeta=state.itemMeta&&typeof state.itemMeta==='object'?state.itemMeta:{};state.examAnswers=state.examAnswers&&typeof state.examAnswers==='object'?state.examAnswers:{};state.mockRuns=state.mockRuns&&typeof state.mockRuns==='object'?state.mockRuns:{};state.quizRuns=Array.isArray(state.quizRuns)?state.quizRuns:[];buildItems();save();alert('Backup restored.');renderMore()}catch(e){alert('Could not restore backup: '+(e.message||'invalid JSON'))}}
 if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js').catch(()=>{})}
 gtaStoragePersist();gtaRecoverIfEmpty();
 window.addEventListener('beforeinstallprompt',e=>{deferredPrompt=e});window.addEventListener('touchstart',primeVoices,{once:true,passive:true});if('speechSynthesis' in window){speechSynthesis.onvoiceschanged=primeVoices;primeVoices();}

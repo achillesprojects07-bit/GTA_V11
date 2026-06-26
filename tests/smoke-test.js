@@ -44,6 +44,14 @@ const required=[
   'DATA.writing',
   'DATA.speaking',
   'DATA.mock',
+  'PRACTICE_ONLY_EXAM_BANK',
+  'mock-practice-a1-everyday-01',
+  'mock-practice-a2-daily-life-01',
+  'mock-practice-a2-family-trip-01',
+  'r-practice-a2-message-01',
+  'l-practice-a2-appointment-01',
+  'w-practice-a2-email-01',
+  's-practice-a2-roleplay-doctor-01',
   'function ensureItemMetaState',
   'function itemMetaFor',
   'function levelProgressPanel',
@@ -51,6 +59,20 @@ const required=[
   'function gradeMcq',
   'function selfGradeExam',
   'function startMock',
+  'function quizHubPanel',
+  'function startDailyQuiz',
+  'function buildQuizQuestions',
+  'function finishQuiz',
+  'function verificationStats',
+  'function verificationPipelinePanel',
+  'source status',
+  'official-source',
+  'tutor-checked',
+  'Better engine, not new fuel yet',
+  'verified preferred',
+  'Today’s Quiz',
+  'A1 Milestone Quiz',
+  'Weak Spots Quiz',
   'REPLACE WITH VERIFIED CONTENT',
   'unverified',
   'window.__gtaAutoBackup',
@@ -69,7 +91,7 @@ if(html.includes('GTA V13.3 Companion')||html.includes('Greek Conversation App')
 if(html.includes('V13.2')||html.includes('V13.3')){console.error('Old V13.2/V13.3 labels remain in index.html'); process.exit(1);}
 if(html.includes('prompt(\'Self-score this ')){console.error('Mock self-score prompt remains'); process.exit(1);}
 if(!html.includes('function completeMockSelfScore')){console.error('Mock self-score buttons missing'); process.exit(1);}
-if(!sw.includes('gta-v13-4-4-icon-tile')){console.error('Service worker cache version missing'); process.exit(1);}
+if(!sw.includes('gta-v13-4-7-verified-pipeline')){console.error('Service worker cache version missing'); process.exit(1);}
 const script=html.split('<script>')[1]?.split('</script>')[0]||'';
 fs.writeFileSync('/tmp/gta-v13-4-script.js',script);
 require('child_process').execFileSync(process.execPath,['--check','/tmp/gta-v13-4-script.js'],{stdio:'inherit'});
@@ -78,8 +100,9 @@ if(!script.includes("state.checkins") || !script.includes("state.captures")){con
 if(!script.includes("dailyMinutes:30") || !script.includes("fieldReadyCount")){console.error('On-track progress defaults missing'); process.exit(1);}
 if(!script.includes("checkins:state.checkins||{}") || !script.includes("captures:state.captures||[]")){console.error('Reset preservation for conversation capture missing'); process.exit(1);}
 if(!script.includes("itemMeta:state.itemMeta||{}") || !script.includes("examAnswers:state.examAnswers||{}") || !script.includes("mockRuns:state.mockRuns||{}")){console.error('Exam prep backup/reset preservation missing'); process.exit(1);}
+if(!script.includes("quizRuns:state.quizRuns||[]") || !script.includes("state.quizRuns=Array.isArray(state.quizRuns)?state.quizRuns:[]")){console.error('Quiz run state preservation missing'); process.exit(1);}
 if(!script.includes("el.textContent=d===null?'Rhythm':d>0?d+'d':d===0?'Today':'Rhythm'")){console.error('Short countdown pill missing'); process.exit(1);}
 if(html.includes('Build real Greek for your partner')||html.includes('travel survival')||html.includes('Practice five useful lines, handle what is due')){console.error('Home slogan copy still present'); process.exit(1);}
 if(!script.includes("if(id==='progress')renderProgress()")){console.error('Progress nav hook missing'); process.exit(1);}
 if(!fs.existsSync('.nojekyll')){console.error('.nojekyll missing'); process.exit(1);}
-console.log('GTA V13.4 Καθημερινά icon-tile smoke test passed.');
+console.log('GTA V13.4 Καθημερινά verified-pipeline smoke test passed.');

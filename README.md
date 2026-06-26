@@ -72,5 +72,5 @@ npm test
 Expected output:
 
 ```text
-GTA V13.4 Καθημερινά cosmetic smoke test passed.
+GTA V13.4 Καθημερινά verified-pipeline smoke test passed.
 ```
