@@ -1,4 +1,4 @@
-# GTA Greek Travel App — V12.1 Start Here + Honest Daily Loop
+# GTA Greek Travel App — V12.3 Record Compare + Greek Script Track
 
 This package is the next clean-repo build after V12. It preserves the offline-first single-file PWA, embedded Greek phrase/vocabulary library, audio-first travel focus, trip-date motivator, and the SRS ladder `[1,3,7,21,60]`.
 
@@ -67,3 +67,24 @@ This build keeps the V12 redesign principle: subtract and sharpen, not add.
 - Honest mastery model.
 - SRS ladder `[1, 3, 7, 21, 60]`.
 - No new practice modes were added.
+
+
+## V12.3 update — Record Compare + Greek Script Track
+
+This build deepens the existing practice loop without adding another destination or mode.
+
+### What changed
+- Added **Hear-your-progress comparison** inside practice cards:
+  - play native Greek audio,
+  - record your own voice,
+  - replay your recording,
+  - self-check stress, speed, and confidence.
+- Added an **optional Greek-script track** controlled from More:
+  - shows the Greek phrase,
+  - surfaces quick letter/sound hints,
+  - keeps spoken survival Greek as the priority.
+- Added V12.3 settings toggles under More so the user can keep the interface simple.
+- Preserved the honest mastery rule: recordings and speech recognition do **not** equal pronunciation mastery or field-readiness.
+
+### Important note
+Browser microphone recording depends on device/browser permission. On iPhone PWAs, test on the actual installed app and Safari before relying on it during travel.
