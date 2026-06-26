@@ -1,18 +1,18 @@
-# Καθημερινά V13.6.1 — Adaptive Daily Session
+# Καθημερινά V13.6.2 — Extended Adaptive Study Sessions
 
-V13.6.1 adds a priority-ordered Today session that fits the time available today.
+V13.6.2 extends the adaptive Today session with longer study blocks.
 
 ## What changed
-- Added “How much time today?” controls: 5 min, 15 min, 30 min, Surprise me.
-- Added a Today’s Session checklist with progress and estimated time left.
-- Due reviews come first, weak spots next, dialogue rehearsal if time allows, and new content last.
-- The session reuses existing SRS, quiz, and dialogue rehearsal flows.
-- Session state is preserved in backup/restore/reset-safe storage.
+- Added 45 min and 60 min options to “How much time today?”.
+- Longer sessions keep the same priority order: due reviews, weak spots, dialogue rehearsal, quiz depth, then new content.
+- 60-minute sessions can include up to two dialogue rehearsals if there is enough room.
+- Added a quiet long-session note: pause if you feel overloaded.
+- Preserved SRS math, scheduler, DATA, quiz scoring, dialogue rehearsal, and exam loader logic.
 
-## Release-lock checks
-- README heading matches V13.6.1.
-- Visible app header shows V13.6.1.
-- APP_VERSION is V13.6.1.
-- Build Integrity panel shows V13.6.1.
-- Service-worker cache is gta-v13-6-1-adaptive-session.
+## Release check
+- README heading matches V13.6.2.
+- Visible app header shows V13.6.2.
+- APP_VERSION is V13.6.2.
+- Build Integrity panel shows V13.6.2.
+- Service-worker cache is gta-v13-6-2-extended-sessions.
 - npm test passes from the extracted final zip.
