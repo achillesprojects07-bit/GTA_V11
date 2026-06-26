@@ -30,7 +30,7 @@
 .onTrackCard{overflow:hidden}.chartWrap{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(29,78,216,.06),rgba(148,163,184,.05));padding:10px;margin-top:10px}.progressSvg{width:100%;height:auto;display:block}.chartLegend{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;color:var(--muted);font-size:var(--step--1);font-weight:800}.legendLine,.legendBand{display:inline-flex;align-items:center;gap:6px}.legendLine:before{content:"";width:22px;height:3px;border-radius:99px;background:var(--brand);display:inline-block}.legendBand:before{content:"";width:22px;height:12px;border-radius:5px;background:rgba(29,78,216,.14);border:1px solid rgba(29,78,216,.22);display:inline-block}.effortSelect{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;margin-top:12px}.paceStatus{border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:10px;background:var(--surface)}
 
 .examBadge{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:.74rem;font-weight:850;background:var(--surface);color:var(--muted);margin:2px}.examBadge.warn{color:var(--warn);background:rgba(181,71,8,.08);border-color:rgba(181,71,8,.22)}.examBadge.ok{color:var(--good);background:rgba(8,116,67,.08);border-color:rgba(8,116,67,.22)}.examPanel{border:1px solid var(--line);border-radius:20px;padding:14px;margin:12px 0;background:rgba(29,78,216,.04)}.examQuestion{border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:10px}.examOption{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:10px;margin-top:8px}.examOption input{margin-top:4px}.examTextarea{min-height:140px}.timerBar{height:8px;border-radius:999px;background:var(--line);overflow:hidden}.timerBar span{display:block;height:100%;background:var(--brand);width:100%}.quizMeta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.quizMeta span{border:1px solid var(--line);border-radius:999px;padding:5px 8px;color:var(--muted);font-size:.78rem;font-weight:800}.quizResult{border:1px solid var(--line);border-radius:18px;padding:12px;background:rgba(29,78,216,.06);margin-top:10px}
-</style>
+.dialogueBadge{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-size:var(--step--1);font-weight:850;background:var(--surface);color:var(--muted);margin-right:5px}.dialogueBadge.level{color:var(--accent2)}.dialogueFilters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.dialogueFilters .tab{min-width:auto}</style>
 </head><body>
 <header class="top"><div class="toprow"><div><div class="brand">DAILY GREEK</div><div class="title">Καθημερινά <span class="versionMini">V13.4</span></div></div><span class="pill" id="countdownPill">Daily rhythm</span></div></header>
 <main class="app">
@@ -243,6 +243,156 @@ DATA.dialogues=DATA.dialogues||[
     {speaker:'them',en:'Of course. Do you want me to stay or go?',gr:'Φυσικά. Θέλεις να μείνω ή να φύγω;'},
     {speaker:'you',en:'Stay, but let us not talk for a little.',gr:'Μείνε, αλλά ας μη μιλήσουμε για λίγο.'},
     {speaker:'them',en:'Okay. I am here.',gr:'Εντάξει. Είμαι εδώ.'}
+  ]},
+  {id:'dlg_w1_01',domain:'With my partner',title:'Good morning together',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'Good morning. Are you okay?',gr:'Καλημέρα. Είσαι καλά;'},
+    {speaker:'you',en:'Good morning. Yes, I am okay.',gr:'Καλημέρα. Ναι, είμαι καλά.'},
+    {speaker:'them',en:'Do you want coffee?',gr:'Θέλεις καφέ;'},
+    {speaker:'you',en:'Yes, please. Thank you.',gr:'Ναι, παρακαλώ. Ευχαριστώ.'}
+  ]},
+  {id:'dlg_w1_02',domain:'With my partner',title:'What are we doing today',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'What are we doing today?',gr:'Τι κάνουμε σήμερα;'},
+    {speaker:'you',en:'I want a quiet day.',gr:'Θέλω μια ήρεμη μέρα.'},
+    {speaker:'them',en:'Do you want a walk?',gr:'Θέλεις μια βόλτα;'},
+    {speaker:'you',en:'Yes, a small walk.',gr:'Ναι, μια μικρή βόλτα.'}
+  ]},
+  {id:'dlg_w1_03',domain:'With my partner',title:'Simple affection',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'I am happy you are here.',gr:'Χαίρομαι που είσαι εδώ.'},
+    {speaker:'you',en:'I am happy too.',gr:'Χαίρομαι κι εγώ.'},
+    {speaker:'them',en:'Come here.',gr:'Έλα εδώ.'},
+    {speaker:'you',en:'I am coming, my love.',gr:'Έρχομαι, αγάπη μου.'}
+  ]},
+  {id:'dlg_w1_04',domain:'With my partner',title:'Goodnight',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'Are you tired?',gr:'Είσαι κουρασμένη;'},
+    {speaker:'you',en:'Yes, I am very tired.',gr:'Ναι, είμαι πολύ κουρασμένη.'},
+    {speaker:'them',en:'Goodnight, my love.',gr:'Καληνύχτα, αγάπη μου.'},
+    {speaker:'you',en:'Goodnight. Sleep well.',gr:'Καληνύχτα. Κοιμήσου καλά.'}
+  ]},
+  {id:'dlg_w1_05',domain:'With my partner',title:'Where are you',level:'A1',nativeReview:false,turns:[
+    {speaker:'you',en:'Where are you?',gr:'Πού είσαι;'},
+    {speaker:'them',en:'I am in the kitchen.',gr:'Είμαι στην κουζίνα.'},
+    {speaker:'you',en:'Do you need help?',gr:'Χρειάζεσαι βοήθεια;'},
+    {speaker:'them',en:'Yes, please.',gr:'Ναι, παρακαλώ.'}
+  ]},
+  {id:'dlg_w1_06',domain:'At the family table',title:'Hello and nice to meet you',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'Hello. Welcome.',gr:'Γεια σας. Καλώς ήρθατε.'},
+    {speaker:'you',en:'Thank you. Nice to meet you.',gr:'Ευχαριστώ. Χάρηκα πολύ.'},
+    {speaker:'them',en:'Do you speak Greek?',gr:'Μιλάτε ελληνικά;'},
+    {speaker:'you',en:'A little. I am learning.',gr:'Λίγο. Μαθαίνω.'}
+  ]},
+  {id:'dlg_w1_07',domain:'At the family table',title:'I am hungry',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'Are you hungry?',gr:'Πεινάς;'},
+    {speaker:'you',en:'Yes, I am hungry.',gr:'Ναι, πεινάω.'},
+    {speaker:'them',en:'Good. The food is ready.',gr:'Ωραία. Το φαγητό είναι έτοιμο.'},
+    {speaker:'you',en:'Perfect. Thank you.',gr:'Τέλεια. Ευχαριστώ.'}
+  ]},
+  {id:'dlg_w1_08',domain:'At the family table',title:'This is good',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'Do you like it?',gr:'Σου αρέσει;'},
+    {speaker:'you',en:'Yes, it is very good.',gr:'Ναι, είναι πολύ καλό.'},
+    {speaker:'them',en:'Do you want more?',gr:'Θέλεις κι άλλο;'},
+    {speaker:'you',en:'A little, please.',gr:'Λίγο, παρακαλώ.'}
+  ]},
+  {id:'dlg_w1_09',domain:'At the family table',title:'Thank you at the table',level:'A1',nativeReview:false,turns:[
+    {speaker:'you',en:'Thank you very much.',gr:'Ευχαριστώ πολύ.'},
+    {speaker:'them',en:'You are welcome.',gr:'Παρακαλώ.'},
+    {speaker:'you',en:'Everything is very nice.',gr:'Όλα είναι πολύ ωραία.'},
+    {speaker:'them',en:'We are happy you are here.',gr:'Χαιρόμαστε που είσαι εδώ.'}
+  ]},
+  {id:'dlg_w1_10',domain:'Around the home',title:'Who is cooking',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'Who is cooking today?',gr:'Ποιος μαγειρεύει σήμερα;'},
+    {speaker:'you',en:'I am cooking today.',gr:'Εγώ μαγειρεύω σήμερα.'},
+    {speaker:'them',en:'Do you want help?',gr:'Θέλεις βοήθεια;'},
+    {speaker:'you',en:'Yes, thank you.',gr:'Ναι, ευχαριστώ.'}
+  ]},
+  {id:'dlg_w1_11',domain:'Around the home',title:'Where is it',level:'A1',nativeReview:false,turns:[
+    {speaker:'you',en:'Where is the glass?',gr:'Πού είναι το ποτήρι;'},
+    {speaker:'them',en:'It is in the kitchen.',gr:'Είναι στην κουζίνα.'},
+    {speaker:'you',en:'Here?',gr:'Εδώ;'},
+    {speaker:'them',en:'Yes, there.',gr:'Ναι, εκεί.'}
+  ]},
+  {id:'dlg_w1_12',domain:'Around the home',title:'I am here',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'Where are you?',gr:'Πού είσαι;'},
+    {speaker:'you',en:'I am here.',gr:'Είμαι εδώ.'},
+    {speaker:'them',en:'In the room?',gr:'Στο δωμάτιο;'},
+    {speaker:'you',en:'Yes, in the room.',gr:'Ναι, στο δωμάτιο.'}
+  ]},
+  {id:'dlg_w1_13',domain:'Around the home',title:'Let us watch something',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'Do you want to watch something?',gr:'Θέλεις να δούμε κάτι;'},
+    {speaker:'you',en:'Yes, something easy.',gr:'Ναι, κάτι εύκολο.'},
+    {speaker:'them',en:'A film or a show?',gr:'Ταινία ή σειρά;'},
+    {speaker:'you',en:'A show, please.',gr:'Σειρά, παρακαλώ.'}
+  ]},
+  {id:'dlg_w1_14',domain:'How was your day',title:'A good day',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'How is your day?',gr:'Πώς είναι η μέρα σου;'},
+    {speaker:'you',en:'It is good.',gr:'Είναι καλή.'},
+    {speaker:'them',en:'Are you happy?',gr:'Είσαι χαρούμενη;'},
+    {speaker:'you',en:'Yes, I am happy.',gr:'Ναι, είμαι χαρούμενη.'}
+  ]},
+  {id:'dlg_w1_15',domain:'How was your day',title:'A tired day',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'Are you okay today?',gr:'Είσαι καλά σήμερα;'},
+    {speaker:'you',en:'Yes, but I am tired.',gr:'Ναι, αλλά είμαι κουρασμένη.'},
+    {speaker:'them',en:'Do you want rest?',gr:'Θέλεις ξεκούραση;'},
+    {speaker:'you',en:'Yes, a little.',gr:'Ναι, λίγο.'}
+  ]},
+  {id:'dlg_w1_16',domain:'How was your day',title:'Asking about his day',level:'A1',nativeReview:false,turns:[
+    {speaker:'you',en:'How is your day?',gr:'Πώς είναι η μέρα σου;'},
+    {speaker:'them',en:'It is okay.',gr:'Είναι εντάξει.'},
+    {speaker:'you',en:'Are you tired?',gr:'Είσαι κουρασμένος;'},
+    {speaker:'them',en:'A little, yes.',gr:'Λίγο, ναι.'}
+  ]},
+  {id:'dlg_w1_17',domain:'Deciding what to eat',title:'What do we want',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'What do we want to eat?',gr:'Τι θέλουμε να φάμε;'},
+    {speaker:'you',en:'I want something simple.',gr:'Θέλω κάτι απλό.'},
+    {speaker:'them',en:'Chicken or pasta?',gr:'Κοτόπουλο ή μακαρόνια;'},
+    {speaker:'you',en:'Pasta, please.',gr:'Μακαρόνια, παρακαλώ.'}
+  ]},
+  {id:'dlg_w1_18',domain:'Deciding what to eat',title:'Home or out',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'Do you want home or outside?',gr:'Θέλεις σπίτι ή έξω;'},
+    {speaker:'you',en:'At home, please.',gr:'Στο σπίτι, παρακαλώ.'},
+    {speaker:'them',en:'Good. We have food.',gr:'Ωραία. Έχουμε φαγητό.'},
+    {speaker:'you',en:'Perfect. I am hungry.',gr:'Τέλεια. Πεινάω.'}
+  ]},
+  {id:'dlg_w1_19',domain:'Deciding what to eat',title:'Something simple',level:'A1',nativeReview:false,turns:[
+    {speaker:'you',en:'I want something simple.',gr:'Θέλω κάτι απλό.'},
+    {speaker:'them',en:'Do you want salad?',gr:'Θέλεις σαλάτα;'},
+    {speaker:'you',en:'Yes, and bread.',gr:'Ναι, και ψωμί.'},
+    {speaker:'them',en:'Okay.',gr:'Εντάξει.'}
+  ]},
+  {id:'dlg_w1_20',domain:'Deciding what to eat',title:'I am hungry',level:'A1',nativeReview:false,turns:[
+    {speaker:'you',en:'I am hungry.',gr:'Πεινάω.'},
+    {speaker:'them',en:'Do you want food now?',gr:'Θέλεις φαγητό τώρα;'},
+    {speaker:'you',en:'Yes, now.',gr:'Ναι, τώρα.'},
+    {speaker:'them',en:'Okay, let us eat.',gr:'Εντάξει, πάμε να φάμε.'}
+  ]},
+  {id:'dlg_w1_21',domain:'Daily social moments',title:'Greeting a neighbor',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'Good morning.',gr:'Καλημέρα.'},
+    {speaker:'you',en:'Good morning. How are you?',gr:'Καλημέρα. Τι κάνετε;'},
+    {speaker:'them',en:'I am fine, thank you.',gr:'Καλά, ευχαριστώ.'},
+    {speaker:'you',en:'Have a nice day.',gr:'Καλή σας μέρα.'}
+  ]},
+  {id:'dlg_w1_22',domain:'Daily social moments',title:'Hello to the shopkeeper',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'Hello. What would you like?',gr:'Γεια σας. Τι θα θέλατε;'},
+    {speaker:'you',en:'Hello. I want coffee, please.',gr:'Γεια σας. Θέλω καφέ, παρακαλώ.'},
+    {speaker:'them',en:'Of course.',gr:'Βεβαίως.'},
+    {speaker:'you',en:'Thank you very much.',gr:'Ευχαριστώ πολύ.'}
+  ]},
+  {id:'dlg_w1_23',domain:'Daily social moments',title:'See you tomorrow',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'See you tomorrow.',gr:'Τα λέμε αύριο.'},
+    {speaker:'you',en:'Yes, see you tomorrow.',gr:'Ναι, τα λέμε αύριο.'},
+    {speaker:'them',en:'Have a good evening.',gr:'Καλό βράδυ.'},
+    {speaker:'you',en:'You too.',gr:'Επίσης.'}
+  ]},
+  {id:'dlg_w1_24',domain:'Feelings',title:'I am tired',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'Are you tired?',gr:'Είσαι κουρασμένη;'},
+    {speaker:'you',en:'Yes, I am tired.',gr:'Ναι, είμαι κουρασμένη.'},
+    {speaker:'them',en:'Do you want quiet?',gr:'Θέλεις ησυχία;'},
+    {speaker:'you',en:'Yes, please.',gr:'Ναι, παρακαλώ.'}
+  ]},
+  {id:'dlg_w1_25',domain:'Feelings',title:'I am happy',level:'A1',nativeReview:false,turns:[
+    {speaker:'them',en:'You look happy.',gr:'Φαίνεσαι χαρούμενη.'},
+    {speaker:'you',en:'Yes, I am happy today.',gr:'Ναι, είμαι χαρούμενη σήμερα.'},
+    {speaker:'them',en:'I am happy too.',gr:'Χαίρομαι κι εγώ.'},
+    {speaker:'you',en:'Good. I like this moment.',gr:'Ωραία. Μου αρέσει αυτή η στιγμή.'}
   ]}
 ];
 DATA.grammar=Array.isArray(DATA.grammar)?DATA.grammar:[{id:'g-placeholder-a1',level:'A1',title:'REPLACE WITH VERIFIED CONTENT — A1 grammar unit',explanation:'REPLACE WITH VERIFIED CONTENT. Tutor supplies the rule explanation here.',examples:[{gr:'REPLACE WITH VERIFIED CONTENT',en:'REPLACE WITH VERIFIED CONTENT',note:'Unverified placeholder only.'}],verified:false},{id:'g-placeholder-a2',level:'A2',title:'REPLACE WITH VERIFIED CONTENT — A2 grammar unit',explanation:'REPLACE WITH VERIFIED CONTENT. Tutor supplies the rule explanation here.',examples:[{gr:'REPLACE WITH VERIFIED CONTENT',en:'REPLACE WITH VERIFIED CONTENT',note:'Unverified placeholder only.'}],verified:false}];
@@ -1113,10 +1263,14 @@ function labelMode(m){return ({recognize:'Recognize',recall:'Recall',speak:'Spea
 function renderModeStart(){let pool=currentMode==='recall'?poolForToday().filter(x=>state.marks[x.id]!=='mastered').slice(0,20):poolForToday().slice(0,20);$('practiceArea').innerHTML=`<div class="card"><h2>${labelMode(currentMode)}</h2><p class="muted">${modeHelp(currentMode)}</p><button class="btn primary" onclick="startPool('${currentMode}')">Start ${labelMode(currentMode)}</button></div>`}
 function modeHelp(m){return {recognize:'See English and choose/recognize the Greek. Best for first exposure.',recall:'Try to remember the Greek before revealing it. This is the delayed mastery check.',speak:'Say the phrase out loud. If speech recognition works, it checks whether the app understood you.',converse:'Use one phrase as your line in a real-life mini situation.'}[m]}
 function dialogueItem(di,ti){return byId('d'+di+'t'+ti)}
-function startDialogueList(){nav('practice');let cards=(DATA.dialogues||[]).map((d,i)=>`<div class="itemRow"><div><b>${esc(d.title||d.domain||('Exchange '+(i+1)))}</b><br><span class="muted">${esc(d.domain||'Real exchange')} · ${(d.turns||[]).length} turns · native review needed</span></div><button class="btn primary" onclick="startDialogue(${i})">Start</button></div>`).join('')||'<div class="empty">No dialogues yet.</div>';$('practiceArea').innerHTML=`<div class="card"><div class="sectionLabel">Real exchanges</div><h2>Let the app play your partner’s turn.</h2><p class="muted">Starter scripts are small and marked for native review. Use them to build rhythm, repair, and courage.</p><div class="list">${cards}</div></div>`}
+function dialogueLevel(d){return d&&d.level?String(d.level):'Core'}
+function dialogueReviewLabel(d){return d&&d.nativeReview===true?'native-reviewed':'practice-only'}
+function dialogueLevelCounts(){let rows=DATA.dialogues||[],levels=['Core','A1','A2','B1','B2'];return levels.map(l=>({level:l,count:rows.filter(d=>dialogueLevel(d)===l).length,reviewed:rows.filter(d=>dialogueLevel(d)===l&&d.nativeReview===true).length}))}
+function dialogueFilterMatch(d,filter){let f=filter||'all';if(f==='all')return true;if(f==='native')return d.nativeReview===true;if(f==='practice')return d.nativeReview!==true;return dialogueLevel(d)===f}
+function startDialogueList(filter){nav('practice');filter=filter||window.dialogueFilter||'all';window.dialogueFilter=filter;let rows=DATA.dialogues||[],counts=dialogueLevelCounts(),filtered=rows.map((d,i)=>({d,i})).filter(x=>dialogueFilterMatch(x.d,filter));let tabs=['all','Core','A1','A2','B1','B2','native','practice'].map(f=>`<button class="tab ${filter===f?'active':''}" onclick="startDialogueList('${f}')">${esc(f==='all'?'All':f==='native'?'Native-reviewed':f==='practice'?'Practice-only':f)}</button>`).join('');let summary=counts.map(c=>`<span class="dialogueBadge ${c.level!=='Core'?'level':''}">${esc(c.level)}: ${c.count}</span>`).join('')+`<span class="dialogueBadge">native-reviewed: ${rows.filter(d=>d.nativeReview===true).length}</span>`;let cards=filtered.map(({d,i})=>`<div class="itemRow"><div><b>${esc(d.title||d.domain||('Exchange '+(i+1)))}</b><br><span class="muted"><span class="dialogueBadge level">${esc(dialogueLevel(d))}</span><span class="dialogueBadge">${esc(dialogueReviewLabel(d))}</span>${esc(d.domain||'Real exchange')} · ${(d.turns||[]).length} turns</span></div><button class="btn primary" onclick="startDialogue(${i})">Start</button></div>`).join('')||'<div class="empty">No dialogues match this filter yet.</div>';$('practiceArea').innerHTML=`<div class="card"><div class="sectionLabel">Real exchanges</div><h2>Dialogue waves by level.</h2><p class="muted">Choose the right ramp: Core lived exchanges, A1 foundation, then later A2/B1/B2 waves. All AI-created dialogues stay practice-only until native reviewed.</p><div>${summary}</div><div class="dialogueFilters">${tabs}</div><div class="list">${cards}</div></div>`}
 function startDialogue(di){let d=(DATA.dialogues||[])[di];if(!d)return;window.dialogueSession={dialogueIndex:di,turnIndex:0,ok:0,miss:0,started:Date.now()};nav('practice');renderDialogueTurn()}
 function currentDialogueTurn(){let ds=window.dialogueSession;if(!ds)return null;let d=(DATA.dialogues||[])[ds.dialogueIndex];return d&&d.turns?{dialogue:d,turn:d.turns[ds.turnIndex],item:dialogueItem(ds.dialogueIndex,ds.turnIndex)}:null}
-function renderDialogueTurn(){let ds=window.dialogueSession,ctx=currentDialogueTurn();if(!ds||!ctx||ds.turnIndex>=ctx.dialogue.turns.length){renderDialogueDone();return}let t=ctx.turn,it=ctx.item,repair=ITEMS.find(x=>(x.english||'').toLowerCase().includes('can you repeat'));let isYou=t.speaker==='you';$('practiceArea').innerHTML=`<div class="card"><div class="sectionLabel">Real exchange · ${esc(ctx.dialogue.domain||'Conversation')}</div><h2>${esc(ctx.dialogue.title||'Conversation practice')}</h2><div class="dialogueTurn ${isYou?'dialogueYou':'dialogueThem'}"><div class="sectionLabel">${isYou?'Your turn':'Their turn'}</div><div class="english">${esc(t.en||'')}</div>${isYou?`<p class="muted">Try to answer aloud first. Then reveal the target and grade your recall.</p><button class="btn" onclick="revealDialogueTarget()">Reveal target</button><div id="dialogueTarget" class="phrase hiddenAnswer">${gr(t.gr||'')}</div>${state.settings.recordCompare&&it?recordComparePanel(it):''}<div class="stickyActions"><div class="tapHint">Grade this turn into SRS</div><div class="grid2" style="margin-top:8px"><button class="btn warn" onclick="gradeDialogue(false)">Need practice</button><button class="btn good" onclick="gradeDialogue(true)">I answered</button></div></div>`:`<div class="phrase">${gr(t.gr||'')}</div><div class="grid2" style="margin-top:12px"><button class="btn primary" data-audio-id="${it?it.id:''}" onclick="${it?`speak('${it.id}')`:'toast(\'Audio unavailable.\')'}">🔊 Play their line</button><button class="btn" onclick="nextDialogueTurn()">I understood / continue</button></div>`}</div><div class="notice"><b>Repair phrase:</b> ${repair?gr(repair.greek):'Συγγνώμη, μπορείτε να το επαναλάβετε;'} <button class="btn small" onclick="${repair?`speak('${repair.id}')`:'toast(\'Add a repair phrase first.\')'}">🔊 Repeat?</button></div><p class="muted tight">Turn ${ds.turnIndex+1}/${ctx.dialogue.turns.length} · These starter exchanges need native review.</p></div>`;if(!isYou&&it)setTimeout(()=>speak(it.id),250)}
+function renderDialogueTurn(){let ds=window.dialogueSession,ctx=currentDialogueTurn();if(!ds||!ctx||ds.turnIndex>=ctx.dialogue.turns.length){renderDialogueDone();return}let t=ctx.turn,it=ctx.item,repair=ITEMS.find(x=>(x.english||'').toLowerCase().includes('can you repeat'));let isYou=t.speaker==='you';$('practiceArea').innerHTML=`<div class="card"><div class="sectionLabel">Real exchange · ${esc(ctx.dialogue.domain||'Conversation')} · ${esc(dialogueLevel(ctx.dialogue))} · ${esc(dialogueReviewLabel(ctx.dialogue))}</div><h2>${esc(ctx.dialogue.title||'Conversation practice')}</h2><div class="dialogueTurn ${isYou?'dialogueYou':'dialogueThem'}"><div class="sectionLabel">${isYou?'Your turn':'Their turn'}</div><div class="english">${esc(t.en||'')}</div>${isYou?`<p class="muted">Try to answer aloud first. Then reveal the target and grade your recall.</p><button class="btn" onclick="revealDialogueTarget()">Reveal target</button><div id="dialogueTarget" class="phrase hiddenAnswer">${gr(t.gr||'')}</div>${state.settings.recordCompare&&it?recordComparePanel(it):''}<div class="stickyActions"><div class="tapHint">Grade this turn into SRS</div><div class="grid2" style="margin-top:8px"><button class="btn warn" onclick="gradeDialogue(false)">Need practice</button><button class="btn good" onclick="gradeDialogue(true)">I answered</button></div></div>`:`<div class="phrase">${gr(t.gr||'')}</div><div class="grid2" style="margin-top:12px"><button class="btn primary" data-audio-id="${it?it.id:''}" onclick="${it?`speak('${it.id}')`:'toast(\'Audio unavailable.\')'}">🔊 Play their line</button><button class="btn" onclick="nextDialogueTurn()">I understood / continue</button></div>`}</div><div class="notice"><b>Repair phrase:</b> ${repair?gr(repair.greek):'Συγγνώμη, μπορείτε να το επαναλάβετε;'} <button class="btn small" onclick="${repair?`speak('${repair.id}')`:'toast(\'Add a repair phrase first.\')'}">🔊 Repeat?</button></div><p class="muted tight">Turn ${ds.turnIndex+1}/${ctx.dialogue.turns.length} · These starter exchanges need native review.</p></div>`;if(!isYou&&it)setTimeout(()=>speak(it.id),250)}
 function revealDialogueTarget(){let el=$('dialogueTarget');if(el)el.classList.remove('hiddenAnswer')}
 function gradeDialogue(ok){let ctx=currentDialogueTurn();if(ctx&&ctx.item)nextDueDate(ctx.item.id,ok,ok?4:1);if(window.dialogueSession){if(ok)window.dialogueSession.ok++;else window.dialogueSession.miss++;window.dialogueSession.turnIndex++}renderDialogueTurn()}
 function nextDialogueTurn(){if(window.dialogueSession)window.dialogueSession.turnIndex++;renderDialogueTurn()}
@@ -1158,7 +1312,7 @@ function survivalCard(it){let casual=it.casual&&it.casual!==it.formal?`<div clas
 
 function releaseEmptyStatesPanel(){let due=dueItems().length;let reviewed=Object.keys(state.review||{}).filter(id=>reviewFor(id).confidence==='Verified').length;return `<div class="card"><div class="sectionLabel">Release-quality empty states</div><h2>Clear even when nothing is ready yet.</h2><div class="emptyState"><b>${due?due+' cards are due now':'Nothing is due right now.'}</b><br>${due?'Open Due Now from Practice to protect recall.':'Today’s 5 will keep you moving.'}</div><div class="emptyState"><b>${state.tripDate?'Milestone date set: '+esc(state.tripDate):'No milestone date yet.'}</b><br>${state.tripDate?'The scheduler can now compress reviews toward the future milestone.':'Set a future milestone only when you want the app to pace toward a real date.'}</div><div class="emptyState"><b>${reviewed?reviewed+' native-verified phrase records':'No native-reviewed phrases yet.'}</b><br>${reviewed?'Verified phrases are promoted first in I’m Here.':'Export the review file and ask a Greek speaker to check it.'}</div></div>`}
 function stableLaunchPanel(){let steps=['Upload only the V13.4 folder files to the new repository','Enable GitHub Pages from the repository root','Open the Pages URL on iPhone Safari','Add to Home Screen after the first online load','Open Today, Practice, I’m Here, Progress, and More','Play normal and slow Greek audio once','Export a backup file','Turn airplane mode on and reopen the installed app'];return `<div class="card"><div class="sectionLabel">Stable launch checklist</div><h2>Ready for the new repository.</h2><p class="muted">V13.4 keeps the conversation-capture loop and adds the exam-prep scaffold. Test it on the real phone before adding more content.</p><div class="stepList">${steps.map(x=>`<div class="stepItem"><div class="stepIcon">✓</div><div><b>${esc(x)}</b><br><span class="muted">Launch-readiness check for the conversation companion build.</span></div></div>`).join('')}</div></div>`}
-function buildIntegrityPanel(){let raw=localStorage.getItem(LS)||'';let sw=('serviceWorker' in navigator)?'Supported':'Unavailable';let storage=raw.length?Math.round(raw.length/1024)+' KB saved':'No saved practice state yet';let backup=state.lastBackup||'not yet';let checks=['Today view renders','Practice view renders','I’m Here view renders','Progress view renders','Settings view renders','Dialogue practice renders','Custom phrase builder present','Conversation capture loop present','On-track SVG progress tracker present','Pending translation queue present','Backup tools present'];return `<div class="card"><div class="sectionLabel">Build integrity</div><h2>V13.4 exam prep integrity panel</h2><div class="integrityGrid"><div class="integrityItem"><b>V13.4</b><span class="muted">Version label</span></div><div class="integrityItem"><b>${DATA.phrases.length}</b><span class="muted">Phrase records</span></div><div class="integrityItem"><b>${DATA.vocab.length}</b><span class="muted">Vocabulary records</span></div><div class="integrityItem"><b>${(DATA.dialogues||[]).length}</b><span class="muted">Starter dialogues</span></div><div class="integrityItem"><b>${pendingCaptures().length}</b><span class="muted">Captures waiting</span></div><div class="integrityItem"><b>${ITEMS.length}</b><span class="muted">Total learnable cards</span></div><div class="integrityItem"><b>${storage}</b><span class="muted">Storage status</span></div><div class="integrityItem"><b>${sw}</b><span class="muted">Service worker status</span></div><div class="integrityItem"><b>${esc(backup)}</b><span class="muted">Last backup date</span></div></div><div class="divider"></div><div class="stepList">${checks.map(x=>`<div class="stepItem"><div class="stepIcon">✓</div><div><b>${esc(x)}</b><br><span class="muted">Included in the V13.4 exam prep build.</span></div></div>`).join('')}</div></div>`}
+function buildIntegrityPanel(){let raw=localStorage.getItem(LS)||'';let sw=('serviceWorker' in navigator)?'Supported':'Unavailable';let storage=raw.length?Math.round(raw.length/1024)+' KB saved':'No saved practice state yet';let backup=state.lastBackup||'not yet';let checks=['Today view renders','Practice view renders','I’m Here view renders','Progress view renders','Settings view renders','Dialogue practice renders','Custom phrase builder present','Conversation capture loop present','On-track SVG progress tracker present','Pending translation queue present','Backup tools present'];return `<div class="card"><div class="sectionLabel">Build integrity</div><h2>V13.4 dialogue wave integrity panel</h2><div class="integrityGrid"><div class="integrityItem"><b>V13.4</b><span class="muted">Version label</span></div><div class="integrityItem"><b>${DATA.phrases.length}</b><span class="muted">Phrase records</span></div><div class="integrityItem"><b>${DATA.vocab.length}</b><span class="muted">Vocabulary records</span></div><div class="integrityItem"><b>${(DATA.dialogues||[]).length}</b><span class="muted">Dialogue library</span></div><div class="integrityItem"><b>${pendingCaptures().length}</b><span class="muted">Captures waiting</span></div><div class="integrityItem"><b>${ITEMS.length}</b><span class="muted">Total learnable cards</span></div><div class="integrityItem"><b>${storage}</b><span class="muted">Storage status</span></div><div class="integrityItem"><b>${sw}</b><span class="muted">Service worker status</span></div><div class="integrityItem"><b>${esc(backup)}</b><span class="muted">Last backup date</span></div></div><div class="divider"></div><div class="stepList">${checks.map(x=>`<div class="stepItem"><div class="stepIcon">✓</div><div><b>${esc(x)}</b><br><span class="muted">Included in the V13.4 exam prep build.</span></div></div>`).join('')}</div></div>`}
 
 function renderProgress(){let x=progressSnapshot();let due=dueItems();$('progress').innerHTML=`<div class="hero"><div class="sectionLabel">Progress · stable release</div><h1>Trust conversation progress, not vanity numbers.</h1><p class="muted">This screen separates exposure from true field readiness so you do not walk into a real conversation overconfident.</p><div class="grid2"><button class="btn primary" onclick="startDaily()">Practice Today’s 5</button><button class="btn" onclick="nav('more')">Open Settings</button></div></div>${realConversationStatsPanel()}${onTrackProgressPanel()}${progressTruthPanel()}${levelProgressPanel()}${verificationPipelinePanel()}${releaseEmptyStatesPanel()}${stableLaunchPanel()}${buildIntegrityPanel()}<div class="card"><div class="sectionLabel">Next action</div><h2>${due.length?'Handle Due Now':'No reviews due now'}</h2><p class="muted">${due.length?'You have '+due.length+' due cards. Do these before browsing.':'Nothing is due right now. Today’s 5 will keep your conversation practice moving.'}</p><div class="grid2"><button class="btn primary" onclick="startDaily()">Today’s 5</button><button class="btn" onclick="startDue()">Due Now (${due.length})</button></div></div>`;renderCountdown()}
 function reminderSettingsPanel(){return `<div class="settingsGroup"><div class="sectionLabel">Reminder rhythm</div><h3>Gentle nudges</h3><p class="muted">Use reminders only to return to Today’s 5. iPhone PWA notification support depends on iOS/browser settings.</p><div class="nudgeStatus"><span class="dot ${state.settings.remindersEnabled?'ok':'warn'}"></span><span><b>${state.settings.remindersEnabled?'Reminders on':'Reminders off'}</b> · ${reminderSupportText()}</span></div><div class="grid2" style="margin-top:10px"><input id="reminderTime" class="input" type="time" value="${esc(state.settings.reminderTime||'09:00')}"><button class="btn" onclick="saveReminderTime()">Save time</button></div><div class="grid2" style="margin-top:10px">${state.settings.remindersEnabled?'<button class="btn warn" onclick="disableReminders()">Turn reminders off</button>':'<button class="btn primary" onclick="enableReminders()">Enable reminder</button>'}<button class="btn" onclick="installApp()">Install / Add to Home</button></div></div>`}
