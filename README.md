@@ -72,5 +72,10 @@ npm test
 Expected output:
 
 ```text
-GTA V13.4 Καθημερινά verified-pipeline smoke test passed.
+GTA V13.4 Καθημερινά everyday-dialogues smoke test passed.
 ```
+
+
+## V13.4.8 Everyday Dialogue Layer
+
+Adds 30 practice-only everyday dialogues across partner, family table, home, day check-ins, food decisions, social moments, and feelings. All added dialogues keep `nativeReview:false` and should be partner/tutor spot-checked before relying on them with real people.

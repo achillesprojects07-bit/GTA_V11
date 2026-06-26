@@ -64,6 +64,11 @@ const required=[
   'function buildQuizQuestions',
   'function finishQuiz',
   'function verificationStats',
+  'dlg_partner_morning',
+  'dlg_family_recipe',
+  'dlg_home_evening',
+  'dlg_eat_taverna',
+  'dlg_feelings_quiet_moment',
   'function verificationPipelinePanel',
   'source status',
   'official-source',
@@ -91,7 +96,7 @@ if(html.includes('GTA V13.3 Companion')||html.includes('Greek Conversation App')
 if(html.includes('V13.2')||html.includes('V13.3')){console.error('Old V13.2/V13.3 labels remain in index.html'); process.exit(1);}
 if(html.includes('prompt(\'Self-score this ')){console.error('Mock self-score prompt remains'); process.exit(1);}
 if(!html.includes('function completeMockSelfScore')){console.error('Mock self-score buttons missing'); process.exit(1);}
-if(!sw.includes('gta-v13-4-7-verified-pipeline')){console.error('Service worker cache version missing'); process.exit(1);}
+if(!sw.includes('gta-v13-4-8-everyday-dialogues')){console.error('Service worker cache version missing'); process.exit(1);}
 const script=html.split('<script>')[1]?.split('</script>')[0]||'';
 fs.writeFileSync('/tmp/gta-v13-4-script.js',script);
 require('child_process').execFileSync(process.execPath,['--check','/tmp/gta-v13-4-script.js'],{stdio:'inherit'});
@@ -105,4 +110,4 @@ if(!script.includes("el.textContent=d===null?'Rhythm':d>0?d+'d':d===0?'Today':'R
 if(html.includes('Build real Greek for your partner')||html.includes('travel survival')||html.includes('Practice five useful lines, handle what is due')){console.error('Home slogan copy still present'); process.exit(1);}
 if(!script.includes("if(id==='progress')renderProgress()")){console.error('Progress nav hook missing'); process.exit(1);}
 if(!fs.existsSync('.nojekyll')){console.error('.nojekyll missing'); process.exit(1);}
-console.log('GTA V13.4 Καθημερινά verified-pipeline smoke test passed.');
+console.log('GTA V13.4 Καθημερινά everyday-dialogues smoke test passed.');
