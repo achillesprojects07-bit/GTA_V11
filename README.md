@@ -1,6 +1,6 @@
-# GTA V13.4 — Ellinomatheia Exam Prep Engine
+# Καθημερινά — V13.4
 
-A single-file offline PWA extending GTA V13.0 into an A1/A2 exam-prep scaffold for the Greek Certificate of Attainment / Ellinomatheia.
+A single-file offline PWA extending the V13.0 Greek learning app into an A1/A2 exam-prep scaffold for the Greek Certificate of Attainment / Ellinomatheia.
 
 This build preserves the existing daily Greek conversation companion while adding a separate **Exam prep** area for structured A1/A2 readiness across four skills: Listening, Reading, Writing, and Speaking.
 
@@ -72,5 +72,5 @@ npm test
 Expected output:
 
 ```text
-GTA V13.4 consistency polish smoke test passed.
+GTA V13.4 Καθημερινά cosmetic smoke test passed.
 ```

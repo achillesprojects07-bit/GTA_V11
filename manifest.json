@@ -1,6 +1,6 @@
 {
-  "name": "Greek Conversation App",
-  "short_name": "GTA Greek",
+  "name": "Καθημερινά",
+  "short_name": "Καθημερινά",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f7f8fb",
