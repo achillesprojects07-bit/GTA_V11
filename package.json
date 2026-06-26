@@ -1,1 +1,1 @@
-{"name":"gta-v13-0-2-search-builder-durable","version":"13.0.2","private":true,"scripts":{"test":"node tests/smoke-test.js"}}
+{"name":"gta-v13-1-conversation-companion","version":"13.1.0","private":true,"scripts":{"test":"node tests/smoke-test.js"}}
