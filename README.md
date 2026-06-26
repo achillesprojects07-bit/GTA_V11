@@ -1,12 +1,18 @@
-# Καθημερινά V13.5.3 — Wave 5 Confident Range
+# Καθημερινά V13.5.4 — Conversation Capture Front Door
 
 Single-file offline PWA for daily Greek conversation practice, with an A1/A2 Ellinomatheia exam-prep scaffold.
 
 ## Current build
 
-V13.5.3 adds **Wave 5: Confident Range / B2** on top of the cleaned V13.5.2a Home release.
+V13.5.4 makes the real-life conversation capture flow more prominent and more honest. Home now asks: **What did you wish you could say today?** Saved gaps go into a review queue where Greek can be added later, marked as machine-translated or tutor/native reviewed, and then turned into practice cards.
 
-Wave 5 is the advanced lived-conversation layer: storytelling, giving opinions, future plans, and deeper reflective exchanges. These dialogues are for practice and fluency-building, not official or native-reviewed exam content.
+## Capture workflow
+
+1. Save the English, rough idea, or situation from Home.
+2. Add the natural Greek later in More → Conversation gaps.
+3. Mark the Greek as machine-translated or tutor/native reviewed.
+4. Tap Add to Practice when ready.
+5. The card enters the existing SRS and quiz engine.
 
 ## Dialogue library
 
@@ -23,7 +29,7 @@ Wave 5 is the advanced lived-conversation layer: storytelling, giving opinions, 
 The app header, `APP_VERSION`, and Build Integrity panel show:
 
 ```text
-V13.5.3
+V13.5.4
 ```
 
 ## Cache
@@ -31,7 +37,7 @@ V13.5.3
 Service-worker cache:
 
 ```text
-gta-v13-5-3-wave5-confident-range
+gta-v13-5-4-capture-front-door
 ```
 
 ## Release lock
@@ -49,5 +55,5 @@ This zip was extracted and checked after packaging for:
 ## Test
 
 ```text
-GTA V13.5.3 Καθημερινά wave-5 smoke test passed.
+GTA V13.5.4 Καθημερινά capture-front-door smoke test passed.
 ```
