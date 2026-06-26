@@ -43,3 +43,27 @@ The smoke test checks that the core views, service worker registration, embedded
 ## Important next step
 
 Before adding new modes, test this on a real phone with 3–5 target users. Watch whether they understand the onboarding, finish Today’s 5 without hesitation, and know the difference between Remembered and Field-ready.
+
+
+## V12.2 update — I’m Here Now Survival Mode Polish
+
+This build keeps the V12 redesign principle: subtract and sharpen, not add.
+
+### What changed
+- Rebuilt **I’m here now** as a true traveler surface: tap, hear, use.
+- Added situation-first tabs with icons and intent cues: Taverna, Pharmacy, Taxi, Lost, Home, Shopping.
+- Added a sticky quick-access dock with search inside the current situation.
+- Added panic-strip phrases for immediate repair/help moments.
+- Added audio-first survival cards with:
+  - Normal Greek audio
+  - Slow Greek audio
+  - Show-card mode for showing the phrase to a Greek speaker
+  - Practice-later save
+- Kept formal Greek as the default for strangers while preserving casual variants inside the card.
+
+### What did not change
+- Single-file offline-first PWA output.
+- Core Today’s 5 + Due Now loop.
+- Honest mastery model.
+- SRS ladder `[1, 3, 7, 21, 60]`.
+- No new practice modes were added.
