@@ -1,58 +1,58 @@
-# Καθημερινά V13.5.1 — Wave 3 Relationship Depth
+# Καθημερινά V13.5.2a — Home Cleanup
 
 Single-file offline PWA for daily Greek conversation practice, with an A1/A2 Ellinomatheia exam-prep scaffold.
 
 ## Current build
 
-V13.5.1 adds **Wave 3: Relationship Depth / B1** to the dialogue library.
+V13.5.2a is a small Home-screen cleanup release on top of **V13.5.2 Wave 4 Social Fluency**.
 
-- Previous total dialogues: 83
-- New Wave 3 B1 dialogues: 25
-- Current total dialogues: 108
-- Wave 3 ids: `dlg_w3_01` through `dlg_w3_25`
-- All Wave 3 items are `level:'B1'` and `nativeReview:false`
-- Service-worker cache: `gta-v13-5-1-wave3-relationship-depth`
+It removes old developer/scaffold cards from the Home screen:
+
+- the old phone-polish developer note
+- the Home copy of the pending-translation queue
+- the Home copy of the conversation-flow path card
+
+The capture translation queue and conversation flow panel are still available in the appropriate areas, but they no longer clutter the Home screen.
+
+## Dialogue library
+
+- Total dialogues: 128
+- Wave 1 A1 dialogues: 25
+- Wave 2 A2 dialogues: 25
+- Wave 3 B1 relationship-depth dialogues: 25
+- Wave 4 B1 social-fluency dialogues: 20
+- All generated wave dialogues remain `nativeReview:false`
 
 ## Visible app version
 
-The app header and Build Integrity panel show:
+The app header, `APP_VERSION`, and Build Integrity panel show:
 
 ```text
-V13.5.1
+V13.5.2a
 ```
 
-## Content honesty
+## Cache
 
-The everyday dialogue waves are practice-only until reviewed by a native speaker or tutor.
-
-- `nativeReview:false` means not yet native-reviewed.
-- `verified:false` exam-prep placeholders are not official Ellinomatheia content.
-- The quiz and dialogue engines improve practice flow, but verified/native-reviewed content must still be added or checked separately.
-
-## Preserved anchors
-
-- `const LS='gta_v12_state';`
-- Existing SRS math, scheduler, durable storage, search, exam scaffold, quiz scoring, and mock logic are preserved.
-
-## Testing
-
-Run:
-
-```bash
-npm test
-```
-
-Expected output:
+Service-worker cache:
 
 ```text
-GTA V13.5.1 Καθημερινά wave-3 smoke test passed.
+gta-v13-5-2a-home-cleanup
 ```
 
-## Release checklist used for this build
+## Release lock
 
-- Zip contains `index.html`, `manifest.json`, `service-worker.js`, `tests/smoke-test.js`, icons, README, and package file.
-- README heading matches the build.
-- Visible app header version matches the build.
-- Build Integrity version matches the build.
-- Service-worker cache matches the build.
-- Smoke test passes after packaging checks.
+This zip was extracted and checked after packaging for:
+
+- complete file list
+- correct README heading
+- visible app header version
+- `APP_VERSION`
+- Build Integrity panel version
+- service-worker cache name
+- `npm test` passing from the extracted final zip
+
+## Test
+
+```text
+GTA V13.5.2a Καθημερινά home-cleanup smoke test passed.
+```

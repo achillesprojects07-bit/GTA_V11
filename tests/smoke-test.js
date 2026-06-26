@@ -4,8 +4,8 @@ const manifest=fs.readFileSync('manifest.json','utf8');
 const sw=fs.readFileSync('service-worker.js','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V13.5.1</span></div>',
-  "const APP_VERSION='V13.5.1'",
+  '<div class="title">Καθημερινά <span class="versionMini">V13.5.2a</span></div>',
+  "const APP_VERSION='V13.5.2a'",
     "const LS='gta_v12_state'",
   'let ITEMS=[]',
   'function buildItems',
@@ -78,6 +78,8 @@ const required=[
   'dlg_w2_25',
   'dlg_w3_01',
   'dlg_w3_25',
+  'dlg_w4_01',
+  'dlg_w4_20',
   'dlg_w1_01',
   'function verificationPipelinePanel',
   'source status',
@@ -106,7 +108,7 @@ if(html.includes('GTA V13.3 Companion')||html.includes('Greek Conversation App')
 if(html.includes('V13.2')||html.includes('V13.3')){console.error('Old V13.2/V13.3 labels remain in index.html'); process.exit(1);}
 if(html.includes('prompt(\'Self-score this ')){console.error('Mock self-score prompt remains'); process.exit(1);}
 if(!html.includes('function completeMockSelfScore')){console.error('Mock self-score buttons missing'); process.exit(1);}
-if(!sw.includes('gta-v13-5-1-wave3-relationship-depth')){console.error('Service worker cache version missing'); process.exit(1);}
+if(!sw.includes('gta-v13-5-2a-home-cleanup')){console.error('Service worker cache version missing'); process.exit(1);}
 const script=html.split('<script>')[1]?.split('</script>')[0]||'';
 fs.writeFileSync('/tmp/gta-v13-4-script.js',script);
 require('child_process').execFileSync(process.execPath,['--check','/tmp/gta-v13-4-script.js'],{stdio:'inherit'});
@@ -131,10 +133,19 @@ const w3=[...html.matchAll(/id:'dlg_w3_[^']+'[\s\S]*?level:'B1'[\s\S]*?nativeRev
 if(w3.length!==25){console.error('Wave 3 B1 dialogue count mismatch:',w3.length); process.exit(1);}
 if(!html.includes("title:'A quiet moment',level:'B1'")||!html.includes("title:'After a tense day',level:'B1'")){console.error('Wave 3 endpoints missing'); process.exit(1);}
 
-const readme=fs.readFileSync('README.md','utf8');
-if(!readme.includes('# Καθημερινά V13.5.1 — Wave 3 Relationship Depth')){console.error('README heading does not match V13.5.1 wave-3 build'); process.exit(1);}
-if(!html.includes('<div class="title">Καθημερινά <span class="versionMini">V13.5.1</span></div>')){console.error('Visible app header version does not show V13.5.1'); process.exit(1);}
-if(!html.includes("const APP_VERSION='V13.5.1'")){console.error('APP_VERSION is not V13.5.1'); process.exit(1);}
-if(!html.includes('<div class="integrityItem"><b>V13.5.1</b><span class="muted">Version label</span></div>')){console.error('Build Integrity panel does not show V13.5.1'); process.exit(1);}
+const w4=[...html.matchAll(/id:'dlg_w4_[^']+'[\s\S]*?level:'B1'[\s\S]*?nativeReview:false/g)];
+if(w4.length!==20){console.error('Wave 4 B1 dialogue count mismatch:',w4.length); process.exit(1);}
+if(!html.includes("title:'Running into a neighbor',level:'B1'")||!html.includes("title:'Between Manila and Greece',level:'B1'")){console.error('Wave 4 endpoints missing'); process.exit(1);}
 
-console.log('GTA V13.5.1 Καθημερινά wave-3 smoke test passed.');
+const readme=fs.readFileSync('README.md','utf8');
+if(!readme.includes('# Καθημερινά V13.5.2a — Home Cleanup')){console.error('README heading does not match V13.5.2a home-cleanup build'); process.exit(1);}
+if(!html.includes('<div class="title">Καθημερινά <span class="versionMini">V13.5.2a</span></div>')){console.error('Visible app header version does not show V13.5.2a'); process.exit(1);}
+if(!html.includes("const APP_VERSION='V13.5.2a'")){console.error('APP_VERSION is not V13.5.2a'); process.exit(1);}
+if(!html.includes('<div class="integrityItem"><b>V13.5.2a</b><span class="muted">Version label</span></div>')){console.error('Build Integrity panel does not show V13.5.2a'); process.exit(1);}
+
+const renderHomeChunk=script.match(/function renderHome\(\)[\s\S]*?function cardMini/);
+if(!renderHomeChunk){console.error('renderHome function not found'); process.exit(1);}
+const home=renderHomeChunk[0];
+['phoneUxMini()','capturesToTranslatePanel()','conversationTierPanel()'].forEach(x=>{if(home.includes(x)){console.error('Home still renders clutter card:',x); process.exit(1);}});
+['Real phone '+'polish','Built for one hand and weak '+'signal','V12'+'.7'].forEach(x=>{if(html.includes(x)){console.error('Old phone-polish/developer copy remains:',x); process.exit(1);}});
+console.log('GTA V13.5.2a Καθημερινά home-cleanup smoke test passed.');
