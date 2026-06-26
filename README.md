@@ -1,32 +1,28 @@
-# GTA V12.4 — Gentle Nudges + Return Polish
+# GTA V12.5 — Progress Truth + Data Safety
 
-This build continues the V12 redesign without adding a new practice mode. It focuses on return behavior: helping the traveler come back to Today’s 5, protect delayed recall, and keep offline access ready before Greece.
+This build continues the V12 redesign without adding new practice modes. It makes progress more honest and protects local traveler data before further expansion.
 
-## Added in V12.4
+## Added in V12.5
 
-- Gentle return rhythm card on Today
-- Practice streak and total practice days
-- Next-review summary
-- Optional local notification reminder settings
-- Reminder time control
-- Install / Add to Home prompt helper
-- Clear iOS PWA notification caveat in-app
-- Session completion now records a completed practice day
+- Honest readiness dashboard in **More**
+- Today-screen Progress Truth card
+- Seen / Understood / Remembered / Field-ready audit
+- Survival readiness percentage
+- 7-day review forecast
+- Backup download as JSON file
+- Copy backup action
+- Restore validation before importing
+- Reset protection that keeps trip date/settings but clears practice progress
+- Updated offline cache name and version labels
 
 ## Preserved
 
 - Single-file offline-first PWA
 - Today’s 5 + Due Now
-- Trip-date scheduling and final-week survival weighting
+- Trip-date deadline weighting
 - I’m Here survival mode
 - Record-compare
 - Optional Greek-script track
-- Honest mastery labels
+- Gentle nudges
+- Honest mastery model
 - SRS ladder `[1, 3, 7, 21, 60]`
-- Embedded phrase/vocabulary library
-
-## Test
-
-```bash
-npm test
-```
