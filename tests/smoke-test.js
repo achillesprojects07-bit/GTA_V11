@@ -76,6 +76,8 @@ const required=[
   'dialogueBadge',
   'Dialogue waves by level',
   'dlg_w1_25',
+  'dlg_w2_01',
+  'dlg_w2_25',
   'dlg_w1_01',
   'function verificationPipelinePanel',
   'source status',
@@ -104,7 +106,7 @@ if(html.includes('GTA V13.3 Companion')||html.includes('Greek Conversation App')
 if(html.includes('V13.2')||html.includes('V13.3')){console.error('Old V13.2/V13.3 labels remain in index.html'); process.exit(1);}
 if(html.includes('prompt(\'Self-score this ')){console.error('Mock self-score prompt remains'); process.exit(1);}
 if(!html.includes('function completeMockSelfScore')){console.error('Mock self-score buttons missing'); process.exit(1);}
-if(!sw.includes('gta-v13-4-9-dialogue-wave')){console.error('Service worker cache version missing'); process.exit(1);}
+if(!sw.includes('gta-v13-5-0-wave2-daily-texture')){console.error('Service worker cache version missing'); process.exit(1);}
 const script=html.split('<script>')[1]?.split('</script>')[0]||'';
 fs.writeFileSync('/tmp/gta-v13-4-script.js',script);
 require('child_process').execFileSync(process.execPath,['--check','/tmp/gta-v13-4-script.js'],{stdio:'inherit'});
@@ -122,4 +124,7 @@ const dlgIds=[...html.matchAll(/id:'(dlg_[^']+)'/g)].map(m=>m[1]);
 if(new Set(dlgIds).size!==dlgIds.length){console.error('Duplicate dialogue ids found'); process.exit(1);}
 const w1=[...html.matchAll(/id:'dlg_w1_[^']+'[\s\S]*?level:'A1'[\s\S]*?nativeReview:false/g)];
 if(w1.length!==25){console.error('Wave 1 A1 dialogue count mismatch:',w1.length); process.exit(1);}
-console.log('GTA V13.4.9 Καθημερινά dialogue-wave smoke test passed.');
+const w2=[...html.matchAll(/id:'dlg_w2_[^']+'[\s\S]*?level:'A2'[\s\S]*?nativeReview:false/g)];
+if(w2.length!==25){console.error('Wave 2 A2 dialogue count mismatch:',w2.length); process.exit(1);}
+if(!html.includes("title:'What I did today',level:'A2'")||!html.includes("title:'How do you feel',level:'A2'")){console.error('Wave 2 endpoints missing'); process.exit(1);}
+console.log('GTA V13.5.0 Καθημερινά wave-2 smoke test passed.');

@@ -1,4 +1,4 @@
-# Καθημερινά — V13.4
+# Καθημερινά V13.5.0 — Wave 2 Daily Texture — V13.4
 
 A single-file offline PWA extending the V13.0 Greek learning app into an A1/A2 exam-prep scaffold for the Greek Certificate of Attainment / Ellinomatheia.
 
