@@ -1,49 +1,84 @@
-# GTA V12.7 — Real Phone UX Test Fixes
+# GTA V12.8 — Release Candidate Cleanup
 
-This build continues from V12.6 without adding new learning modes or new content. It focuses on the frictions that show up when the app is used as an installed PWA on a real phone: thumb reach, scroll position, tap safety, audio certainty, and clearer end-of-card actions.
+This is the first release-candidate build of the redesigned Greek Travel App.
 
-## Added in V12.7
+## What changed in V12.8
 
-- Real phone UX checklist in More
-- Today-screen phone polish card
-- Larger/saner tap target behavior for phone use
-- Safer tab switching: main navigation resets the screen to the top
-- Audio reliability cue before Greek speech plays
-- Graceful fallback if speech synthesis is unavailable
-- Audio buttons show a temporary active state while playing
-- Speech voices are gently primed after first touch to improve iOS/Safari reliability
-- Practice card grading buttons are grouped in a sticky final-action area
-- Service worker cache updated for V12.7
-- Manifest, package file, and smoke test included for the new repository
+- Final main navigation cleanup:
+  - Today
+  - Practice
+  - I’m Here
+  - Progress
+  - More
+- Progress is now a first-class screen instead of being buried in More.
+- More is now a single clean Settings / control room.
+- Added release-quality empty states for:
+  - no due reviews
+  - no trip date
+  - no native-reviewed phrases
+- Added Build Integrity panel:
+  - version label
+  - phrase count
+  - vocab count
+  - total card count
+  - local storage status
+  - service worker support
+  - last backup date
+  - release-candidate checklist
+- Audio feedback remains consistent:
+  - visible “Playing…” toast
+  - active button state
+  - graceful fallback if speech synthesis is unavailable
+- Backup download now uses the V12.8 filename and records last backup date.
 
-## Preserved
+## Preserved from earlier V12 builds
 
-- Single-file offline-first PWA
-- Today’s 5 + Due Now
-- Trip-date deadline scheduling
-- Honest mastery model
+- Offline-first single-file PWA structure
+- Today’s 5 + Due Now daily loop
+- Trip-date deadline-aware scheduling
+- Honest mastery labels
 - I’m Here survival mode
-- Native review + field-safe content layer
-- Record compare
+- Record-compare support
 - Optional Greek-script track
 - Gentle nudges
-- Progress Truth + backup safety
-- SRS ladder `[1, 3, 7, 21, 60]`
-- Existing embedded phrase and vocabulary library
+- Progress Truth dashboard
+- Backup / restore / reset safety
+- Native review + field-safe content layer
+- SRS ladder: `[1, 3, 7, 21, 60]`
 
-## Real-phone test checklist
+## New repository deployment
 
-Test these on the actual target iPhone after uploading to the new repo:
+1. Create a new GitHub repository.
+2. Upload all files in this folder:
+   - `index.html`
+   - `manifest.json`
+   - `service-worker.js`
+   - app icons
+   - `README.md`
+   - `package.json`
+   - `tests/smoke-test.js`
+3. In GitHub, go to **Settings → Pages**.
+4. Set source to the main branch root.
+5. Open the GitHub Pages URL on iPhone Safari.
+6. Tap **Share → Add to Home Screen**.
+7. Open the installed app once while online.
+8. Test:
+   - Today screen loads
+   - Practice starts
+   - I’m Here audio plays
+   - Progress screen loads
+   - More / Settings loads
+   - Backup export works
+   - App reopens offline
 
-1. Add to Home Screen from Safari.
-2. Open once online, then reopen in airplane mode.
-3. Start Today’s 5 and confirm buttons are easy to tap with one hand.
-4. Play normal and slow Greek audio from Practice and I’m Here.
-5. Change tabs and confirm each screen starts at the top.
-6. Finish a five-card session and confirm the next step is obvious.
-7. Try survival mode in bright light and confirm the show-card is readable.
-8. Confirm backup/export still works before any real user testing.
+## Local smoke test
 
-## Suggested next build
+```bash
+npm test
+```
 
-GTA V12.8 — Stable Candidate + Test Feedback Fixes. Only build this after testing V12.7 on a real iPhone and collecting specific friction notes.
+The smoke test checks that the release-candidate screens and core functions are present.
+
+## Release note
+
+V12.8 should be tested on the real iPhone before renaming the line to V13.0 Stable.
