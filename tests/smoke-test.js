@@ -4,8 +4,8 @@ const manifest=fs.readFileSync('manifest.json','utf8');
 const sw=fs.readFileSync('service-worker.js','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V13.5.7</span></div>',
-  "const APP_VERSION='V13.5.7'",
+  '<div class="title">Καθημερινά <span class="versionMini">V13.5.8</span></div>',
+  "const APP_VERSION='V13.5.8'",
     "const LS='gta_v12_state'",
   'let ITEMS=[]',
   'function buildItems',
@@ -84,6 +84,17 @@ const required=[
   'revise before use',
   'Reviewer / source',
   'function dialogueReviewProgressPanel',
+  'function phraseOfDayPanel',
+  'function phraseOfDayCapture',
+  'function todayDialogueReviewLine',
+  'function playDialogueFull',
+  'function practiceDialogueTurns',
+  'function speakGreekText',
+  'Phrase from your life today',
+  'Play full exchange',
+  'Practice my turns',
+  'Exam prep needs verified fuel',
+  'coming soon',
   'Review next unreviewed dialogue',
   'dialogue review progress',
   'All 143 dialogues are playable here',
@@ -125,7 +136,7 @@ const required=[
   'aria-current="page"',
   'role="main"',
   'lang="el"',
-  'kathimerina-v13-5-7-backup-'
+  'kathimerina-v13-5-8-backup-'
 ];
 const missing=required.filter(x=>!html.includes(x));
 if(missing.length){console.error('Missing:', missing.join(', ')); process.exit(1);}
@@ -136,7 +147,7 @@ if(html.includes('GTA V13.3 Companion')||html.includes('Greek Conversation App')
 if(html.includes('V13.2')||html.includes('V13.3')||html.includes('V13.5.4')||html.includes('V13.5.5')){console.error('Old version labels remain in index.html'); process.exit(1);}
 if(html.includes('prompt(\'Self-score this ')){console.error('Mock self-score prompt remains'); process.exit(1);}
 if(!html.includes('function completeMockSelfScore')){console.error('Mock self-score buttons missing'); process.exit(1);}
-if(!sw.includes('gta-v13-5-7-dialogue-review-progress')){console.error('Service worker cache version missing'); process.exit(1);}
+if(!sw.includes('gta-v13-5-8-daily-loop-polish')){console.error('Service worker cache version missing'); process.exit(1);}
 const script=html.split('<script>')[1]?.split('</script>')[0]||'';
 fs.writeFileSync('/tmp/gta-v13-4-script.js',script);
 require('child_process').execFileSync(process.execPath,['--check','/tmp/gta-v13-4-script.js'],{stdio:'inherit'});
@@ -175,16 +186,18 @@ if(!html.includes('function reviewNextUnreviewedDialogue')){console.error('Revie
 if(!html.includes('function dialogueReviewProgressPanel')){console.error('Dialogue review progress panel missing'); process.exit(1);}
 if(!html.includes("'revise'")){console.error('Revise filter/status missing'); process.exit(1);}
 if(!html.includes('All 143 dialogues are playable here through level and review filters')){console.error('Practice reachability note missing'); process.exit(1);}
+if(!html.includes('Phrase from your life today')||!html.includes('Practice my turns')||!html.includes('Play full exchange')){console.error('Daily loop polish features missing'); process.exit(1);}
+if(!html.includes('Ellinomatheia A1/A2 · coming soon')||!html.includes('The exam engine is ready. Verified content is not loaded yet.')){console.error('Exam coming-soon honesty label missing'); process.exit(1);}
 if(!html.includes('dialogueReviewStats().open')){console.error('Open dialogue review count missing'); process.exit(1);}
 const readme=fs.readFileSync('README.md','utf8');
-if(!readme.includes('# Καθημερινά V13.5.7 — Dialogue Review Progress + Practice Reachability')){console.error('README heading does not match V13.5.7 dialogue-review-progress build'); process.exit(1);}
-if(!html.includes('<div class="title">Καθημερινά <span class="versionMini">V13.5.7</span></div>')){console.error('Visible app header version does not show V13.5.7'); process.exit(1);}
-if(!html.includes("const APP_VERSION='V13.5.7'")){console.error('APP_VERSION is not V13.5.7'); process.exit(1);}
-if(!html.includes('<div class="integrityItem"><b>V13.5.7</b><span class="muted">Version label</span></div>')){console.error('Build Integrity panel does not show V13.5.7'); process.exit(1);}
+if(!readme.includes('# Καθημερινά V13.5.8 — Daily Loop Polish + Dialogue Speaking Practice')){console.error('README heading does not match V13.5.8 daily-loop-polish build'); process.exit(1);}
+if(!html.includes('<div class="title">Καθημερινά <span class="versionMini">V13.5.8</span></div>')){console.error('Visible app header version does not show V13.5.8'); process.exit(1);}
+if(!html.includes("const APP_VERSION='V13.5.8'")){console.error('APP_VERSION is not V13.5.8'); process.exit(1);}
+if(!html.includes('<div class="integrityItem"><b>V13.5.8</b><span class="muted">Version label</span></div>')){console.error('Build Integrity panel does not show V13.5.8'); process.exit(1);}
 
 const renderHomeChunk=script.match(/function renderHome\(\)[\s\S]*?function cardMini/);
 if(!renderHomeChunk){console.error('renderHome function not found'); process.exit(1);}
 const home=renderHomeChunk[0];
 ['phoneUxMini()','capturesToTranslatePanel()','conversationTierPanel()'].forEach(x=>{if(home.includes(x)){console.error('Home still renders clutter card:',x); process.exit(1);}});
 ['Real phone '+'polish','Built for one hand and weak '+'signal','V12'+'.7'].forEach(x=>{if(html.includes(x)){console.error('Old phone-polish/developer copy remains:',x); process.exit(1);}});
-console.log('GTA V13.5.7 Καθημερινά dialogue-review-progress smoke test passed.');
+console.log('GTA V13.5.8 Καθημερινά daily-loop-polish smoke test passed.');
