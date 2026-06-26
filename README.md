@@ -1,30 +1,31 @@
-# Καθημερινά V13.5.8 — Daily Loop Polish + Dialogue Speaking Practice
+# Καθημερινά V13.5.9 — Verified Exam Content Loader
 
 Single-file offline PWA for daily Greek conversation practice, with an A1/A2 Ellinomatheia exam-prep scaffold.
 
 ## Current build
 
-V13.5.8 connects the daily loop to your real-life conversation gaps and makes dialogues more listenable/speakable.
+V13.5.9 adds a safe verified exam content loader and import template. The app still does not generate or verify exam Greek by itself.
 
 ## Added in this build
 
-- **Phrase from your life today** appears on Home when a captured phrase already has Greek added.
-- Home now echoes dialogue review progress, such as `0 of 143 native-reviewed`.
-- Dialogue cards now include **Full audio** to play the whole exchange in sequence.
-- Dialogue cards now include **My turns** to rehearse your side of the conversation.
-- Exam Prep is now labeled as **coming soon / verified content needed** so the empty scaffold does not feel like real exam prep yet.
+- Exam Prep now includes a **Verified exam content loader**.
+- The loader provides a JSON template for grammar, reading, listening, writing, speaking, and mock items.
+- Imported items are saved locally under `state.examContent` and included in backup/restore.
+- Static placeholders remain untouched and unverified.
+- `verified:true` is preserved only when the pasted JSON explicitly includes it.
+- Imported content appears in the existing Grammar, Four Skills, and Mock Exam panels.
 
 ## Release verification
 
 This build was packaged and then re-opened from the final zip to verify:
 
-- README heading matches V13.5.8.
-- Visible app header shows V13.5.8.
-- APP_VERSION is V13.5.8.
-- Build Integrity panel shows V13.5.8.
-- Service-worker cache is `gta-v13-5-8-daily-loop-polish`.
+- README heading matches V13.5.9.
+- Visible app header shows V13.5.9.
+- APP_VERSION is V13.5.9.
+- Build Integrity panel shows V13.5.9.
+- Service-worker cache is `gta-v13-5-9-exam-content-loader`.
 - `npm test` passes from the extracted final zip.
 
 ## Important boundary
 
-The Ellinomatheia exam engine is ready, but verified exam content is still not loaded. Official/tutor-reviewed materials are still needed before that wing should be treated as real exam preparation.
+The loader makes the exam wing ready for real content, but it does not make content verified. Use official papers, published materials, or tutor/native-reviewed items only when setting `verified:true`.
