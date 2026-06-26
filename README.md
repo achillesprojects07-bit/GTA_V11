@@ -1,28 +1,34 @@
-# GTA V12.5 — Progress Truth + Data Safety
+# GTA V12.6 — Native Review + Field-Safe Content
 
-This build continues the V12 redesign without adding new practice modes. It makes progress more honest and protects local traveler data before further expansion.
+This build continues the V12 redesign without adding another practice mode. It adds a content-trust layer so a fluent/native Greek speaker can audit the phrase library before the app is relied on in the field.
 
-## Added in V12.5
+## Added in V12.6
 
-- Honest readiness dashboard in **More**
-- Today-screen Progress Truth card
-- Seen / Understood / Remembered / Field-ready audit
-- Survival readiness percentage
-- 7-day review forecast
-- Backup download as JSON file
-- Copy backup action
-- Restore validation before importing
-- Reset protection that keeps trip date/settings but clears practice progress
-- Updated offline cache name and version labels
+- Content Review panel in More
+- Phrase confidence labels: Verified, Needs review, Avoid in field, Too formal, Too casual, Better alternative exists
+- Field-safe survival ordering for “I’m here now”
+- Review search and filters
+- CSV export for native speaker review
+- JSON export/import for reviewed phrase metadata
+- Import updates only review metadata; learner progress and SRS are preserved
+- Survival cards now display confidence badges
 
 ## Preserved
 
 - Single-file offline-first PWA
 - Today’s 5 + Due Now
-- Trip-date deadline weighting
-- I’m Here survival mode
-- Record-compare
+- Trip-date deadline scheduling
+- Honest mastery model
+- Record compare
 - Optional Greek-script track
 - Gentle nudges
-- Honest mastery model
+- Progress Truth + backup safety
 - SRS ladder `[1, 3, 7, 21, 60]`
+
+## Review export columns
+
+`id, kind, category, situation, english, greek, greek_script, romanization, register, survival_priority, current_confidence, review_notes, suggested_replacement, reviewer, updated`
+
+## Suggested next build
+
+GTA V12.7 — Real Phone UX Test Fixes. Use actual iPhone testing to fix tap friction, scroll issues, audio reliability, and confusing screens before calling the redesign stable.

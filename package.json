@@ -1,1 +1,1 @@
-{"scripts":{"test":"node tests/smoke-test.js"},"private":true}
+{"scripts":{"test":"node tests/smoke-test.js"},"version":"12.6.0"}
