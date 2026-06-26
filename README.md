@@ -1,20 +1,30 @@
-# GTA Greek Travel App — V12 Redesign New Repo
+# GTA Greek Travel App — V12.1 Start Here + Honest Daily Loop
 
-This package is a clean repository starter built from V11.0.31 content. It preserves the offline-first single-file PWA idea, the embedded Greek phrase/vocabulary library, speech/listening orientation, trip-date focus, and SRS ladder `[1,3,7,21,60]`, while collapsing the visible IA into four surfaces:
+This package is the next clean-repo build after V12. It preserves the offline-first single-file PWA, embedded Greek phrase/vocabulary library, audio-first travel focus, trip-date motivator, and the SRS ladder `[1,3,7,21,60]`.
+
+## What changed in V12.1
+
+1. **30-second onboarding** — first-run Start Here flow explains Today’s 5, Due Now, the honest mastery model, and I’m Here mode.
+2. **Trip date setup** — trip date can be set during onboarding or from Today.
+3. **Deadline-aware Today’s 5** — Today’s 5 now prioritizes due items, survival phrases, weak phrases, recently missed phrases, and final-week content.
+4. **Honest mastery labels** — cards now show Seen, Understood, Remembered, and Field-ready instead of treating ASR success as mastery.
+5. **Session ending screen** — after a loop, the user gets closure and a reminder to return later for delayed recall.
+
+## Main app surfaces
 
 1. **Today** — Today’s 5 + Due Now as the default loop.
 2. **Practice** — one practice room with depth controls: Recognize, Recall, Speak, Converse.
 3. **I’m here** — quick-survival mode for Taverna, Pharmacy, Taxi, Lost, Home, Shopping.
-4. **More** — onboarding, search, backup, and category browsing.
+4. **More** — Start Here, search, backup, and category browsing.
 
 ## Honest mastery model
 
 The app separates:
 
-- **The app understood you** — speech recognition heard something close enough.
-- **Field-ready** — the phrase was recalled in a later session/day.
-
-This prevents speech recognition text-match from being treated as true pronunciation mastery.
+- **Seen** — the card has appeared in practice.
+- **Understood** — speech recognition heard the phrase; this means the app understood the user, not that pronunciation is perfect.
+- **Remembered** — the user recalled the phrase in the current loop.
+- **Field-ready** — the phrase was recalled after time had passed, making the mastery signal more honest for travel.
 
 ## How to run
 
@@ -28,8 +38,8 @@ Run:
 node tests/smoke-test.js
 ```
 
-The smoke test checks that the four core views, service worker registration, embedded content counts, and key functions are present.
+The smoke test checks that the core views, service worker registration, embedded content counts, and key functions are present. A JavaScript syntax check was also run with `node --check` during packaging.
 
 ## Important next step
 
-Before adding modes, test this on a real phone with 3–5 target users. Watch whether they hesitate on Today, Practice depth, or I’m here.
+Before adding new modes, test this on a real phone with 3–5 target users. Watch whether they understand the onboarding, finish Today’s 5 without hesitation, and know the difference between Remembered and Field-ready.
