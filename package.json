@@ -1,1 +1,1 @@
-{"name":"gta-v13-1-conversation-companion","version":"13.1.0","private":true,"scripts":{"test":"node tests/smoke-test.js"}}
+{"name":"gta-v13-2-conversation-capture-loop","version":"13.2.0","private":true,"scripts":{"test":"node tests/smoke-test.js"}}

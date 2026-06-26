@@ -1,22 +1,40 @@
-# GTA V13.1 — Greek Conversation Companion
+# GTA V13.2 — Conversation Capture Loop
 
-This build reframes GTA from a travel-only Greek app into a daily companion for building real conversation with a Greek partner and their family.
+A single-file offline PWA reframed as a daily companion for building real Greek conversation with a partner and family.
 
-## What changed
+## What changed in V13.2
 
-- Preserves the existing `localStorage` key: `gta_v12_state`.
-- Fixes the past-date scheduler bug: past or missing milestone dates now use the full SRS ladder instead of collapsing to daily reviews.
-- Reframes trip date as an optional milestone: next visit, meeting the family, moving, or daily rhythm.
-- Adds small starter roleplay dialogues in `DATA.dialogues`.
-- Dialogue turns are first-class `ITEMS`, so user turns can be graded into the same SRS/mastery system.
-- Adds a soft three-tier path: building blocks → glue/comprehension → real exchanges.
-- Keeps My Phrases / “I wanted to say…” capture with Google Translate handoff and machine-translation warning.
-- Keeps durable IndexedDB safety net and accessibility layer from V13.0.1/V13.0.2.
+- Added a Today check-in for real-world Greek use.
+- Tracks “I spoke Greek today” as a real-conversation streak, separate from app practice streak.
+- Tracks lightweight self-reported wins: “I said something and they understood.”
+- Adds a capture field: “What did you want to say but couldn’t?”
+- Adds a pending translation queue for captured phrases.
+- Each capture can open Google Translate, then accept a pasted Greek result.
+- Once saved, captured phrases become first-class custom SRS items.
+- Custom phrases remain flagged: `machine-translated — verify`.
+- Progress now shows real-world streak, weekly wins, pending captures, and captured study phrases.
+
+## Preserved
+
+- `LS = 'gta_v12_state'` for upgrade safety.
+- Offline-first single-file PWA behavior.
+- Durable IndexedDB safety net.
+- Honest mastery model.
+- Full SRS ladder and existing scheduling math.
+- Custom phrase builder from V13.0.2.
+- Conversation roleplay and tier path from V13.1.
 
 ## Deploy
 
-Upload this folder to a new GitHub repository, enable GitHub Pages from the repository root, open on iPhone Safari, add to Home Screen, test audio, test offline, and export a backup.
+Upload the folder contents to a new GitHub repository root, enable GitHub Pages, open the Pages URL in iPhone Safari, then Add to Home Screen.
 
-## Native review note
+Test before relying on it:
 
-Starter dialogues and machine-translated custom phrases are marked for review. A fluent/native Greek speaker should verify important phrases before real use.
+1. Open Today.
+2. Tap “I spoke Greek today.”
+3. Capture one sentence.
+4. Translate it and save it as a study phrase.
+5. Search for it.
+6. Play audio.
+7. Export a backup.
+8. Reopen offline.
