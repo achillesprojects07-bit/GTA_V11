@@ -4,8 +4,8 @@ const manifest=fs.readFileSync('manifest.json','utf8');
 const sw=fs.readFileSync('service-worker.js','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V13.5.5</span></div>',
-  "const APP_VERSION='V13.5.5'",
+  '<div class="title">Καθημερινά <span class="versionMini">V13.5.6</span></div>',
+  "const APP_VERSION='V13.5.6'",
     "const LS='gta_v12_state'",
   'let ITEMS=[]',
   'function buildItems',
@@ -75,6 +75,14 @@ const required=[
   'milestonePasses',
   'A1 ready',
   'practice milestone, not an official exam score',
+  'function ensureDialogueReviewState',
+  'function dialogueReviewPanel',
+  'function setDialogueReviewStatus',
+  'function saveDialogueReviewNote',
+  'Dialogue native-review workflow',
+  'Mark what is truly safe to say',
+  'revise before use',
+  'Reviewer / source',
   'function verificationStats',
   'dlg_partner_morning',
   'dlg_family_recipe',
@@ -111,7 +119,7 @@ const required=[
   'aria-current="page"',
   'role="main"',
   'lang="el"',
-  'kathimerina-v13-5-5-backup-'
+  'kathimerina-v13-5-6-backup-'
 ];
 const missing=required.filter(x=>!html.includes(x));
 if(missing.length){console.error('Missing:', missing.join(', ')); process.exit(1);}
@@ -119,10 +127,10 @@ if(!manifest.includes('Καθημερινά')){console.error('Manifest app name 
 if(manifest.includes('V13.4')){console.error('Manifest should not carry version label'); process.exit(1);}
 if(fs.readFileSync('README.md','utf8').includes('# GTA V13.3')||fs.readFileSync('README.md','utf8').includes('# GTA V13.4 —')){console.error('README heading still contains old GTA heading'); process.exit(1);}
 if(html.includes('GTA V13.3 Companion')||html.includes('Greek Conversation App')||html.includes('GTA Greek')){console.error('Old app name still visible'); process.exit(1);}
-if(html.includes('V13.2')||html.includes('V13.3')||html.includes('V13.5.4')){console.error('Old version labels remain in index.html'); process.exit(1);}
+if(html.includes('V13.2')||html.includes('V13.3')||html.includes('V13.5.4')||html.includes('V13.5.5')){console.error('Old version labels remain in index.html'); process.exit(1);}
 if(html.includes('prompt(\'Self-score this ')){console.error('Mock self-score prompt remains'); process.exit(1);}
 if(!html.includes('function completeMockSelfScore')){console.error('Mock self-score buttons missing'); process.exit(1);}
-if(!sw.includes('gta-v13-5-5-quiz-feedback')){console.error('Service worker cache version missing'); process.exit(1);}
+if(!sw.includes('gta-v13-5-6-dialogue-review')){console.error('Service worker cache version missing'); process.exit(1);}
 const script=html.split('<script>')[1]?.split('</script>')[0]||'';
 fs.writeFileSync('/tmp/gta-v13-4-script.js',script);
 require('child_process').execFileSync(process.execPath,['--check','/tmp/gta-v13-4-script.js'],{stdio:'inherit'});
@@ -157,14 +165,14 @@ if(w5.length!==15){console.error('Wave 5 B2 dialogue count mismatch:',w5.length)
 if(!html.includes("title:'About my day',level:'B2'")||!html.includes("title:'An honest reflective exchange',level:'B2'")){console.error('Wave 5 endpoints missing'); process.exit(1);}
 
 const readme=fs.readFileSync('README.md','utf8');
-if(!readme.includes('# Καθημερινά V13.5.5 — Instant Quiz Feedback + Calm Milestones')){console.error('README heading does not match V13.5.5 quiz-feedback build'); process.exit(1);}
-if(!html.includes('<div class="title">Καθημερινά <span class="versionMini">V13.5.5</span></div>')){console.error('Visible app header version does not show V13.5.5'); process.exit(1);}
-if(!html.includes("const APP_VERSION='V13.5.5'")){console.error('APP_VERSION is not V13.5.5'); process.exit(1);}
-if(!html.includes('<div class="integrityItem"><b>V13.5.5</b><span class="muted">Version label</span></div>')){console.error('Build Integrity panel does not show V13.5.5'); process.exit(1);}
+if(!readme.includes('# Καθημερινά V13.5.6 — Dialogue Native-Review Workflow')){console.error('README heading does not match V13.5.6 dialogue-review build'); process.exit(1);}
+if(!html.includes('<div class="title">Καθημερινά <span class="versionMini">V13.5.6</span></div>')){console.error('Visible app header version does not show V13.5.6'); process.exit(1);}
+if(!html.includes("const APP_VERSION='V13.5.6'")){console.error('APP_VERSION is not V13.5.6'); process.exit(1);}
+if(!html.includes('<div class="integrityItem"><b>V13.5.6</b><span class="muted">Version label</span></div>')){console.error('Build Integrity panel does not show V13.5.6'); process.exit(1);}
 
 const renderHomeChunk=script.match(/function renderHome\(\)[\s\S]*?function cardMini/);
 if(!renderHomeChunk){console.error('renderHome function not found'); process.exit(1);}
 const home=renderHomeChunk[0];
 ['phoneUxMini()','capturesToTranslatePanel()','conversationTierPanel()'].forEach(x=>{if(home.includes(x)){console.error('Home still renders clutter card:',x); process.exit(1);}});
 ['Real phone '+'polish','Built for one hand and weak '+'signal','V12'+'.7'].forEach(x=>{if(html.includes(x)){console.error('Old phone-polish/developer copy remains:',x); process.exit(1);}});
-console.log('GTA V13.5.5 Καθημερινά quiz-feedback smoke test passed.');
+console.log('GTA V13.5.6 Καθημερινά dialogue-review smoke test passed.');
