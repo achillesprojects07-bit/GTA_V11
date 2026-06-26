@@ -4,6 +4,7 @@ const manifest=fs.readFileSync('manifest.json','utf8');
 const sw=fs.readFileSync('service-worker.js','utf8');
 const required=[
   'GTA V13.4',
+  'GTA V13.4 Exam Prep',
   'V13.4-ellinomatheia-exam-prep',
   "const LS='gta_v12_state'",
   'let ITEMS=[]',
@@ -59,6 +60,8 @@ const required=[
 const missing=required.filter(x=>!html.includes(x));
 if(missing.length){console.error('Missing:', missing.join(', ')); process.exit(1);}
 if(!manifest.includes('GTA Greek Conversation Companion V13.4')){console.error('Manifest version missing'); process.exit(1);}
+if(fs.readFileSync('README.md','utf8').includes('# GTA V13.3')){console.error('README heading still contains V13.3'); process.exit(1);}
+if(html.includes('GTA V13.3 Companion')){console.error('Header still contains V13.3'); process.exit(1);}
 if(!sw.includes('gta-v13-4-ellinomatheia-exam-prep')){console.error('Service worker cache version missing'); process.exit(1);}
 const script=html.split('<script>')[1]?.split('</script>')[0]||'';
 fs.writeFileSync('/tmp/gta-v13-4-script.js',script);
