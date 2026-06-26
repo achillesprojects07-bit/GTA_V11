@@ -2,5 +2,7 @@
   "scripts": {
     "test": "node tests/smoke-test.js"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "version": "12.4.0",
+  "description": "GTA V12.4 Gentle Nudges + Return Polish"
 }
