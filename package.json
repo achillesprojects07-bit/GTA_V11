@@ -1,1 +1,1 @@
-{"name":"gta-v13-0-1-durable-storage-a11y","version":"13.0.1","private":true,"scripts":{"test":"node tests/smoke-test.js"}}
+{"name":"gta-v13-0-2-search-builder-durable","version":"13.0.2","private":true,"scripts":{"test":"node tests/smoke-test.js"}}

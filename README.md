@@ -1,3 +1,19 @@
+# GTA V13.0.2 — Search + Builder + Durable Storage
+
+Public-stable single-file Greek Travel App build with durable IndexedDB recovery, accessible Greek text, fixed global search, and first-class custom phrase builder.
+
+## Added in V13.0.2
+
+- Fixed missing `searchAll(q)` used by the More search input.
+- Added search entry buttons from Today and Practice.
+- Added My Phrases / Phrase Builder with Google Translate handoff.
+- Custom phrases are first-class `ITEMS` cards with `c` IDs, so they work with search, audio, SRS, Due Now, Today’s 5, backup and restore.
+- Preserved `LS = gta_v12_state` for existing user progress.
+- Kept the V13.0.1 durable IndexedDB safety net and semantic accessibility layer.
+
+## Deploy
+
+Upload all files to a new GitHub repository, enable GitHub Pages, open `index.html` on iPhone Safari, add to Home Screen, then test offline, audio, search, custom phrases, backup, reset, restore, and IndexedDB recovery.
 # GTA V13.0 — Public Stable New Repository Release
 
 This is the first public stable build of the redesigned Greek Travel App.
@@ -83,7 +99,7 @@ The smoke test checks that the stable screens, V13.0 version labels, launch chec
 V13.0 is the stable new-repository baseline. Future builds should only start after the real iPhone test confirms the core screens work online, installed, and offline.
 
 
-## V13.0.1 patch notes
+## V13.0.2 patch notes
 
 - Restores the durable-storage safety net: persistent-storage request, IndexedDB `latest` snapshot, seven daily snapshots, flush on `visibilitychange` / `pagehide`, and gated startup recovery only when localStorage progress is empty.
 - Adds semantic accessibility: primary navigation labels, active-page state, active screen `role=main`, and `lang="el"` spans around Greek text rendered in learning cards.
