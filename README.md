@@ -1,26 +1,21 @@
-# Καθημερινά V13.5.2a — Home Cleanup
+# Καθημερινά V13.5.3 — Wave 5 Confident Range
 
 Single-file offline PWA for daily Greek conversation practice, with an A1/A2 Ellinomatheia exam-prep scaffold.
 
 ## Current build
 
-V13.5.2a is a small Home-screen cleanup release on top of **V13.5.2 Wave 4 Social Fluency**.
+V13.5.3 adds **Wave 5: Confident Range / B2** on top of the cleaned V13.5.2a Home release.
 
-It removes old developer/scaffold cards from the Home screen:
-
-- the old phone-polish developer note
-- the Home copy of the pending-translation queue
-- the Home copy of the conversation-flow path card
-
-The capture translation queue and conversation flow panel are still available in the appropriate areas, but they no longer clutter the Home screen.
+Wave 5 is the advanced lived-conversation layer: storytelling, giving opinions, future plans, and deeper reflective exchanges. These dialogues are for practice and fluency-building, not official or native-reviewed exam content.
 
 ## Dialogue library
 
-- Total dialogues: 128
+- Total dialogues: 143
 - Wave 1 A1 dialogues: 25
 - Wave 2 A2 dialogues: 25
 - Wave 3 B1 relationship-depth dialogues: 25
 - Wave 4 B1 social-fluency dialogues: 20
+- Wave 5 B2 confident-range dialogues: 15
 - All generated wave dialogues remain `nativeReview:false`
 
 ## Visible app version
@@ -28,7 +23,7 @@ The capture translation queue and conversation flow panel are still available in
 The app header, `APP_VERSION`, and Build Integrity panel show:
 
 ```text
-V13.5.2a
+V13.5.3
 ```
 
 ## Cache
@@ -36,7 +31,7 @@ V13.5.2a
 Service-worker cache:
 
 ```text
-gta-v13-5-2a-home-cleanup
+gta-v13-5-3-wave5-confident-range
 ```
 
 ## Release lock
@@ -54,5 +49,5 @@ This zip was extracted and checked after packaging for:
 ## Test
 
 ```text
-GTA V13.5.2a Καθημερινά home-cleanup smoke test passed.
+GTA V13.5.3 Καθημερινά wave-5 smoke test passed.
 ```
