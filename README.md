@@ -28,7 +28,7 @@ Do not treat placeholder content as real Ellinomatheia preparation material.
 - Added `DATA.mock` for timed four-skill mock exam runs.
 - Added Exam prep inside Practice so the daily Today loop stays uncluttered.
 - Added smoke tests for the new exam-prep functions and data structures.
-- Bumped service-worker cache to `gta-v13-4-ellinomatheia-exam-prep`.
+- Bumped service-worker cache to `gta-v13-4-1-polish`.
 
 ## Preserved anchors
 
@@ -72,5 +72,5 @@ npm test
 Expected output:
 
 ```text
-GTA V13.4 Ellinomatheia exam prep smoke test passed.
+GTA V13.4 consistency polish smoke test passed.
 ```
