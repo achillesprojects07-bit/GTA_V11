@@ -1,4 +1,4 @@
-# GTA V13.2 — Conversation Capture Loop
+# GTA V13.3 — Conversation Capture Loop
 
 A single-file offline PWA reframed as a daily companion for building real Greek conversation with a partner and family.
 
