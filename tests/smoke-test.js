@@ -6,8 +6,8 @@ const readme=fs.readFileSync('README.md','utf8');
 const pkg=fs.readFileSync('package.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V13.6.4</span></div>',
-  "const APP_VERSION='V13.6.4'",
+  '<div class="title">Καθημερινά <span class="versionMini">V13.6.5</span></div>',
+  "const APP_VERSION='V13.6.5'",
   "const LS='gta_v12_state'",
   'function buildItems',
   'function nextDueDate',
@@ -44,20 +44,20 @@ const required=[
   'function phraseOfDayPanel',
   'return [5,15,30,45,60].includes(v)?v:15',
   '[5,15,30,45,60].map',
-  "gta-v13-6-4-coverage-progression"
+  "gta-v13-6-5-session-language-cleanup"
 ];
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x));
 if(missing.length){console.error('Missing:',missing.join(', '));process.exit(1)}
 if(!manifest.includes('Καθημερινά')){console.error('Manifest app name missing');process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v13-6-4-coverage-progression'")){console.error('Service worker cache mismatch');process.exit(1)}
-if(!readme.includes('# Καθημερινά V13.6.4 — Full Coverage Progression Engine')){console.error('README heading mismatch');process.exit(1)}
-if(!pkg.includes('"version":"13.6.4"')){console.error('Package version mismatch');process.exit(1)}
+if(!sw.includes("const CACHE_NAME='gta-v13-6-5-session-language-cleanup'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V13.6.5 — Session Language Cleanup')){console.error('README heading mismatch');process.exit(1)}
+if(!pkg.includes('"version":"13.6.5"')){console.error('Package version mismatch');process.exit(1)}
 if(html.includes('V13.6.3')||html.includes('gta-v13-6-3')||html.includes('guided daily flow repair')){console.error('Old V13.6.3 labels remain');process.exit(1)}
 if(html.includes('Priority-ordered for ${s.minutes} minutes')||html.includes('startAdaptiveStep(')||html.includes('markAdaptiveStepDone(')){console.error('Old checklist session UX remains');process.exit(1)}
 if(html.includes('One practice room, four depths')||html.includes('Suggested path, not a gate')||html.includes('Practice partner roleplay')){console.error('Confusing Practice copy remains');process.exit(1)}
 const script=html.split('<script>')[1]?.split('</script>')[0]||'';
-fs.writeFileSync('/tmp/kathimerina-v1364.js',script);
-require('child_process').execFileSync(process.execPath,['--check','/tmp/kathimerina-v1364.js'],{stdio:'inherit'});
+fs.writeFileSync('/tmp/kathimerina-v1365.js',script);
+require('child_process').execFileSync(process.execPath,['--check','/tmp/kathimerina-v1365.js'],{stdio:'inherit'});
 const dlgIds=[...html.matchAll(/id:'(dlg_[^']+)'/g)].map(m=>m[1]);
 if(new Set(dlgIds).size!==dlgIds.length){console.error('Duplicate dialogue ids found');process.exit(1)}
 if((html.match(/id:'dlg_w1_/g)||[]).length!==25){console.error('Wave 1 count mismatch');process.exit(1)}
@@ -71,4 +71,11 @@ const home=renderHomeChunk[0];
 ['phoneUxMini()','capturesToTranslatePanel()','conversationTierPanel()'].forEach(x=>{if(home.includes(x)){console.error('Home clutter remains: '+x);process.exit(1)}});
 if(!home.includes('todayCoverageLine()')){console.error('Today coverage line not rendered');process.exit(1)}
 if(!script.includes("addItems('coverage',adaptiveCoverageItems()")){console.error('Session builder does not include coverage block');process.exit(1)}
-console.log('GTA V13.6.4 Καθημερινά coverage-progression smoke test passed.');
+
+if(html.includes('Today’s 5 preview')||html.includes('Begin Today’s 5')){console.error('Old Today’s 5 preview still appears on Home');process.exit(1)}
+if(html.includes('coverage · Next uncovered content')||html.includes('Next uncovered content · Stage')){console.error('Developer coverage labels still visible in session rows');process.exit(1)}
+for (const requiredSessionCopy of ['Today includes:','New phrase','Learn this today','Start today’s session']){
+  if(!html.includes(requiredSessionCopy)){console.error('Missing simplified session copy: '+requiredSessionCopy);process.exit(1)}
+}
+
+console.log('GTA V13.6.5 Καθημερινά session-language-cleanup smoke test passed.');

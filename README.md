@@ -1,13 +1,11 @@
-# Καθημερινά V13.6.4 — Full Coverage Progression Engine
+# Καθημερινά V13.6.5 — Session Language Cleanup
 
-This release adds a coverage progression layer so guided daily sessions protect memory first, then move through the next uncovered app content.
+This release cleans up the Today session UX language.
 
-## Release checks
-- Visible app header shows V13.6.4
-- APP_VERSION is V13.6.4
-- Service-worker cache is gta-v13-6-4-coverage-progression
-- Package version is 13.6.4
-- Smoke test passes from the extracted final zip
-
-## Notes
-SRS math, scheduler, content, dialogue library, exam scaffolding, quiz scoring, and pronunciation/audio logic are preserved. New coverage state is stored locally under `state.coverage` and included in backup/restore.
+- Visible app header shows V13.6.5
+- APP_VERSION is V13.6.5
+- Service-worker cache is gta-v13-6-5-session-language-cleanup
+- Old Today’s 5 preview is removed from Home
+- Guided session rows use plain language such as New phrase / Review / Conversation practice
+- Session summary now explains what today includes
+- SRS math, content, scheduler, quizzes, and dialogues are unchanged
