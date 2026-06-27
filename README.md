@@ -1,18 +1,19 @@
-# Καθημερινά V13.6.2 — Extended Adaptive Study Sessions
+# Καθημερινά V13.6.3 — Guided Daily Flow Repair
 
-V13.6.2 extends the adaptive Today session with longer study blocks.
+V13.6.3 repairs the Today session UX.
 
 ## What changed
-- Added 45 min and 60 min options to “How much time today?”.
-- Longer sessions keep the same priority order: due reviews, weak spots, dialogue rehearsal, quiz depth, then new content.
-- 60-minute sessions can include up to two dialogue rehearsals if there is enough room.
-- Added a quiet long-session note: pause if you feel overloaded.
-- Preserved SRS math, scheduler, DATA, quiz scoring, dialogue rehearsal, and exam loader logic.
+- Today now has one Start button for the whole guided session.
+- Session tasks open as focused cards inside Today, not the broad Practice page.
+- Each task has a clear next action and a Next button after completion.
+- The last task ends with End today’s session.
+- Practice is now clarified as optional Browse Practice.
+- Existing SRS math, content, dialogues, quizzes, and data structures are preserved.
 
-## Release check
-- README heading matches V13.6.2.
-- Visible app header shows V13.6.2.
-- APP_VERSION is V13.6.2.
-- Build Integrity panel shows V13.6.2.
-- Service-worker cache is gta-v13-6-2-extended-sessions.
+## Release checks
+- README heading matches V13.6.3.
+- Visible app header shows V13.6.3.
+- APP_VERSION is V13.6.3.
+- Build Integrity panel shows V13.6.3.
+- Service-worker cache is gta-v13-6-3-guided-daily-flow.
 - npm test passes from the extracted final zip.
