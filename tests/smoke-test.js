@@ -6,8 +6,8 @@ const readme=fs.readFileSync('README.md','utf8');
 const pkg=fs.readFileSync('package.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V13.6.6</span></div>',
-  "const APP_VERSION='V13.6.6'",
+  '<div class="title">Καθημερινά <span class="versionMini">V13.6.7</span></div>',
+  "const APP_VERSION='V13.6.7'",
   "const LS='gta_v12_state'",
   'function buildItems',
   'function nextDueDate',
@@ -27,6 +27,7 @@ const required=[
   'I’m done for today',
   'function continueAdaptiveSession',
   'function finishTodayAndRest',
+  'function guidedSessionIsLocked',
   'Browse Practice',
   'Choose freely. Today’s guided session is separate.',
   'function coverageProgressPanel',
@@ -49,15 +50,15 @@ const required=[
   'function phraseOfDayPanel',
   'return [5,15,30,45,60].includes(v)?v:15',
   '[5,15,30,45,60].map',
-  "gta-v13-6-6-guided-next-step"
+  "gta-v13-6-7-session-state-lock"
 ];
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x));
 if(missing.length){console.error('Missing:',missing.join(', '));process.exit(1)}
 if(!manifest.includes('Καθημερινά')){console.error('Manifest app name missing');process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v13-6-6-guided-next-step'")){console.error('Service worker cache mismatch');process.exit(1)}
-if(!readme.includes('# Καθημερινά V13.6.6 — Guided Session Next-Step + Continue Choice')){console.error('README heading mismatch');process.exit(1)}
-if(!pkg.includes('"version":"13.6.6"')){console.error('Package version mismatch');process.exit(1)}
-if(html.includes('V13.6.5')||html.includes('gta-v13-6-5')||html.includes('session language cleanup')||html.includes('V13.6.3')||html.includes('gta-v13-6-3')||html.includes('guided daily flow repair')){console.error('Old version labels remain');process.exit(1)}
+if(!sw.includes("const CACHE_NAME='gta-v13-6-7-session-state-lock'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V13.6.7 — Guided Session State Lock')){console.error('README heading mismatch');process.exit(1)}
+if(!pkg.includes('"version":"13.6.7"')){console.error('Package version mismatch');process.exit(1)}
+if(html.includes('V13.6.6')||html.includes('gta-v13-6-6')||html.includes('guided next-step flow')||html.includes('V13.6.5')||html.includes('gta-v13-6-5')||html.includes('session language cleanup')||html.includes('V13.6.3')||html.includes('gta-v13-6-3')||html.includes('guided daily flow repair')){console.error('Old version labels remain');process.exit(1)}
 if(html.includes('Priority-ordered for ${s.minutes} minutes')||html.includes('startAdaptiveStep(')||html.includes('markAdaptiveStepDone(')){console.error('Old checklist session UX remains');process.exit(1)}
 if(html.includes('One practice room, four depths')||html.includes('Suggested path, not a gate')||html.includes('Practice partner roleplay')){console.error('Confusing Practice copy remains');process.exit(1)}
 const script=html.split('<script>')[1]?.split('</script>')[0]||'';
@@ -83,4 +84,6 @@ for (const requiredSessionCopy of ['Today includes:','New phrase','Learn this to
   if(!html.includes(requiredSessionCopy)){console.error('Missing simplified session copy: '+requiredSessionCopy);process.exit(1)}
 }
 
-console.log('GTA V13.6.6 Καθημερινά guided-next-step smoke test passed.');
+if(!script.includes('function guidedSessionIsLocked')||!script.includes('guidedSessionIsLocked(s)')){console.error('Guided session state lock helper missing');process.exit(1)}
+if(script.includes('s.started=false;save();renderHome()')){console.error('Task screen can still reset to Start mid-session');process.exit(1)}
+console.log('GTA V13.6.7 Καθημερινά session-state-lock smoke test passed.');
