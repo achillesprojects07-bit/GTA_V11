@@ -1,11 +1,12 @@
-# Καθημερινά V13.6.5 — Session Language Cleanup
+# Καθημερινά V13.6.6 — Guided Session Next-Step + Continue Choice
 
-This release cleans up the Today session UX language.
+This release fixes the guided Today session flow.
 
-- Visible app header shows V13.6.5
-- APP_VERSION is V13.6.5
-- Service-worker cache is gta-v13-6-5-session-language-cleanup
-- Old Today’s 5 preview is removed from Home
-- Guided session rows use plain language such as New phrase / Review / Conversation practice
-- Session summary now explains what today includes
-- SRS math, content, scheduler, quizzes, and dialogues are unchanged
+- Visible app header shows V13.6.6
+- APP_VERSION is V13.6.6
+- Service-worker cache is gta-v13-6-6-guided-next-step
+- After Review again / I know this / Skip, the task shows a clear Next task button
+- The final task shows End today’s session
+- The ending screen asks whether to continue or stop for today
+- Practice remains separate from Today’s guided session
+- SRS math, content, scheduler, quizzes, dialogues, and exam scaffold are unchanged
