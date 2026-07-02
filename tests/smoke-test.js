@@ -6,8 +6,8 @@ const readme=fs.readFileSync('README.md','utf8');
 const pkg=fs.readFileSync('package.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V13.6.19</span></div>',
-  "const APP_VERSION='V13.6.19'",
+  '<div class="title">Καθημερινά <span class="versionMini">V13.6.20</span></div>',
+  "const APP_VERSION='V13.6.20'",
   "const LS='gta_v12_state'",
   'function buildAdaptiveSession',
   'function dailyConversationCoachCard',
@@ -20,28 +20,35 @@ const required=[
   'function confidenceEngineStats',
   'function renderConfidenceEngine',
   'function logConfidencePulse',
+  'function confidenceMinimumChecklistCard',
+  'Listen First library',
+  "if(minChoice>=15&&g)",
+  "let seen=new Set(),out=[]",
   'Confidence Engine',
   '6-month confidence dashboard',
   'weekly readiness signal',
-  'gta-v13-6-19-confidence-dashboard'
+  'gta-v13-6-20-confidence-gate-listen-first'
 ];
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x));
 if(missing.length){console.error('Missing:',missing.join(', '));process.exit(1)}
 if(!manifest.includes('Καθημερινά')){console.error('Manifest app name missing');process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v13-6-19-confidence-dashboard'")){console.error('Service worker cache mismatch');process.exit(1)}
-if(!readme.includes('# Καθημερινά V13.6.19 — Confidence Engine Dashboard')){console.error('README heading mismatch');process.exit(1)}
-if(!readme.includes('App header shows `Καθημερινά V13.6.19`')){console.error('README verification section mismatch');process.exit(1)}
-if(!pkg.includes('"version":"13.6.19"')){console.error('Package version mismatch');process.exit(1)}
-const forbidden=['V13.6.18</span>','APP_VERSION=\'V13.6.18\'','gta-v13-6-18-living-in-greece-mode','V13.6.17</span>','APP_VERSION=\'V13.6.17\'','gta-v13-6-17-a2-grammar-gap-repair'];
+if(!sw.includes("const CACHE_NAME='gta-v13-6-20-confidence-gate-listen-first'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V13.6.20 — Confidence Flow Gate Fix + Listen First Library')){console.error('README heading mismatch');process.exit(1)}
+if(!readme.includes('App header shows `Καθημερινά V13.6.20`')){console.error('README verification section mismatch');process.exit(1)}
+if(!pkg.includes('"version":"13.6.20"')){console.error('Package version mismatch');process.exit(1)}
+const forbidden=['V13.6.19</span>','APP_VERSION=\'V13.6.19\'','gta-v13-6-19-confidence-dashboard','V13.6.18</span>','APP_VERSION=\'V13.6.18\'','gta-v13-6-18-living-in-greece-mode'];
 const bad=forbidden.filter(x=>html.includes(x)||sw.includes(x)||pkg.includes(x)||readme.includes(x));
 if(bad.length){console.error('Old active labels remain:',bad.join(', '));process.exit(1)}
 const script=html.split('<script>')[1]?.split('</script>')[0]||'';
-fs.writeFileSync('/tmp/kathimerina-v13619.js',script);
-require('child_process').execFileSync(process.execPath,['--check','/tmp/kathimerina-v13619.js'],{stdio:'inherit'});
+fs.writeFileSync('/tmp/kathimerina-v13620.js',script);
+require('child_process').execFileSync(process.execPath,['--check','/tmp/kathimerina-v13620.js'],{stdio:'inherit'});
 const renderHomeChunk=script.match(/function renderHome\(\)[\s\S]*?function cardMini/);
 if(!renderHomeChunk){console.error('renderHome not found');process.exit(1)}
 const home=renderHomeChunk[0];
-['sixMonthConfidencePanel()','confidenceDashboardCard()','dailyConversationCoachCard()','conversationMemoryCard()','livingGreeceModeCard()','realGreekListeningCard()','a2GrammarGapCard()','adaptiveSessionPanel()'].forEach(x=>{if(!home.includes(x)){console.error('Home missing '+x);process.exit(1)}});
+['sixMonthConfidencePanel()','confidenceDashboardCard()','confidenceMinimumChecklistCard()','dailyConversationCoachCard()','conversationMemoryCard()','livingGreeceModeCard()','realGreekListeningCard()','a2GrammarGapCard()','adaptiveSessionPanel()'].forEach(x=>{if(!home.includes(x)){console.error('Home missing '+x);process.exit(1)}});
 if(!script.includes('state.confidenceEngineLog.unshift')){console.error('Confidence Engine log capture missing');process.exit(1)}
 if(!script.includes('confidenceDashboardPanel()')){console.error('Progress Confidence panel missing');process.exit(1)}
-console.log('GTA V13.6.19 Καθημερινά Confidence Engine Dashboard smoke test passed.');
+if(!script.includes("if(minChoice>=15&&g)")){console.error('Lowered confidence gate missing');process.exit(1)}
+if(!script.includes("['listen','recognize','recall','speak','converse']")){console.error('Listen First mode button missing');process.exit(1)}
+if(!script.includes("id=\"englishAnswer\"")){console.error('Listen First English reveal target missing');process.exit(1)}
+console.log('GTA V13.6.20 Καθημερινά Confidence Flow Gate Fix + Listen First Library smoke test passed.');
