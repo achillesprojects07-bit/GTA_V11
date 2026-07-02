@@ -1,6 +1,6 @@
-# Καθημερινά V13.6.23 — One Button Learning Path
+# Καθημερινά V13.6.24 — One Button Learning Path
 
-V13.6.23 makes the progressive path impossible to miss. The app now opens Today with one dominant workflow: choose minutes, press **Start Today’s Path**, and follow Step 1 → Step 2 → Step 3 until the app says complete.
+V13.6.24 makes the progressive path impossible to miss. The app now opens Today with one dominant workflow: choose minutes, press **Start Today’s Path**, and follow Step 1 → Step 2 → Step 3 until the app says complete.
 
 ## What changed
 
@@ -11,7 +11,7 @@ V13.6.23 makes the progressive path impossible to miss. The app now opens Today 
 - Keeps the ordered path visible: Review → Weak Spots → Tiny New Step → Listen → Speak → Read → Conversation.
 - Keeps minute-based scaling: 20 maintenance, 30 minimum serious path, 45 strong progress, 60 best six-month path.
 - Renames the Practice tab label to **Extra Practice** so it no longer competes with Today.
-- Adds a visible deployment badge in the hero: `V13.6.23 · ONE BUTTON PATH ACTIVE`.
+- Adds a visible deployment badge in the hero: `V13.6.24 · ONE BUTTON PATH ACTIVE`.
 
 ## Preserved
 
@@ -22,11 +22,11 @@ V13.6.23 makes the progressive path impossible to miss. The app now opens Today 
 
 ## Verification
 
-- App header shows `Καθημερινά V13.6.23`.
-- Hero badge shows `V13.6.23 · ONE BUTTON PATH ACTIVE`.
-- `APP_VERSION` is `V13.6.23`.
+- App header shows `Καθημερινά V13.6.24`.
+- Hero badge shows `V13.6.24 · ONE BUTTON PATH ACTIVE`.
+- `APP_VERSION` is `V13.6.24`.
 - Service-worker cache is `gta-v13-6-23-one-button-learning-path`.
-- Package version is `13.6.23`.
+- Package version is `13.6.24`.
 - Smoke test checks syntax, one-button path card, path ordering, minute scaling, Extra Practice label, daily reading, lowered gates, Listen First mode, dedupe, and the confidence-minimum checklist.
 
 ## Upload instructions
@@ -43,3 +43,11 @@ Upload **all extracted files** to the GitHub Pages repo root, not only `index.ht
 - `.nojekyll`
 
 Uploading only `index.html` can leave the old PWA service worker in place.
+
+## V13.6.24 change — Practice-Only Daily Path
+Per the owner's decision (official exam papers are practiced on paper, not inside the
+daily session): `dailyGrammarPick()`, `dailyListeningPick()`, and `dailyReadingPick()`
+now exclude any item with `source === 'official-source'`. Daily skill steps draw only
+from practice-only content, which plays natively via TTS `audioText` — no dependency
+on hosted MP3 URLs. Official imports are NOT deleted: they remain fully usable
+manually under Practice → Exam prep, alongside paper mocks.

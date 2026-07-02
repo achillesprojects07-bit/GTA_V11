@@ -6,10 +6,10 @@ const readme=fs.readFileSync('README.md','utf8');
 const pkg=fs.readFileSync('package.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V13.6.23</span></div>',
-  "const APP_VERSION='V13.6.23'",
+  '<div class="title">Καθημερινά <span class="versionMini">V13.6.24</span></div>',
+  "const APP_VERSION='V13.6.24'",
   "const LS='gta_v12_state'",
-  'V13.6.23 · ONE BUTTON PATH ACTIVE',
+  'V13.6.24 · ONE BUTTON PATH ACTIVE',
   'function oneButtonLearningPathCard',
   'Start Today’s Path',
   'Your only required daily workflow',
@@ -34,15 +34,15 @@ const required=[
   'function gradeGuidedReading',
   "if(minChoice>=15&&g)",
   "let seen=new Set(),out=[]",
-  'gta-v13-6-23-one-button-learning-path'
+  'gta-v13-6-24-practice-only-daily-path'
 ];
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x));
 if(missing.length){console.error('Missing:',missing.join(', '));process.exit(1)}
 if(!manifest.includes('Καθημερινά')){console.error('Manifest app name missing');process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v13-6-23-one-button-learning-path'")){console.error('Service worker cache mismatch');process.exit(1)}
-if(!readme.includes('# Καθημερινά V13.6.23 — One Button Learning Path')){console.error('README heading mismatch');process.exit(1)}
-if(!readme.includes('App header shows `Καθημερινά V13.6.23`')){console.error('README verification section mismatch');process.exit(1)}
-if(!pkg.includes('"version":"13.6.23"')){console.error('Package version mismatch');process.exit(1)}
+if(!sw.includes("const CACHE_NAME='gta-v13-6-24-practice-only-daily-path'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V13.6.24 — One Button Learning Path')){console.error('README heading mismatch');process.exit(1)}
+if(!readme.includes('App header shows `Καθημερινά V13.6.24`')){console.error('README verification section mismatch');process.exit(1)}
+if(!pkg.includes('"version":"13.6.24"')){console.error('Package version mismatch');process.exit(1)}
 const forbidden=['V13.6.22</span>','APP_VERSION=\'V13.6.22\'','gta-v13-6-22-clear-progressive-path','V13.6.21</span>','APP_VERSION=\'V13.6.21\'','gta-v13-6-21-daily-reading-step'];
 const bad=forbidden.filter(x=>html.includes(x)||sw.includes(x)||pkg.includes(x)||readme.includes(x));
 if(bad.length){console.error('Old active labels remain:',bad.join(', '));process.exit(1)}
@@ -59,4 +59,4 @@ if(!script.includes("['listen','recognize','recall','speak','converse']")){conso
 if(!script.includes('function dailyReadingPick')){console.error('Daily reading picker missing');process.exit(1)}
 if(!script.includes("if(step.type==='reading')return renderGuidedReadingTask")){console.error('Guided reading route missing');process.exit(1)}
 if(!html.includes('Extra Practice')){console.error('Extra Practice label missing');process.exit(1)}
-console.log('GTA V13.6.23 Καθημερινά One Button Learning Path smoke test passed.');
+console.log('GTA V13.6.24 Καθημερινά One Button Learning Path smoke test passed.');
