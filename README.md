@@ -1,30 +1,30 @@
-# Καθημερινά V13.6.17 — A2 Grammar Gap Repair
+# Καθημερινά V13.6.18 — Living in Greece Mode
 
-V13.6.17 adds a focused A2 grammar-gap layer for the user's six-month speaking/listening goal.
+V13.6.18 adds a daily-life scene layer for the user's six-month speaking/listening goal.
 
 ## What changed
 
-- Adds 8 practice-only A2 grammar gap units: genitive, prepositions, -μαι verbs, polite requests, connectors, object pronouns, past/future pairs, and natural follow-up questions.
-- Adds an A2 Grammar Gap Repair card to Today.
-- Adds a daily learn → examples → say it aloud → rate flow.
-- Adds an A2 gap library in Practice.
-- Adds A2 grammar-gap tracking on Progress.
-- Keeps all generated grammar marked practice-only/unverified until a tutor/native speaker reviews it.
+- Adds Living in Greece Mode on Today.
+- Adds real-life scene practice for home, family, supermarket, bakery, pharmacy, taxi, neighbors, doctor, beach, and conversation repair.
+- Each scene includes context, the other person's line, the user's answer, a follow-up, focus words, and a repair phrase.
+- Adds partner practice and app-alone backup for every life scene.
+- Adds a Living in Greece scene library in Practice and More.
+- Adds progress tracking for places touched, partner/app practice, and weak life-scene lines.
 
 ## Preserved
 
 - `const LS='gta_v12_state'` is unchanged.
-- Existing progress, imported exam items, conversation logs, listening ladder, and conversation memory remain on the same storage key.
-- Daily Conversation Coach, Real Greek Listening, and Real Conversation Memory remain intact.
+- Existing progress, imported exam items, conversation logs, listening ladder, conversation memory, and A2 grammar-gap logs remain on the same storage key.
+- Daily Conversation Coach, Understanding Real Greek, Real Conversation Memory, and A2 Grammar Gap Repair remain intact.
 
 ## Verification
 
-- App header shows `Καθημερινά V13.6.17`.
-- `APP_VERSION` is `V13.6.17`.
-- Service-worker cache is `gta-v13-6-17-a2-grammar-gap-repair`.
-- Package version is `13.6.17`.
-- Smoke test checks syntax and required A2 grammar-gap functions.
+- App header shows `Καθημερινά V13.6.18`.
+- `APP_VERSION` is `V13.6.18`.
+- Service-worker cache is `gta-v13-6-18-living-in-greece-mode`.
+- Package version is `13.6.18`.
+- Smoke test checks syntax and required Living in Greece Mode functions.
 
 ## Personal-use note
 
-Generated A2 grammar-gap content is practice-only and should be reviewed by a Greek speaker before being treated as verified or field-safe.
+Living in Greece scene content is practice-only and should be corrected by a Greek speaker before being treated as verified or field-safe.
