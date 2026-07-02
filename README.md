@@ -1,65 +1,56 @@
-# Καθημερινά V13.6.16 — Real Conversation Memory
+# Καθημερινά V13.6.15 — Understanding Real Greek Listening
 
-This build preserves the prior real Greek listening ladder and adds the next layer: conversation memory, where yesterday’s scene returns with a small real-life continuation.
+This build preserves the V13.6.14 daily conversation coach and adds the next layer: a slow-to-normal listening ladder for understanding more natural everyday Greek.
 
 ## What changed
 
-### 1. Real Conversation Memory on Today
-Today now includes a memory continuation card:
+### 1. Daily Conversation Coach on Today
+Today now shows a clear real-life scene such as café, supermarket, family dinner, pharmacy, directions, beach, neighbors, or conversation repair. Each scene has a goal and a five-step flow:
 
 ```text
-Remember yesterday → Continue it → Change one detail → Say it faster → Rate honestly
+Listen → Repeat → Understand → Answer → Record
 ```
 
-This is designed for the six-month speaking goal. It trains the missing muscle between memorized lines and real conversation: bringing a scene back tomorrow and continuing it naturally.
-
-### 2. Yesterday-to-today continuation
-The app looks at the most recent conversation-coach scene and gives a next natural step:
+### 2. Partner mode
+When a partner is available, the app shows the partner's lines and the learner's answer lines. The partner can rate the practice:
 
 ```text
-Yesterday: ordered coffee
-Today: ask for the bill and pay by card
+✓ Natural
+△ Understandable
+✗ Try again
 ```
 
-The same pattern works for supermarket, family dinner, pharmacy, directions, beach, neighbors, and conversation repair.
+This keeps the partner role simple and avoids turning the partner into a full-time teacher.
 
-### 3. Partner or app mode
-Conversation memory can be practiced with a partner or alone with the app:
+### 3. Practice-with-app backup
+When the partner is unavailable, the same scene can be practiced with the app. The app plays the prompt lines, shows model answers, supports recording, and lets the learner self-rate:
 
 ```text
-Partner mode: ✓ Natural · △ Clear enough · ✗ Needs repeat
-App mode: I continued clearly · I continued partly · I froze
+I said it clearly
+I said part of it
+I froze
 ```
 
-Both count toward the speaking habit.
+### 4. Guided session conversation step upgraded
+The existing partner/app daily step inside Today now uses the richer conversation-coach scene instead of a single isolated line.
 
-### 4. Weak speaking lines
-When the learner marks a conversation as “try again”, “partial”, or “I froze”, the app stores one weak line and brings it back for review. The goal is not to punish mistakes; it is to make freezing recoverable.
-
-### 5. Progress tracking
-Progress now includes a Real Conversation Memory panel showing:
-
-```text
-continuations this week
-clear/natural continuations
-repeat-needed continuations
-weak lines waiting
-```
+### 5. Weekly confidence tracking now counts conversation coach runs
+The six-month confidence panel now includes conversation coach runs this week, along with listening and partner practice.
 
 ## Preserved
 
 - `const LS='gta_v12_state'` is preserved exactly.
-- Existing SRS, scheduling, durable local progress, imports, exam content, grammar pack, forecast panel, conversation coach, listening ladder, dialogue library, and practice flows are preserved.
+- Existing SRS, scheduling, durable local progress, imports, exam content, grammar pack, forecast panel, dialogue library, and practice flows are preserved.
 - Imported official exam items remain stored locally and should survive this build.
 
 ## Release verification
 
 The final package was checked for:
 
-- App header shows `Καθημερινά V13.6.16`
-- `APP_VERSION` is `V13.6.16`
-- Service worker cache is `gta-v13-6-16-real-conversation-memory`
-- Package version is `13.6.16`
+- App header shows `Καθημερινά V13.6.15`
+- `APP_VERSION` is `V13.6.15`
+- Service worker cache is `gta-v13-6-15-real-greek-listening`
+- Package version is `13.6.15`
 - Smoke test passes
 
 ## Files
@@ -77,3 +68,26 @@ icon-512.png
 kathimerina-tile-1024.png
 .nojekyll
 ```
+
+
+## V13.6.15 listening upgrade
+
+### Understanding Real Greek
+Today now includes a listening ladder:
+
+```text
+Slow no-text → Normal no-text → Reveal Greek text → Answer → Repeat aloud
+```
+
+This is designed for the user's six-month goal: understand everyday Greek when people talk. It uses practice-only mini-scenes when no official recording is ready, and it works alongside official MP3 / TTS fallback listening items.
+
+### What did you hear?
+The learner self-rates each listening drill:
+
+```text
+I caught words
+I got the main idea
+I understood most
+```
+
+The app saves weekly listening ladder runs so the confidence dashboard has a real listening habit signal, not just card counts.
