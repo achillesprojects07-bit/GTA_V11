@@ -1,43 +1,54 @@
-# Καθημερινά V13.6.12 — Grammar Pack + Stage Forecast
+# Καθημερινά V13.6.13 — Six-Month Speaking + Listening Plan
 
-Builds on V13.6.11 (listening audio TTS fallback) and V13.6.10 (imported exam item
-visibility). This version integrates the two deliverables drafted in a separate session:
+This build preserves the V13.6.12 grammar pack and forecast baseline, then adds the next layer for Aileen’s real six-month goal: **become noticeably more confident speaking everyday Greek and understanding people when they talk**.
 
-## 1. Grammar reference pack — baked in, no import needed
-18 units now ship inside `DATA.grammar` directly (10 A1: genders, plurals, είμαι, έχω,
-both present-tense verb families, negation, questions, possessives, accusative; 8 A2:
-future με θα, past tense, object pronouns, μου αρέσει, να-clauses, imperatives,
-comparatives, δεν vs μην). They replace the two placeholder units and appear under
-Practice → Exam prep → Grammar with zero import steps.
+## What changed
 
-**Honesty flags preserved:** every unit is `verified:false, source:"practice-only"` —
-enforced programmatically during integration, per the app's golden rule. The rules are
-standard Modern Greek, but flip units to verified in Content Review only after a fluent
-reader checks the examples. [UNCERTAIN] The Greek examples were AI-drafted and are NOT
-yet human-verified.
+### 1. 60-minute target for a six-month speaking goal
+The Today time chooser now labels **60 minutes** as the best target and **45 minutes** as the minimum serious pace. Existing progress is preserved because the localStorage key remains exactly:
 
-## 2. Finish-line stage forecast
-Three new functions (`paceStats`, `stageForecastPanel`, `homeForecastLine`):
-- Progress screen: projected completion date per coverage stage, full-mastery ETA, and
-  a separate A1/A2 exam-readiness ETA — computed from the real last-14-day pace
-  (introductions/day and delayed-recall field-ready/day), with floor values and an
-  "early estimate" warning until ≥5 cards of recent history exist.
-- Today screen: a one-line "Finish line: ~N months" card linking to the full forecast.
+```js
+const LS='gta_v12_state'
+```
 
-All 12 helper functions the forecast depends on were verified present in this codebase
-before insertion; both template anchors matched exactly.
+### 2. Today now trains the missing muscles
+The guided daily session now injects daily confidence work when the session is 30 minutes or longer:
+
+- a tiny grammar step from the grammar bank,
+- a listening step from official/imported/practice listening items,
+- a speaking mission that can be done with a partner or with the app as backup.
+
+Reviews and weak items still come first, and the coverage system is preserved.
+
+### 3. Daily partner mission + app backup
+Today now shows a real-life practice card. It gives:
+
+- a short partner mission,
+- the partner line,
+- the learner’s answer,
+- a follow-up phrase,
+- a button to log partner practice,
+- a button for “Partner unavailable · Practice with app.”
+
+This keeps partner practice short and practical, without turning the partner into a daily teacher.
+
+### 4. Six-month confidence dashboard
+Today now includes a small confidence panel tracking:
+
+- selected minutes today,
+- speaking days this week,
+- listening items this week,
+- partner practices this week,
+- an honest weekly confidence score.
+
+This is not an exam score. It checks whether the learner is actually practicing listening and speaking, not only finishing cards.
+
+## Honesty rules preserved
+Generated/practice-only items stay unverified. Official/tutor-checked content remains the only path to `verified:true`.
 
 ## Release checks
-- Header + APP_VERSION: V13.6.12
-- Service-worker cache: `gta-v13-6-12-grammar-forecast` (bump forces PWA refresh)
-- Package version: 13.6.12
-- Smoke test updated and passing (`node tests/smoke-test.js`)
-- `gta_v12_state` storage key unchanged — all progress, imports, SRS survive
-- Listening audioUrl TTS fallback (V13.6.11) retained
-- Import loader retained; imported exam content in localStorage is unaffected
-
-## Still open
-- MP3s not yet live: `GTA_V11/audio/a1e_kpl_v_akoystiko.mp3` returned 404 at build time.
-  Upload both MP3s to the repo's `audio/` folder, then request the corrected
-  `verified:true` listening JSON.
-- Grammar examples await human verification (see above).
+- App header shows `Καθημερινά V13.6.13`
+- `APP_VERSION` is `V13.6.13`
+- Service worker cache is `gta-v13-6-13-six-month-plan`
+- Package version is `13.6.13`
+- Smoke test passes after extracting the final zip
