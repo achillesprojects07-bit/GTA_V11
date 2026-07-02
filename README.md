@@ -1,30 +1,29 @@
-# Καθημερινά V13.6.18 — Living in Greece Mode
+# Καθημερινά V13.6.19 — Confidence Engine Dashboard
 
-V13.6.18 adds a daily-life scene layer for the user's six-month speaking/listening goal.
+V13.6.19 adds the weekly Confidence Engine for the six-month speaking/listening goal.
 
 ## What changed
 
-- Adds Living in Greece Mode on Today.
-- Adds real-life scene practice for home, family, supermarket, bakery, pharmacy, taxi, neighbors, doctor, beach, and conversation repair.
-- Each scene includes context, the other person's line, the user's answer, a follow-up, focus words, and a repair phrase.
-- Adds partner practice and app-alone backup for every life scene.
-- Adds a Living in Greece scene library in Practice and More.
-- Adds progress tracking for places touched, partner/app practice, and weak life-scene lines.
+- Adds a 6-month confidence dashboard on Today.
+- Adds a Confidence Engine panel on Progress.
+- Tracks weekly speaking reps, listening reps, partner practice, app-alone practice, grammar used aloud, real-world Greek moments, and freeze/try-again signals.
+- Adds quick manual logging when practice happens outside the built-in app flow.
+- Adds a Practice shortcut for the confidence dashboard.
+- Keeps Conversation Coach, Understanding Real Greek, Conversation Memory, A2 Grammar Gap Repair, and Living in Greece Mode intact.
 
 ## Preserved
 
 - `const LS='gta_v12_state'` is unchanged.
-- Existing progress, imported exam items, conversation logs, listening ladder, conversation memory, and A2 grammar-gap logs remain on the same storage key.
-- Daily Conversation Coach, Understanding Real Greek, Real Conversation Memory, and A2 Grammar Gap Repair remain intact.
+- Existing progress, imported exam items, conversation logs, listening ladder, conversation memory, A2 grammar-gap logs, and Living in Greece logs remain on the same storage key.
 
 ## Verification
 
-- App header shows `Καθημερινά V13.6.18`.
-- `APP_VERSION` is `V13.6.18`.
-- Service-worker cache is `gta-v13-6-18-living-in-greece-mode`.
-- Package version is `13.6.18`.
-- Smoke test checks syntax and required Living in Greece Mode functions.
+- App header shows `Καθημερινά V13.6.19`.
+- `APP_VERSION` is `V13.6.19`.
+- Service-worker cache is `gta-v13-6-19-confidence-dashboard`.
+- Package version is `13.6.19`.
+- Smoke test checks syntax and required Confidence Engine functions.
 
 ## Personal-use note
 
-Living in Greece scene content is practice-only and should be corrected by a Greek speaker before being treated as verified or field-safe.
+The Confidence Engine is a coaching signal, not a CEFR certificate. Official papers and human feedback still calibrate exam readiness and natural spoken Greek.
