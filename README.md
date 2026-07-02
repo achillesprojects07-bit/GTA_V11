@@ -1,15 +1,14 @@
-# Καθημερινά V13.6.8 — Learning Path Flow Repair
+# Καθημερινά V13.6.9 — Verified Exam Import Loader Repair
 
 Release-lock verified build.
 
-- Visible app header shows V13.6.8
-- APP_VERSION is V13.6.8
-- Service-worker cache is gta-v13-6-8-learning-path-flow
-- Package version is 13.6.8
-- Practice tab is now clearly optional browsing, separate from Today’s guided session
-- Practice mode buttons start immediately instead of only selecting a mode
-- Due reviews and category browsing no longer throw the learner into an unrelated page
-- Every main Practice button either opens a clear list or starts a clear activity
-- Today remains the guided path: one task, then Next
-
-Use this build when testing whether the learner always knows what to do next.
+- Visible app header shows V13.6.9
+- APP_VERSION is V13.6.9
+- Service-worker cache is gta-v13-6-9-exam-loader-repair
+- Package version is 13.6.9
+- Practice now has a visible Exam prep / import button
+- More now has a visible Open exam import loader button
+- The loader accepts the cleaned official exam JSON schema and saves it to state.examContent
+- Import validation rejects empty or malformed JSON safely
+- Imported exam items appear under Four skills in Exam Prep
+- Today’s guided session and SRS math are unchanged
