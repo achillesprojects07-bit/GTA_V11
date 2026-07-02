@@ -6,8 +6,8 @@ const readme=fs.readFileSync('README.md','utf8');
 const pkg=fs.readFileSync('package.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V13.6.10</span></div>',
-  "const APP_VERSION='V13.6.10'",
+  '<div class="title">Καθημερινά <span class="versionMini">V13.6.12</span></div>',
+  "const APP_VERSION='V13.6.12'",
   "const LS='gta_v12_state'",
   'function buildItems',
   'function nextDueDate',
@@ -58,14 +58,14 @@ const required=[
   'function phraseOfDayPanel',
   'return [5,15,30,45,60].includes(v)?v:15',
   '[5,15,30,45,60].map',
-  "gta-v13-6-10-imported-exam-visibility"
+  "gta-v13-6-12-grammar-forecast"
 ];
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x));
 if(missing.length){console.error('Missing:',missing.join(', '));process.exit(1)}
 if(!manifest.includes('Καθημερινά')){console.error('Manifest app name missing');process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v13-6-10-imported-exam-visibility'")){console.error('Service worker cache mismatch');process.exit(1)}
-if(!readme.includes('# Καθημερινά V13.6.10 — Imported Exam Item Visibility Fix')){console.error('README heading mismatch');process.exit(1)}
-if(!pkg.includes('"version":"13.6.10"')){console.error('Package version mismatch');process.exit(1)}
+if(!sw.includes("const CACHE_NAME='gta-v13-6-12-grammar-forecast'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V13.6.12 — Grammar Pack + Stage Forecast')){console.error('README heading mismatch');process.exit(1)}
+if(!pkg.includes('"version":"13.6.12"')){console.error('Package version mismatch');process.exit(1)}
 if(html.includes('V13.6.9')||html.includes('gta-v13-6-9')||html.includes('V13.6.8')||html.includes('gta-v13-6-8')||html.includes('V13.6.7')||html.includes('gta-v13-6-7')||html.includes('session state lock')||html.includes('V13.6.6')||html.includes('gta-v13-6-6')){console.error('Old version labels remain in app files');process.exit(1)}
 if(html.includes('Pick one card mode')||html.includes('renderModeStart()">${labelMode(m)}')||html.includes('Start Recognize')||html.includes('Start Recall')||html.includes('Start Speak')||html.includes('Start Converse')){console.error('Old dead-end card mode UX remains');process.exit(1)}
 if(html.includes('Practice partner roleplay')||html.includes('Suggested path, not a gate')||html.includes('One practice room, four depths')){console.error('Confusing Practice copy remains');process.exit(1)}
@@ -96,4 +96,4 @@ for (const requiredSessionCopy of ['Today includes:','New phrase','Learn this to
 }
 if(!script.includes('function guidedSessionIsLocked')||!script.includes('guidedSessionIsLocked(s)')){console.error('Guided session state lock helper missing');process.exit(1)}
 if(script.includes('s.started=false;save();renderHome()')){console.error('Task screen can still reset to Start mid-session');process.exit(1)}
-console.log('GTA V13.6.10 Καθημερινά imported-exam-visibility smoke test passed.');
+console.log('GTA V13.6.12 Καθημερινά grammar+forecast smoke test passed.');
