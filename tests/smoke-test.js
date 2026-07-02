@@ -6,8 +6,8 @@ const readme=fs.readFileSync('README.md','utf8');
 const pkg=fs.readFileSync('package.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V13.6.9</span></div>',
-  "const APP_VERSION='V13.6.9'",
+  '<div class="title">Καθημερινά <span class="versionMini">V13.6.10</span></div>',
+  "const APP_VERSION='V13.6.10'",
   "const LS='gta_v12_state'",
   'function buildItems',
   'function nextDueDate',
@@ -46,6 +46,11 @@ const required=[
   'dlg_w1_25','dlg_w2_25','dlg_w3_25','dlg_w4_20','dlg_w5_15',
   'function examImportPanel',
   'function importExamContentJson',
+  'function examStaticIsPlaceholder',
+  'function importedExamCount',
+  'officialImported',
+  'imported official item',
+  'Placeholder cards hide when imported exam content exists',
   'Import verified exam content',
   'Paste official exam JSON here.',
   'Exam prep / import',
@@ -53,15 +58,15 @@ const required=[
   'function phraseOfDayPanel',
   'return [5,15,30,45,60].includes(v)?v:15',
   '[5,15,30,45,60].map',
-  "gta-v13-6-9-exam-loader-repair"
+  "gta-v13-6-10-imported-exam-visibility"
 ];
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x));
 if(missing.length){console.error('Missing:',missing.join(', '));process.exit(1)}
 if(!manifest.includes('Καθημερινά')){console.error('Manifest app name missing');process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v13-6-9-exam-loader-repair'")){console.error('Service worker cache mismatch');process.exit(1)}
-if(!readme.includes('# Καθημερινά V13.6.9 — Verified Exam Import Loader Repair')){console.error('README heading mismatch');process.exit(1)}
-if(!pkg.includes('"version":"13.6.9"')){console.error('Package version mismatch');process.exit(1)}
-if(html.includes('V13.6.8')||html.includes('gta-v13-6-8')||html.includes('V13.6.7')||html.includes('gta-v13-6-7')||html.includes('session state lock')||html.includes('V13.6.6')||html.includes('gta-v13-6-6')){console.error('Old version labels remain in app files');process.exit(1)}
+if(!sw.includes("const CACHE_NAME='gta-v13-6-10-imported-exam-visibility'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V13.6.10 — Imported Exam Item Visibility Fix')){console.error('README heading mismatch');process.exit(1)}
+if(!pkg.includes('"version":"13.6.10"')){console.error('Package version mismatch');process.exit(1)}
+if(html.includes('V13.6.9')||html.includes('gta-v13-6-9')||html.includes('V13.6.8')||html.includes('gta-v13-6-8')||html.includes('V13.6.7')||html.includes('gta-v13-6-7')||html.includes('session state lock')||html.includes('V13.6.6')||html.includes('gta-v13-6-6')){console.error('Old version labels remain in app files');process.exit(1)}
 if(html.includes('Pick one card mode')||html.includes('renderModeStart()">${labelMode(m)}')||html.includes('Start Recognize')||html.includes('Start Recall')||html.includes('Start Speak')||html.includes('Start Converse')){console.error('Old dead-end card mode UX remains');process.exit(1)}
 if(html.includes('Practice partner roleplay')||html.includes('Suggested path, not a gate')||html.includes('One practice room, four depths')){console.error('Confusing Practice copy remains');process.exit(1)}
 if(html.includes('onclick="startDue()">Due reviews')){console.error('Practice due reviews still calls home-oriented startDue');process.exit(1)}
@@ -69,8 +74,8 @@ const script=html.split('<script>')[1]?.split('</script>')[0]||'';
 const practiceChunk=script.match(/function renderPractice\(\)[\s\S]*?function labelMode/);
 if(!practiceChunk){console.error('renderPractice chunk not found');process.exit(1)}
 if(practiceChunk[0].includes('onclick="renderCategoryBrowser()">Browse categories')){console.error('Practice category button still routes to More category browser');process.exit(1)}
-fs.writeFileSync('/tmp/kathimerina-v1368.js',script);
-require('child_process').execFileSync(process.execPath,['--check','/tmp/kathimerina-v1368.js'],{stdio:'inherit'});
+fs.writeFileSync('/tmp/kathimerina-v13610.js',script);
+require('child_process').execFileSync(process.execPath,['--check','/tmp/kathimerina-v13610.js'],{stdio:'inherit'});
 const dlgIds=[...html.matchAll(/id:'(dlg_[^']+)'/g)].map(m=>m[1]);
 if(new Set(dlgIds).size!==dlgIds.length){console.error('Duplicate dialogue ids found');process.exit(1)}
 if((html.match(/id:'dlg_w1_/g)||[]).length!==25){console.error('Wave 1 count mismatch');process.exit(1)}
@@ -91,4 +96,4 @@ for (const requiredSessionCopy of ['Today includes:','New phrase','Learn this to
 }
 if(!script.includes('function guidedSessionIsLocked')||!script.includes('guidedSessionIsLocked(s)')){console.error('Guided session state lock helper missing');process.exit(1)}
 if(script.includes('s.started=false;save();renderHome()')){console.error('Task screen can still reset to Start mid-session');process.exit(1)}
-console.log('GTA V13.6.9 Καθημερινά exam-loader-repair smoke test passed.');
+console.log('GTA V13.6.10 Καθημερινά imported-exam-visibility smoke test passed.');
