@@ -1,6 +1,6 @@
-# Καθημερινά V13.6.14 — Daily Conversation Coach + Partner/App Practice
+# Καθημερινά V13.6.15 — Understanding Real Greek Listening
 
-This build preserves the V13.6.13 six-month speaking/listening foundation and adds the next layer: a guided daily conversation coach that can be done with a partner or alone with the app.
+This build preserves the V13.6.14 daily conversation coach and adds the next layer: a slow-to-normal listening ladder for understanding more natural everyday Greek.
 
 ## What changed
 
@@ -47,10 +47,10 @@ The six-month confidence panel now includes conversation coach runs this week, a
 
 The final package was checked for:
 
-- App header shows `Καθημερινά V13.6.14`
-- `APP_VERSION` is `V13.6.14`
-- Service worker cache is `gta-v13-6-14-conversation-coach`
-- Package version is `13.6.14`
+- App header shows `Καθημερινά V13.6.15`
+- `APP_VERSION` is `V13.6.15`
+- Service worker cache is `gta-v13-6-15-real-greek-listening`
+- Package version is `13.6.15`
 - Smoke test passes
 
 ## Files
@@ -68,3 +68,26 @@ icon-512.png
 kathimerina-tile-1024.png
 .nojekyll
 ```
+
+
+## V13.6.15 listening upgrade
+
+### Understanding Real Greek
+Today now includes a listening ladder:
+
+```text
+Slow no-text → Normal no-text → Reveal Greek text → Answer → Repeat aloud
+```
+
+This is designed for the user's six-month goal: understand everyday Greek when people talk. It uses practice-only mini-scenes when no official recording is ready, and it works alongside official MP3 / TTS fallback listening items.
+
+### What did you hear?
+The learner self-rates each listening drill:
+
+```text
+I caught words
+I got the main idea
+I understood most
+```
+
+The app saves weekly listening ladder runs so the confidence dashboard has a real listening habit signal, not just card counts.
