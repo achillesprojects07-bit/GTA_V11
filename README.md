@@ -1,6 +1,6 @@
-# Καθημερινά V13.6.21 — Daily Reading Step
+# Καθημερινά V13.6.22 — Clear Progressive Learning Path
 
-V13.6.21 completes the final confidence-flow bundle by adding a daily reading step alongside the lowered gates and Listen First library mode from V13.6.20.
+V13.6.22 completes the final confidence-flow bundle by adding a daily reading step alongside the lowered gates and Listen First library mode from V13.6.20.
 
 ## What changed
 
@@ -21,12 +21,32 @@ V13.6.21 completes the final confidence-flow bundle by adding a daily reading st
 
 ## Verification
 
-- App header shows `Καθημερινά V13.6.21`.
-- `APP_VERSION` is `V13.6.21`.
-- Service-worker cache is `gta-v13-6-21-daily-reading-step`.
-- Package version is `13.6.21`.
+- App header shows `Καθημερινά V13.6.22`.
+- `APP_VERSION` is `V13.6.22`.
+- Service-worker cache is `gta-v13-6-22-clear-progressive-path`.
+- Package version is `13.6.22`.
 - Smoke test checks syntax, daily reading picker, guided reading renderer, lowered confidence gate, Listen First mode, dedupe, and confidence-minimum checklist.
 
 ## Personal-use note
 
 The final confidence bundle is now complete: listening daily, speaking daily, grammar daily, reading daily, Listen First library, short-session confidence gate, and the Today confidence-minimum checklist.
+
+
+## V13.6.22 focus
+
+This build makes Today the single required daily workflow:
+
+1. Open app
+2. Today
+3. Choose 20 / 30 / 45 / 60 minutes
+4. Tap **Start Today’s Path**
+5. Follow the numbered steps until completion
+
+The path is always ordered as: Review → Weak Spots → Tiny New Step → Listen → Speak → Read → Conversation. The amount scales by selected minutes: 20 minutes is maintenance, 30 minutes is the minimum serious path, 45 minutes is strong progress, and 60 minutes is the best six-month path.
+
+## Verification
+
+- App header shows `Καθημερινά V13.6.22`
+- APP_VERSION is `V13.6.22`
+- Service worker cache is `gta-v13-6-22-clear-progressive-path`
+- Storage key remains `gta_v12_state`
