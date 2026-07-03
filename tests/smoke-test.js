@@ -7,8 +7,8 @@ const readme=fs.readFileSync('README.md','utf8');
 const pkg=fs.readFileSync('package.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V13.6.25</span></div>',
-  "const APP_VERSION='V13.6.25'",
+  '<div class="title">Καθημερινά <span class="versionMini">V13.6.26</span></div>',
+  "const APP_VERSION='V13.6.26'",
   "const LS='gta_v12_state'",
   'function renderHome',
   'function pauseAdaptiveSession',
@@ -41,15 +41,15 @@ const required=[
   'function gradeGuidedReading',
   "if(minChoice>=15&&g)",
   "let seen=new Set(),out=[]",
-  'gta-v13-6-25-today-reset-focus'
+  'gta-v13-6-26-path-ring-ux'
 ];
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x));
 if(missing.length){console.error('Missing:',missing.join(' | '));process.exit(1)}
 if(!manifest.includes('Καθημερινά')){console.error('Manifest app name missing');process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v13-6-25-today-reset-focus'")){console.error('Service worker cache mismatch');process.exit(1)}
-if(!readme.includes('# Καθημερινά V13.6.25 — Today Reset + Session Focus')){console.error('README heading mismatch');process.exit(1)}
-if(!readme.includes('App header shows `Καθημερινά V13.6.25`')){console.error('README verification mismatch');process.exit(1)}
-if(!pkg.includes('"version":"13.6.25"')){console.error('Package version mismatch');process.exit(1)}
+if(!sw.includes("const CACHE_NAME='gta-v13-6-26-path-ring-ux'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V13.6.26 — Today Reset + Session Focus')){console.error('README heading mismatch');process.exit(1)}
+if(!readme.includes('App header shows `Καθημερινά V13.6.26`')){console.error('README verification mismatch');process.exit(1)}
+if(!pkg.includes('"version":"13.6.26"')){console.error('Package version mismatch');process.exit(1)}
 const forbidden=['V13.6.24</span>',"APP_VERSION='V13.6.24'",'gta-v13-6-24-practice-only-daily-path','ONE BUTTON PATH ACTIVE','V13.6.22</span>','V13.6.21</span>'];
 const bad=forbidden.filter(x=>html.includes(x)||sw.includes(x)||pkg.includes(x));
 if(bad.length){console.error('Old active labels remain:',bad.join(', '));process.exit(1)}
@@ -68,4 +68,4 @@ if(!html.includes('${confidenceDashboardPanel()}${progressivePathMapCard()}${con
 const script=html.split('<script>')[1].split('</script>')[0];
 fs.writeFileSync('/tmp/kathimerina-v13625.js',script);
 try{execSync('node --check /tmp/kathimerina-v13625.js',{stdio:'pipe'})}catch(e){console.error('SYNTAX ERROR:\n'+e.stderr.toString().slice(0,800));process.exit(1)}
-console.log('GTA V13.6.25 Καθημερινά Today Reset + Session Focus smoke test passed.');
+console.log('GTA V13.6.26 Καθημερινά Today Reset + Session Focus smoke test passed.');
