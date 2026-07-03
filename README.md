@@ -2,7 +2,7 @@
 
 V13.6.27 is a UX-only release: no learning logic, SRS math, or content changed. It makes Today a launchpad, turns active sessions into a one-card focus mode, and adds a "How to do this step" example to every guided task so you never guess what to do.
 
-## What changed
+## What  changed
 
 - **Session focus mode:** while a session is active, Today shows ONLY a sticky progress bar ("Step X of Y · ~N min left"), the current task card, and Skip / Pause. Nothing else renders. Completing a step auto-advances.
 - **Pause / resume:** Pause saves your exact place; Today then shows "Continue Today's Path" and resumes at the same step. Unfinished steps are never lost.
