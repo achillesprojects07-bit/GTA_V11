@@ -1,6 +1,6 @@
-# Καθημερινά V13.6.26 — Today Reset + Session Focus
+# Καθημερινά V13.6.27 — Today Reset + Session Focus
 
-V13.6.26 is a UX-only release: no learning logic, SRS math, or content changed. It makes Today a launchpad, turns active sessions into a one-card focus mode, and adds a "How to do this step" example to every guided task so you never guess what to do.
+V13.6.27 is a UX-only release: no learning logic, SRS math, or content changed. It makes Today a launchpad, turns active sessions into a one-card focus mode, and adds a "How to do this step" example to every guided task so you never guess what to do.
 
 ## What changed
 
@@ -20,8 +20,8 @@ V13.6.26 is a UX-only release: no learning logic, SRS math, or content changed. 
 
 ## Verification
 
-- App header shows `Καθημερινά V13.6.26`.
-- `APP_VERSION` is `V13.6.26`.
+- App header shows `Καθημερινά V13.6.27`.
+- `APP_VERSION` is `V13.6.27`.
 - Service-worker cache is `gta-v13-6-25-today-reset-focus`.
 - Package version is `13.6.25`.
 - Smoke test checks: version chain, focus-mode acceptance (renderHome free of dashboard calls), how-to layer present in guidedTaskHeader, forecast guard, relocations in Practice/Progress, script syntax via node --check.
@@ -34,8 +34,8 @@ V13.6.26 is a UX-only release: no learning logic, SRS math, or content changed. 
 4. Tap Pause → back to minimal home with "Continue Today's Path"; Continue resumes the same step.
 5. Progress tab shows the stage map and dashboards; Practice tab shows Coach/Ladder/Memory/Scenes/Capture.
 
-## V13.6.26 — Path Ring UX Polish (this build)
-Adds a professional UX pass over V13.6.26's structure, targeting motivation, clarity,
+## V13.6.27 — Path Ring UX Polish (this build)
+Adds a professional UX pass over V13.6.27's structure, targeting motivation, clarity,
 daily progress visibility, and a target completion date:
 
 1. **Path Ring on Today** — the app's new signature. One SVG ring: outer arc = % of all
@@ -55,3 +55,6 @@ daily progress visibility, and a target completion date:
 6. **Design tokens** — card borders, tabular numerals, focus-visible outlines, tighter
    eyebrow labels, olive reserved exclusively for progress meaning, reduced-motion
    respected on the ring animation.
+
+## V13.6.27 — Reading advance fix
+CRITICAL: guided reading step graded but never advanced — it called advanceAdaptiveAfterComplete(), a function that was never defined, throwing a ReferenceError before the screen could repaint. Now ends like the working listening grader: renderHome() + scrollToGuidedTask(). Smoke test hardened with a regression guard so this class of bug (grader calling an undefined advance function) fails the build in future.
