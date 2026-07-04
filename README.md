@@ -1,6 +1,6 @@
-# Καθημερινά V13.6.40 — Review Buttons Direct Fix
+# Καθημερινά V13.6.41 — Review Weak Spots Fallback Fix
 
-V13.6.40 fixes the confusing post-session review flow. Review weak spots, Due reviews, and extra practice modes now open directly into the task/card screen instead of leaving the learner at the top of the Extra Practice menu.
+V13.6.41 fixes the empty Review weak spots / Due reviews bug. Review buttons now open a guarded direct review card and fall back to due or unmastered cards instead of showing a blank area.
 
 Important fixes:
 - Review weak spots starts a real recall loop immediately.
