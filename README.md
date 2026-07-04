@@ -1,13 +1,12 @@
-# Καθημερινά V13.6.39 — User-Only Recording Guard
+# Καθημερινά V13.6.40 — Review Buttons Direct Fix
 
-V13.6.39 fixes the recording overlap problem in guided dialogue and rehearsal practice. The app now stops all model/dialogue audio before opening the microphone so the saved recording should contain only the learner's voice.
+V13.6.40 fixes the confusing post-session review flow. Review weak spots, Due reviews, and extra practice modes now open directly into the task/card screen instead of leaving the learner at the top of the Extra Practice menu.
 
-## New in this build
-- Recording now cancels Greek model audio and full-conversation playback before the microphone  starts.
-- If a recording is active, **Hear model** is blocked until recording stops.
-- After recording, the app no longer automatically plays the model Greek over/after the learner recording.
-- Learner chooses playback, Hear model, Save only, Save + next, Next without saving, or Delete + redo.
-- Keeps V13.6.38 guided turn flow, V13.6.37 hard sounds, Tap-to-Translate, Save-to-Review, and recording save/delete behavior.
+Important fixes:
+- Review weak spots starts a real recall loop immediately.
+- Due reviews opens the due cards immediately.
+- Extra practice modes replace the page with the active task so there is no hidden second step below the menu.
+- Practice sessions include clear buttons to return to Extra Practice or Today.
+- Preserves V13.6.39 user-only recording guard and all hard sound drills.
 
-## Note
-For the cleanest recording, use the deployed HTTPS site or installed PWA. Local `file://` testing can behave differently with microphone permissions.
+Upload the extracted files to the repository root.
