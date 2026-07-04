@@ -6,7 +6,7 @@ V13.6.32 keeps offline **Tap-to-Translate**, but fixes the UX: the translation c
 
 - Tap Greek phrases, dialogue lines, guided-session lines, survival cards, listening ladder reveal text, grammar examples, and phrase-of-the-day lines to show English near the tapped text.
 - Tap English card prompts to show Greek where the app has a saved pair.
-- Highlight any phrase or sentence and the app shows the translation beside the selected text where possible.
+- Highlight any phrase or sentence and the app shows the translation beside the selected text where  possible.
 - Works offline from the app’s stored phrase pairs; it does not call online translation.
 - Practice-only or unreviewed content is clearly marked in the translation card.
 - **Save to review** saves an existing card when matched, or creates a practice-only custom phrase when it is a new pair.
