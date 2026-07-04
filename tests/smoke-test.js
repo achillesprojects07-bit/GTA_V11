@@ -7,8 +7,8 @@ const readme=fs.readFileSync('README.md','utf8');
 const pkg=fs.readFileSync('package.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V13.6.41</span></div>',
-  "const APP_VERSION='V13.6.41'",
+  '<div class="title">Καθημερινά <span class="versionMini">V13.6.42</span></div>',
+  "const APP_VERSION='V13.6.42'",
   "const LS='gta_v12_state'",
   'function renderHome',
   'function renderGuidedDialogueTask',
@@ -32,18 +32,23 @@ const required=[
   'function saveTranslationMatch',
   'async function saveRecordingClip',
   'async function deleteRecordingClip',
-  'gta-v13-6-41-review-weakspots-fallback'
+  'gta-v13-6-42-weakspots-queue-visible',
+  'const DIRECT_REVIEW_BATCH=12',
+  'showing ${from}–${to} of ${total}',
+  'Continue next',
+  'Review all ${total}',
+  'Every item you marked “Need practice” stays in this queue'
 ];
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x));
 if(missing.length){console.error('Missing:',missing.join(' | '));process.exit(1)}
 if(!manifest.includes('Καθημερινά')){console.error('Manifest app name missing');process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v13-6-41-review-weakspots-fallback'")){console.error('Service worker cache mismatch');process.exit(1)}
-if(!readme.includes('# Καθημερινά V13.6.41 — Review Weak Spots Fallback Fix')){console.error('README heading mismatch');process.exit(1)}
-if(!pkg.includes('"version":"13.6.41"')){console.error('Package version mismatch');process.exit(1)}
+if(!sw.includes("const CACHE_NAME='gta-v13-6-42-weakspots-queue-visible'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V13.6.42 — Weak Spots Queue Visibility Fix')){console.error('README heading mismatch');process.exit(1)}
+if(!pkg.includes('"version":"13.6.42"')){console.error('Package version mismatch');process.exit(1)}
 const forbidden=['V13.6.38</span>',"APP_VERSION='V13.6.38'",'gta-v13-6-38-guided-turns-repair'];
 const bad=forbidden.filter(x=>html.includes(x)||sw.includes(x)||pkg.includes(x));
 if(bad.length){console.error('Old active labels remain:',bad.join(', '));process.exit(1)}
 const script=html.split('<script>')[1].split('</script>')[0];
 fs.writeFileSync('/tmp/kathimerina-v13639.js',script);
 try{execSync('node --check /tmp/kathimerina-v13639.js',{stdio:'pipe'})}catch(e){console.error('SYNTAX ERROR:\n'+e.stderr.toString().slice(0,1000));process.exit(1)}
-console.log('GTA V13.6.41 Review Weak Spots Fallback Fix smoke test passed.');
+console.log('GTA V13.6.42 Weak Spots Queue Visibility Fix smoke test passed.');
