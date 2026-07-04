@@ -1,8 +1,8 @@
-# Καθημερινά V13.6.27 — Today Reset + Session Focus
+# Καθημερινά V13.6.28 — Today Reset + Session Focus
 
-V13.6.27 is a UX-only release: no learning logic, SRS math, or content changed. It makes Today a launchpad, turns active sessions into a one-card focus mode, and adds a "How to do this step" example to every guided task so you never guess what to do.
+V13.6.28 is a UX-only release: no learning logic, SRS math, or content changed. It makes Today a launchpad, turns active sessions into a one-card focus mode, and adds a "How to do this step" example to every guided task so you never guess what to do.
 
-## What  changed
+## What changed
 
 - **Session focus mode:** while a session is active, Today shows ONLY a sticky progress bar ("Step X of Y · ~N min left"), the current task card, and Skip / Pause. Nothing else renders. Completing a step auto-advances.
 - **Pause / resume:** Pause saves your exact place; Today then shows "Continue Today's Path" and resumes at the same step. Unfinished steps are never lost.
@@ -20,8 +20,8 @@ V13.6.27 is a UX-only release: no learning logic, SRS math, or content changed. 
 
 ## Verification
 
-- App header shows `Καθημερινά V13.6.27`.
-- `APP_VERSION` is `V13.6.27`.
+- App header shows `Καθημερινά V13.6.28`.
+- `APP_VERSION` is `V13.6.28`.
 - Service-worker cache is `gta-v13-6-25-today-reset-focus`.
 - Package version is `13.6.25`.
 - Smoke test checks: version chain, focus-mode acceptance (renderHome free of dashboard calls), how-to layer present in guidedTaskHeader, forecast guard, relocations in Practice/Progress, script syntax via node --check.
@@ -34,27 +34,18 @@ V13.6.27 is a UX-only release: no learning logic, SRS math, or content changed. 
 4. Tap Pause → back to minimal home with "Continue Today's Path"; Continue resumes the same step.
 5. Progress tab shows the stage map and dashboards; Practice tab shows Coach/Ladder/Memory/Scenes/Capture.
 
-## V13.6.27 — Path Ring UX Polish (this build)
-Adds a professional UX pass over V13.6.27's structure, targeting motivation, clarity,
-daily progress visibility, and a target completion date:
+## V13.6.28 — Two-Voice Dialogue Casting
+Dialogue audio now casts two distinct Greek voices instead of one continuous voice:
+- **Nikos** (enhanced) speaks the "them" turns; **Melina** speaks the "you" turns.
+- Voice matching is by prefix + Greek language (matches "Nikos", "Nikos (Enhanced)", etc.),
+  so it works regardless of the exact string Safari reports. Prefers enhanced variants.
+- **Graceful fallback:** if only one Greek voice is available, speakers are distinguished by
+  pitch (them lower, you higher) instead — never collapses silently.
+- Inter-turn pause lengthened 900ms → 1150ms so speaker changes are clearly audible,
+  addressing the "sounds like one continuous person" problem.
+- Applies to dialogue practice and rehearsal. Does NOT apply to the single-blob generated
+  listening items (no speaker structure to cast).
 
-1. **Path Ring on Today** — the app's new signature. One SVG ring: outer arc = % of all
-   1,914 cards introduced, inner arc = % truly field-ready, center = Day N of ~180.
-   Beside it: introduced count, field-ready count, streak, and a target line — your
-   milestone date with days left and required cards/day if set, otherwise a pace-based
-   finish estimate (after 14 days of history), otherwise a prompt to set one in More.
-2. **Journey summary on Progress** — the same numbers as a slim bar at the very top of
-   Progress, so % completion of all content is the first thing the page says.
-3. **Decluttered Progress** — the stable-launch checklist and build-integrity panels
-   (release QA, not learning) no longer render on Progress; they remain in More.
-4. **Schedule bug fixed** — overdue cards now fold into today's row of the 7-day review
-   schedule, so "19 due now" can never again sit beside an all-zero table.
-5. **Copy fixes** — duplicate "Step X of Y" removed from the task card (the sticky bar
-   keeps it); the grammar step's developer-changelog subtitle replaced with a human
-   instruction; empty confidence stats now say what makes them move.
-6. **Design tokens** — card borders, tabular numerals, focus-visible outlines, tighter
-   eyebrow labels, olive reserved exclusively for progress meaning, reduced-motion
-   respected on the ring animation.
-
-## V13.6.27 — Reading advance fix
-CRITICAL: guided reading step graded but never advanced — it called advanceAdaptiveAfterComplete(), a function that was never defined, throwing a ReferenceError before the screen could repaint. Now ends like the working listening grader: renderHome() + scrollToGuidedTask(). Smoke test hardened with a regression guard so this class of bug (grader calling an undefined advance function) fails the build in future.
+[UNCERTAIN] Voice selection depends on iOS Safari exposing both Melina and Nikos to the web
+speechSynthesis API. Confirmed working on-device via voice-check.html before this build, but
+verify the two voices actually alternate on your phone after deploying.
