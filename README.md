@@ -1,19 +1,13 @@
-# Καθημερινά V13.6.36 — Alphabet Sound Drill
+# Καθημερινά V13.6.37 — Hard Letters + Diphthongs
 
-V13.6.36 adds an **Alphabet + diphthong sounds** drill inside Extra Practice. It includes individual Greek letters, key vowel combinations, common sound combinations, and a special **γαύρος / αυ / γ** focus drill.
+V13.6.37 expands **Extra Practice → Alphabet + hard sounds** with a stronger pronunciation bank for the sounds that are hardest for English speakers: γ, χ, θ, δ, ρ, αυ/ευ, αι/ει/οι/ου, μπ/ντ/γκ, ξ/ψ, τσ/τζ, and the special **γαύρος** pattern.
 
-## Added
+## New in this build
+- New **Hardest first** tab.
+- Separate **Diphthongs** and **Hard combos** tabs.
+- More example words per hard sound.
+- More γαύρος / γ / αυ contrast practice.
+- Keeps record + check, accept/redo, playback, save, delete, and record again.
 
-- Extra Practice → Alphabet + diphthong sounds
-- Individual letter sound cards with examples
-- Diphthong / sound-combination cards: αι, ει, οι, ου, αυ, ευ, μπ, ντ, γκ/γγ, τσ, τζ
-- Special Gavros focus: γαύρος = roughly GHAV-ros
-- Record + check using browser Greek speech recognition when available
-- Accept / redo feedback based on what the browser heard
-- Recording playback, save, delete, and record again
-
-## Important note
-
-The accept/reject feature is best-effort. It checks whether the browser recognized the target Greek. It does not replace a Greek teacher or native speaker for true pronunciation scoring.
-
-Preserves the V13.6.35 Save-to-Review behavior, V13.6.34 dialogue rehearsal flow, and V13.6.32 tap-to-translate UX.
+## Accuracy note
+This pronunciation drill is practice-only. Browser speech recognition can accept/reject only by what it thinks it heard in Greek. Use it as repetition feedback, not as a replacement for a tutor/native speaker.
