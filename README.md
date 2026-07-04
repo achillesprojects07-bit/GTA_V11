@@ -1,30 +1,19 @@
-# Καθημερινά V13.6.35 — Save-to-Review Fix
+# Καθημερινά V13.6.36 — Alphabet Sound Drill
 
-V13.6.35 fixes the Tap-to-Translate **Save to review** button so the learner gets visible feedback and the phrase is actually scheduled as a due review.
+V13.6.36 adds an **Alphabet + diphthong sounds** drill inside Extra Practice. It includes individual Greek letters, key vowel combinations, common sound combinations, and a special **γαύρος / αυ / γ** focus drill.
 
-## What changed
+## Added
 
-- **Save to review now works visibly.** The button changes to **✓ Saved** after it saves.
-- Saved phrase pairs are added to review and scheduled as **due now**, so they can appear in Due reviews and Today.
-- Existing cards are reused instead of creating unnecessary duplicates.
-- If the tapped translation is not already a card, it is saved as a custom practice phrase and stays flagged as unreviewed/practice-only.
-- Copy and Save buttons now stop event bubbling so tapping them does not accidentally retrigger the translation popover.
+- Extra Practice → Alphabet + diphthong sounds
+- Individual letter sound cards with examples
+- Diphthong / sound-combination cards: αι, ει, οι, ου, αυ, ευ, μπ, ντ, γκ/γγ, τσ, τζ
+- Special Gavros focus: γαύρος = roughly GHAV-ros
+- Record + check using browser Greek speech recognition when available
+- Accept / redo feedback based on what the browser heard
+- Recording playback, save, delete, and record again
 
-## Preserved
+## Important note
 
-- `const LS='gta_v12_state'` unchanged. Existing progress/imports remain.
-- No SRS math changed.
-- No official content was generated or marked verified.
-- All V13.6.34 functionality is preserved: direct dialogue practice, rehearsal controls, near-phrase Tap-to-Translate, record playback, save/delete recording, and IndexedDB storage.
+The accept/reject feature is best-effort. It checks whether the browser recognized the target Greek. It does not replace a Greek teacher or native speaker for true pronunciation scoring.
 
-## Upload
-
-Upload the extracted files to the GitHub repo root, especially:
-
-- `index.html`
-- `service-worker.js`
-- `README.md`
-- `package.json`
-- `manifest.json`
-- `tests/smoke-test.js`
-- `.nojekyll`
+Preserves the V13.6.35 Save-to-Review behavior, V13.6.34 dialogue rehearsal flow, and V13.6.32 tap-to-translate UX.
