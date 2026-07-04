@@ -1,13 +1,13 @@
-# Καθημερινά V13.6.37 — Hard Letters + Diphthongs
+# Καθημερινά V13.6.38 — Guided Turns Repair
 
-V13.6.37 expands **Extra Practice → Alphabet + hard sounds** with a stronger pronunciation bank for the sounds that are hardest for English speakers: γ, χ, θ, δ, ρ, αυ/ευ, αι/ει/οι/ου, μπ/ντ/γκ, ξ/ψ, τσ/τζ, and the special **γαύρος** pattern.
+V13.6.38 fixes the Today-session dialogue practice flow. The **Practice my turns** button now opens the actual turn-by-turn recorder inside the guided task instead of doing nothing or making the learner lose the next step.
 
 ## New in this build
-- New **Hardest first** tab.
-- Separate **Diphthongs** and **Hard  combos** tabs.
-- More example words per hard sound.
-- More γαύρος / γ / αυ contrast practice.
-- Keeps record + check, accept/redo, playback, save, delete, and record again.
+- Practice my turns opens inside Today’s Conversation practice step.
+- Each “You” turn has Hear model, Record, Stop recording, Playback, Save only, Save + next, Next without saving, and Delete + redo.
+- Recording no longer exits or breaks the guided task.
+- When all turns are practiced, the app clearly tells the learner to tap **I rehearsed this** and continue the daily path.
+- Keeps V13.6.37 hard letters, diphthongs, γαύρος drills, Tap-to-Translate, Save-to-Review, and recording save/delete behavior.
 
-## Accuracy note
-This pronunciation drill is practice-only. Browser speech recognition can accept/reject only by what it thinks it heard in Greek. Use it as repetition feedback, not as a replacement for a tutor/native speaker.
+## Note
+Microphone recording works best on the deployed HTTPS site or installed PWA. Local `file://` testing may block recording in some browsers.
