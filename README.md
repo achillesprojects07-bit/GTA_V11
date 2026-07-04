@@ -4,7 +4,7 @@ V13.6.37 expands **Extra Practice → Alphabet + hard sounds** with a stronger p
 
 ## New in this build
 - New **Hardest first** tab.
-- Separate **Diphthongs** and **Hard combos** tabs.
+- Separate **Diphthongs** and **Hard  combos** tabs.
 - More example words per hard sound.
 - More γαύρος / γ / αυ contrast practice.
 - Keeps record + check, accept/redo, playback, save, delete, and record again.
