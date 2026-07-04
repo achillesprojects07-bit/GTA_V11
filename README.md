@@ -1,27 +1,30 @@
-# Καθημερινά V13.6.34 — Dialogue Direct + Rehearsal Controls
+# Καθημερινά V13.6.35 — Save-to-Review Fix
 
-V13.6.34 fixes the two UX breaks found in live use: Practice Dialogues now opens directly to the dialogue task, and rehearsal recording no longer makes the learner lose the current task.
+V13.6.35 fixes the Tap-to-Translate **Save to review** button so the learner gets visible feedback and the phrase is actually scheduled as a due review.
 
 ## What changed
 
-- **Practice dialogues opens directly.** The app no longer shows the full Extra Practice hub above the dialogue list, so you do not have to scroll down to find the task you already selected.
-- Dialogue screens, full conversation playback, and rehearsal screens use a direct practice view instead of burying the active activity below the menu.
-- Rehearsal recording now separates **Exit rehearsal** from **Stop recording**.
-- After a rehearsal recording stops, the learner gets clear choices: **Save only**, **Save + Next**, **Next without saving**, or **Delete + Redo**.
-- Stopping a recording keeps the learner on the same turn instead of breaking the practice flow.
-- Tap-to-Translate remains beside the phrase, and saved recordings still use IndexedDB.
+- **Save to review now works visibly.** The button changes to **✓ Saved** after it saves.
+- Saved phrase pairs are added to review and scheduled as **due now**, so they can appear in Due reviews and Today.
+- Existing cards are reused instead of creating unnecessary duplicates.
+- If the tapped translation is not already a card, it is saved as a custom practice phrase and stays flagged as unreviewed/practice-only.
+- Copy and Save buttons now stop event bubbling so tapping them does not accidentally retrigger the translation popover.
 
 ## Preserved
 
 - `const LS='gta_v12_state'` unchanged. Existing progress/imports remain.
 - No SRS math changed.
 - No official content was generated or marked verified.
-- All V13.6.30–V13.6.33 functionality is preserved: session focus, scoring, English voice, Tap-to-Translate, near-phrase translation card, record playback, save/delete recording, and IndexedDB storage.
+- All V13.6.34 functionality is preserved: direct dialogue practice, rehearsal controls, near-phrase Tap-to-Translate, record playback, save/delete recording, and IndexedDB storage.
 
-## Verification
+## Upload
 
-- App header shows `Καθημερινά V13.6.34`.
-- `APP_VERSION` is `V13.6.34`.
-- Service-worker cache is `gta-v13-6-34-dialogue-rehearsal-flow`.
-- Package version is `13.6.34`.
-- Smoke test checks syntax, direct Practice Dialogues flow, rehearsal save/next/redo controls, Tap-to-Translate, Record, Save Recording, Delete Recording, IndexedDB storage, and the unchanged `gta_v12_state` key.
+Upload the extracted files to the GitHub repo root, especially:
+
+- `index.html`
+- `service-worker.js`
+- `README.md`
+- `package.json`
+- `manifest.json`
+- `tests/smoke-test.js`
+- `.nojekyll`
