@@ -1,6 +1,6 @@
-# Καθημερινά V13.6.28 — Today Reset + Session Focus
+# Καθημερινά V13.6.29 — Today Reset + Session Focus
 
-V13.6.28 is a UX-only release: no learning logic, SRS math, or content changed. It makes Today a launchpad, turns active sessions into a one-card focus mode, and adds a "How to do this step" example to every guided task so you never guess what to do.
+V13.6.29 is a UX-only release: no learning logic, SRS math, or content changed. It makes Today a launchpad, turns active sessions into a one-card focus mode, and adds a "How to do this step" example to every guided task so you never guess what to do.
 
 ## What changed
 
@@ -20,8 +20,8 @@ V13.6.28 is a UX-only release: no learning logic, SRS math, or content changed. 
 
 ## Verification
 
-- App header shows `Καθημερινά V13.6.28`.
-- `APP_VERSION` is `V13.6.28`.
+- App header shows `Καθημερινά V13.6.29`.
+- `APP_VERSION` is `V13.6.29`.
 - Service-worker cache is `gta-v13-6-25-today-reset-focus`.
 - Package version is `13.6.25`.
 - Smoke test checks: version chain, focus-mode acceptance (renderHome free of dashboard calls), how-to layer present in guidedTaskHeader, forecast guard, relocations in Practice/Progress, script syntax via node --check.
@@ -34,18 +34,16 @@ V13.6.28 is a UX-only release: no learning logic, SRS math, or content changed. 
 4. Tap Pause → back to minimal home with "Continue Today's Path"; Continue resumes the same step.
 5. Progress tab shows the stage map and dashboards; Practice tab shows Coach/Ladder/Memory/Scenes/Capture.
 
-## V13.6.28 — Two-Voice Dialogue Casting
-Dialogue audio now casts two distinct Greek voices instead of one continuous voice:
-- **Nikos** (enhanced) speaks the "them" turns; **Melina** speaks the "you" turns.
-- Voice matching is by prefix + Greek language (matches "Nikos", "Nikos (Enhanced)", etc.),
-  so it works regardless of the exact string Safari reports. Prefers enhanced variants.
-- **Graceful fallback:** if only one Greek voice is available, speakers are distinguished by
-  pitch (them lower, you higher) instead — never collapses silently.
-- Inter-turn pause lengthened 900ms → 1150ms so speaker changes are clearly audible,
-  addressing the "sounds like one continuous person" problem.
-- Applies to dialogue practice and rehearsal. Does NOT apply to the single-blob generated
-  listening items (no speaker structure to cast).
+## V13.6.29 — Listening Scene English Reveal (see + hear)
+The practice-only real-Greek listening scenes now support learning by both seeing and hearing:
+- After the Greek, a "🇬🇧 Show English" button reveals the English TEXT, plus a "🔊 Hear in
+  English" button that speaks it aloud (uses an English voice; falls back to default en-US).
+- Listen-first discipline preserved: English is behind a tap, so you can test your ear first.
+- English added to all 5 built-in listening scenes (café, supermarket, directions, family
+  dinner, conversation repair).
 
-[UNCERTAIN] Voice selection depends on iOS Safari exposing both Melina and Nikos to the web
-speechSynthesis API. Confirmed working on-device via voice-check.html before this build, but
-verify the two voices actually alternate on your phone after deploying.
+[UNCERTAIN] The English translations are AI-written and tagged practice-only — reliable for
+these simple A1 sentences, but NOT fluent-verified. Have a Greek/English speaker confirm them.
+Note especially "μέτριο" (coffee) = medium-SWEET in Greek coffee context, glossed as "medium".
+[UNCERTAIN] English audio depends on Safari exposing an English voice (your device has Siri
+Voice 4, so this should work) — verify it speaks on your phone after deploying.

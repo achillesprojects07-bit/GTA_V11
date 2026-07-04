@@ -7,8 +7,8 @@ const readme=fs.readFileSync('README.md','utf8');
 const pkg=fs.readFileSync('package.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V13.6.28</span></div>',
-  "const APP_VERSION='V13.6.28'",
+  '<div class="title">Καθημερινά <span class="versionMini">V13.6.29</span></div>',
+  "const APP_VERSION='V13.6.29'",
   "const LS='gta_v12_state'",
   'function renderHome',
   'function pauseAdaptiveSession',
@@ -41,16 +41,16 @@ const required=[
   'function gradeGuidedReading',
   "if(minChoice>=15&&g)",
   "let seen=new Set(),out=[]",
-  'gta-v13-6-28-two-voice-dialogue'
+  'gta-v13-6-29-listening-english-reveal'
 ];
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x));
 if(missing.length){console.error('Missing:',missing.join(' | '));process.exit(1)}
 if(!manifest.includes('Καθημερινά')){console.error('Manifest app name missing');process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v13-6-28-two-voice-dialogue'")){console.error('Service worker cache mismatch');process.exit(1)}
-if(!readme.includes('# Καθημερινά V13.6.28 — Today Reset + Session Focus')){console.error('README heading mismatch');process.exit(1)}
-if(!readme.includes('App header shows `Καθημερινά V13.6.28`')){console.error('README verification mismatch');process.exit(1)}
-if(!pkg.includes('"version":"13.6.28"')){console.error('Package version mismatch');process.exit(1)}
-const forbidden=['V13.6.24</span>',"APP_VERSION='V13.6.24'",'gta-v13-6-24-practice-only-daily-path','ONE BUTTON PATH ACTIVE','V13.6.22</span>','V13.6.21</span>'];
+if(!sw.includes("const CACHE_NAME='gta-v13-6-29-listening-english-reveal'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V13.6.29 — Today Reset + Session Focus')){console.error('README heading mismatch');process.exit(1)}
+if(!readme.includes('App header shows `Καθημερινά V13.6.29`')){console.error('README verification mismatch');process.exit(1)}
+if(!pkg.includes('"version":"13.6.29"')){console.error('Package version mismatch');process.exit(1)}
+const forbidden=['V13.6.24</span>',"APP_VERSION='V13.6.24'",'gta-v13-6-28-two-voice-dialogue','ONE BUTTON PATH ACTIVE','V13.6.22</span>','V13.6.21</span>'];
 const bad=forbidden.filter(x=>html.includes(x)||sw.includes(x)||pkg.includes(x));
 if(bad.length){console.error('Old active labels remain:',bad.join(', '));process.exit(1)}
 // focus-mode acceptance: renderHome must not render dashboards/explainers
@@ -69,7 +69,7 @@ const script=html.split('<script>')[1].split('</script>')[0];
 fs.writeFileSync('/tmp/kathimerina-v13625.js',script);
 try{execSync('node --check /tmp/kathimerina-v13625.js',{stdio:'pipe'})}catch(e){console.error('SYNTAX ERROR:\n'+e.stderr.toString().slice(0,800));process.exit(1)}
 
-// V13.6.28 regression guard: guided reading must advance the screen, not call an undefined function.
+// V13.6.29 regression guard: guided reading must advance the screen, not call an undefined function.
 (function(){
   var reInd = html.indexOf('function gradeGuidedReading(');
   var body = html.slice(reInd, reInd+900);
@@ -77,4 +77,4 @@ try{execSync('node --check /tmp/kathimerina-v13625.js',{stdio:'pipe'})}catch(e){
   if(body.indexOf('renderHome()')===-1){console.error('gradeGuidedReading does not repaint via renderHome');process.exit(1);}
 })();
 
-console.log('GTA V13.6.28 Καθημερινά Today Reset + Session Focus smoke test passed.');
+console.log('GTA V13.6.29 Καθημερινά Today Reset + Session Focus smoke test passed.');
