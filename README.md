@@ -1,6 +1,6 @@
-# Καθημερινά V13.6.29 — Today Reset + Session Focus
+# Καθημερινά V13.6.30 — Today Reset + Session Focus
 
-V13.6.29 is a UX-only release: no learning logic, SRS math, or content changed. It makes Today a launchpad, turns active sessions into a one-card focus mode, and adds a "How to do this step" example to every guided task so you never guess what to do.
+V13.6.30 is a UX-only release: no learning logic, SRS math, or content changed. It makes Today a launchpad, turns active sessions into a one-card focus mode, and adds a "How to do this step" example to every guided task so you never guess what to do.
 
 ## What changed
 
@@ -20,8 +20,8 @@ V13.6.29 is a UX-only release: no learning logic, SRS math, or content changed. 
 
 ## Verification
 
-- App header shows `Καθημερινά V13.6.29`.
-- `APP_VERSION` is `V13.6.29`.
+- App header shows `Καθημερινά V13.6.30`.
+- `APP_VERSION` is `V13.6.30`.
 - Service-worker cache is `gta-v13-6-25-today-reset-focus`.
 - Package version is `13.6.25`.
 - Smoke test checks: version chain, focus-mode acceptance (renderHome free of dashboard calls), how-to layer present in guidedTaskHeader, forecast guard, relocations in Practice/Progress, script syntax via node --check.
@@ -34,16 +34,22 @@ V13.6.29 is a UX-only release: no learning logic, SRS math, or content changed. 
 4. Tap Pause → back to minimal home with "Continue Today's Path"; Continue resumes the same step.
 5. Progress tab shows the stage map and dashboards; Practice tab shows Coach/Ladder/Memory/Scenes/Capture.
 
-## V13.6.29 — Listening Scene English Reveal (see + hear)
-The practice-only real-Greek listening scenes now support learning by both seeing and hearing:
-- After the Greek, a "🇬🇧 Show English" button reveals the English TEXT, plus a "🔊 Hear in
-  English" button that speaks it aloud (uses an English voice; falls back to default en-US).
-- Listen-first discipline preserved: English is behind a tap, so you can test your ear first.
-- English added to all 5 built-in listening scenes (café, supermarket, directions, family
-  dinner, conversation repair).
+## V13.6.30 — Scores restored + English everywhere + voice differentiation
+Three fixes:
+1. **Missing scores fixed (all practices).** Guided reading/listening steps no longer flash
+   a toast and auto-advance — they now show a PERSISTENT result panel ("3/3 correct" with a
+   progress bar and message) and a "Next task →" button you tap to continue. Flashcard modes
+   (recognize/recall/listen/speak) now show a running session tally after each grade instead
+   of silently advancing.
+2. **English See/Hear on Extra Practice flashcards.** Each card now has "🔊 Hear English" and
+   "🇬🇧 See English" buttons, in addition to Hear Greek and Reveal. English text confirmed
+   present in all phrase/vocab items.
+3. **Voice differentiation on the single available Greek voice (Melina).** Since iOS Safari
+   exposes only Melina for Greek (confirmed via on-device voice list — Nikos is NOT available
+   to Safari despite being installed in iOS Settings), dialogue speakers are now distinguished
+   by wider pitch (you 1.25 / them 0.75) and rate (you .9 / them .78) plus the 1150ms pause.
 
-[UNCERTAIN] The English translations are AI-written and tagged practice-only — reliable for
-these simple A1 sentences, but NOT fluent-verified. Have a Greek/English speaker confirm them.
-Note especially "μέτριο" (coffee) = medium-SWEET in Greek coffee context, glossed as "medium".
-[UNCERTAIN] English audio depends on Safari exposing an English voice (your device has Siri
-Voice 4, so this should work) — verify it speaks on your phone after deploying.
+[UNCERTAIN] iOS Safari's respect for pitch/rate is inconsistent — verify how distinct the two
+speakers actually sound on your device. The pause is the reliable speaker-change signal.
+[UNCERTAIN] English audio depends on Safari exposing an English voice (Siri Voice 4 present on
+your device, so it should work) — verify it speaks.
