@@ -1,71 +1,48 @@
-# Καθημερινά V14.0.4 — One First Button + Levels Cleanup
+# Καθημερινά V14.1 — Kumon-Style Greek Mastery Engine
 
-V14.0.4 removes competing first actions. Today now has one dominant first button, the 1–5 mastery cards are progress markers only, the worksheet shortcut is removed from Today, and Levels is cleaned so it points back to the guided Today path instead of offering multiple competing actions.
+V14.1 turns the app from a guided Greek study companion into a worksheet-centered mastery system inspired by the Kumon method.
 
-Main tabs:
-- **Today** — assigned daily path and current concept worksheet.
-- **Levels** — mastery ladder with stepping-stone levels and concept atoms.
-- **Library** — study shelves for alphabet/sounds, vocabulary, grammar, dialogues, exam import, settings/backup.
-- **Worksheets** — graded worksheet work with accuracy, wrong-answer correction, and repetition.
-- **Review** — weak spots, due reviews, mistakes, saved recordings, and progress proof.
+The learning rule is now:
 
-Mastery rules introduced:
-- Concept atoms are studied in order: isolated practice → contrast practice → mixed review → mastery check.
-- Worksheets are graded.
-- Wrong answers create correction work and weak spots.
-- Weak spots remain outside the main timed session.
-- Nouns are now detected with article/gender from existing cards as the base for V14.1 enrichment.
-- Verbs are flagged for future tense/form enrichment.
-- A curriculum audit panel shows how many existing cards, vocabulary records, dialogues, and turns are mapped.
+**Study in the Library → answer the worksheet → correct mistakes → repeat missed concepts → prove mastery through accuracy.**
 
-Preserved:
+Main V14.1 changes:
+- Added a Library-first mastery gate for the current concept.
+- Added study evidence: the learner can mark a concept as studied before worksheet work.
+- Added stronger worksheet result logic: first-try accuracy, wrong-count rules, correction queue, and repetition queue.
+- Added typed-answer worksheet support, not only multiple-choice questions.
+- Added correction rounds for missed answers.
+- Added repetition rounds when a worksheet has 2 or more wrong answers.
+- Added concept mastery bars showing strong rounds, average accuracy, and corrected accuracy.
+- Added a V14.1 mastery contract panel explaining the method.
+- Updated Today so **Start Today’s Path** opens the current Library lesson first instead of offering a worksheet shortcut.
+- Updated Worksheets so they are framed as graded answer-work, not random practice.
+- Updated Review so corrections and repetitions are visible queues.
+- Updated Levels so every level is a stepping stone and current level continues through Today.
+
+Mastery rules:
+- Speed is not the priority yet.
+- Accuracy is the proof.
+- 1 wrong answer = correction work.
+- 2 or more wrong answers = repetition round.
+- 90%+ with no wrong answers and prior Library study = a strong round.
+- 3 strong rounds = concept mastery.
+- Viewing a concept alone does not mark it mastered.
+
+Preserved from V14.0.4:
 - `const LS='gta_v12_state'`
-- Tap-to-translate
-- Record save/delete
-- User-only recording guard
-- Hard letters + diphthongs drill
-- Weak spots warm-up outside timer
-- Existing SRS/progress data
+- One-first-button Today philosophy
+- Levels cleanup
+- Exact Library lesson routing for current concept
+- Existing vocabulary, phrases, dialogues, SRS, saved state, review queues, recordings, audio guard, PWA behavior, icons, and offline shell
 
-V14.1 should deepen the worksheet engine with more concept iterations, explicit noun plural fields, verb tense tables, and a full curriculum manifest for every item.
+Important note:
+V14.1 creates the mastery engine. It does not yet fully enrich every vocabulary item with verified plural fields or every verb with full tense tables. Those belong in the next content-manifest build after the engine is stable.
 
-
-V14.0.1 Today polish:
-- Replaced unlabeled 1–5 boxes with Study → Practice → Worksheet → Correct → Master.
-- Moved curriculum audit language off the main Today emotion path.
-- Rewrote current concept into current level + today’s concept.
-- Made the graded worksheet feel required, not optional.
-- Clarified timer math: main path time versus correction/repetition reserve.
-- Replaced vague “Skip this step” during active session with “I know this · next step.”
-
-
-V14.0.2 Clickable Mastery Steps:
-- Study / Practice / Worksheet / Correct / Master cards now open clear step guidance.
-- Added a learner-facing “How to pass today” checklist.
-- Kept Start Today’s Path as the obvious first action.
-- Renamed the extra worksheet shortcut to “Jump to today’s worksheet.”
-- Rewrote today’s concept language to be more learner-friendly.
-
-
-V14.0.2 Levels/Library polish:
-- Levels tab now shows the current learning location first, then the full ladder, then the audit.
-- “Study in Library first” opens the exact study page for the current concept instead of dropping the learner on generic Library shelves.
-- Concept cards now offer Study and Worksheet separately.
-- Library keeps the exact concept study page above the browse shelves, so the learner is not forced to hunt.
-
-V14.0.3 polish:
-- Moved Start Today’s Path higher on Today.
-- Compressed the repeated weak-spots/timer explanation.
-- Added tap hints to Study → Practice → Worksheet → Correct → Master.
-- Added a clearer “First action” card.
-- Added a live-style pass checklist with Start, Study, Worksheet, Correct, 95%, and Mastery evidence states.
-- Kept the graded worksheet shortcut, but made it clearly secondary.
-
-
-V14.0.4 One First Button + Levels Cleanup:
-- Today has one dominant first action: Start Today’s Path.
-- Study / Practice / Worksheet / Correct / Master are now non-clickable progress markers on Today.
-- Removed the “Jump to today’s worksheet” shortcut from Today.
-- Levels page now has one current-level action: Continue current level in Today.
-- Concept lists are for viewing the sequence, not launching random worksheets.
-- Curriculum audit is collapsed lower on Levels.
+Recommended next build:
+**V14.2 — Full Curriculum Manifest + Verified Content Fields**
+- Every vocabulary item should receive Level → Unit → Concept → Skill → Worksheet mapping.
+- Nouns should get verified article, gender, singular, plural, example sentence, and topic.
+- Verbs should get verified present/future forms and example sentences.
+- Grammar concepts should be organized per topic and linked to worksheets.
+- Unverified generated examples should remain visibly marked until tutor/user verified.
