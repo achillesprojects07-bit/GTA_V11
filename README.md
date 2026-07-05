@@ -1,69 +1,54 @@
-# Καθημερινά V14.4 — Comprehensive Progression Ladder + Worksheet Volume Map
+# Καθημερινά V14.4A — Worksheet Time Contract + Mastery Enforcement
 
-V14.4 builds on V14.3, V14.2, and the V14.1A Kumon-style mastery engine.
+This build is a correction to V14.4. V14.4 made the workbook ladder and volume map visible, but it did not fully guarantee that a selected study duration meant worksheet-answering time only.
 
-The method is now explicitly workbook-based:
+V14.4A separates the learning flow into four distinct blocks:
 
-**Study in the Library → answer worksheet family → correct mistakes → repeat missed ideas → prove mastery by accuracy.**
+1. **Concept study** — Library reading, vocabulary noticing, grammar/sound notes. This is outside the worksheet timer.
+2. **Worksheet block** — The selected 20/30/45/60/90 minutes are designed as answer-work only.
+3. **Correction round** — Wrong answers are corrected after the timed worksheet block. This is outside the worksheet timer.
+4. **Repetition assignment** — If there are 2+ wrong answers, repetition is assigned after the timed block.
 
-## Main V14.4 change
+## Mastery rule
 
-V14.4 turns the level outline into a visible progression ladder with expected worksheet volume.
+Viewing a lesson is not mastery. Mastery requires accurate answer-work.
 
-The full ladder is now shown as **2,820 target micro-rounds** across 12 stepping-stone levels:
+- Study must be logged before the worksheet block starts.
+- 1 wrong answer creates a correction requirement.
+- 2+ wrong answers create correction plus repetition.
+- The concept is not mastered just because the user completed time.
+- Strong mastery evidence comes from accurate worksheet rounds with no wrong answers.
 
-- L0 — Greek Reading + Sound Foundation: 120 micro-rounds
-- L1 — Articles + Noun Gender: 220 micro-rounds
-- L2 — Singular + Plural Nouns: 220 micro-rounds
-- L3 — Survival + Repair Phrases: 160 micro-rounds
-- L4 — Questions + Short Answers: 180 micro-rounds
-- L5 — Food, Café, Shops: 260 micro-rounds
-- L6 — Home, Family, Daily Life: 240 micro-rounds
-- L7 — Core Verbs + Useful Tenses: 320 micro-rounds
-- L8 — Places, Directions, Time: 240 micro-rounds
-- L9 — Health, Pharmacy, Problems: 180 micro-rounds
-- L10 — Listening + Natural Dialogues: 420 micro-rounds
-- L11 — A1/A2 Bridge: 260 micro-rounds
+## 60-minute contract
 
-A micro-round means one answer-work item, not one screen. The app now shows how every level is broken into workbook units and worksheet families.
+60 minutes means 60 minutes of answer-work. When the learner chooses **60 minutes**, the app now creates a worksheet block designed for about **48 answer-work micro-rounds**, roughly:
 
-## Worksheet family sequence
+- Recognition worksheet
+- Production worksheet
+- Mixed review
+- Mastery check
 
-Each concept is now shown through the same Kumon-style family sequence:
+Concept study and correction are not included in those 60 minutes.
 
-1. Recognition worksheet
-2. Production worksheet
-3. Correction round
-4. Repetition round
-5. Mixed review
-6. Mastery check
+## Preserved from earlier builds
 
-Wrong answers still create correction and repetition through the V14.1 mastery engine.
+- V14.1A Kumon-style correction/repetition engine
+- V14.2 curriculum manifest
+- V14.3 grammar concept library
+- V14.4 comprehensive 2,820 micro-round ladder and volume map
+- Existing localStorage key: `gta_v12_state`
+- Offline PWA behavior
 
-## Revised build roadmap
+## Testing
 
-- V14.1 — Kumon-style mastery engine
-- V14.2 — Full curriculum manifest
-- V14.3 — Grammar concept library
-- V14.4 — Comprehensive progression ladder + worksheet volume map
-- V14.5 — Worksheet materialization by skill
-- V14.6 — Listening + speaking worksheets
-- V14.7 — Reading + comprehension worksheets
-- V14.8 — A1/A2 mastery checks
-- V14.9 — Content cleanup + de-duplication
-- V15 — True Greek fluency path
+Run:
 
-## Important content rule
+```bash
+npm test
+```
 
-V14.4 does not invent unverified Greek plural tables, verb tables, or new official exam content. It creates the workbook structure and uses existing app content where worksheet questions can be generated safely. Missing plural/verb fields remain pending until verified.
+Expected result:
 
-## Preserved
-
-- `const LS='gta_v12_state'`
-- V14.1A study-first mastery gate
-- Worksheet accuracy scoring
-- Correction queue
-- Repetition queue
-- V14.2 Curriculum Manifest
-- V14.3 Grammar Concept Library
-- Existing vocabulary, phrases, dialogues, saved state, SRS, review queues, recordings, audio guard, PWA shell, icons, and offline behavior
+```text
+Καθημερινά V14.4A Worksheet Time Contract smoke test passed.
+```
