@@ -1,6 +1,6 @@
-# Καθημερινά V14.0.1 — Today Page Polish
+# Καθημερινά V14.0.2 — Clickable Mastery Steps
 
-V14.0.1 polishes the Today page on top of the V14 mastery ladder foundation. It keeps the Kumon-style structure but makes Today clearer and less technical for daily use.
+V14.0.2 continues the Today-page polish by making the mastery path cards clickable and making the first action clearer.
 
 Main tabs:
 - **Today** — assigned daily path and current concept worksheet.
@@ -37,3 +37,18 @@ V14.0.1 Today polish:
 - Made the graded worksheet feel required, not optional.
 - Clarified timer math: main path time versus correction/repetition reserve.
 - Replaced vague “Skip this step” during active session with “I know this · next step.”
+
+
+V14.0.2 Clickable Mastery Steps:
+- Study / Practice / Worksheet / Correct / Master cards now open clear step guidance.
+- Added a learner-facing “How to pass today” checklist.
+- Kept Start Today’s Path as the obvious first action.
+- Renamed the extra worksheet shortcut to “Jump to today’s worksheet.”
+- Rewrote today’s concept language to be more learner-friendly.
+
+
+V14.0.2 Levels/Library polish:
+- Levels tab now shows the current learning location first, then the full ladder, then the audit.
+- “Study in Library first” opens the exact study page for the current concept instead of dropping the learner on generic Library shelves.
+- Concept cards now offer Study and Worksheet separately.
+- Library keeps the exact concept study page above the browse shelves, so the learner is not forced to hunt.
