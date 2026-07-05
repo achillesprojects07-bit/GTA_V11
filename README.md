@@ -1,6 +1,6 @@
-# Καθημερινά V14.0.3 — Today Flow Compression + Live Checklist
+# Καθημερινά V14.0.4 — One First Button + Levels Cleanup
 
-V14.0.3 compresses the Today page so the first action appears sooner, the 1–5 mastery cards clearly behave as tappable steps, and the pass checklist behaves like live mastery proof instead of static instructions.
+V14.0.4 removes competing first actions. Today now has one dominant first button, the 1–5 mastery cards are progress markers only, the worksheet shortcut is removed from Today, and Levels is cleaned so it points back to the guided Today path instead of offering multiple competing actions.
 
 Main tabs:
 - **Today** — assigned daily path and current concept worksheet.
@@ -60,3 +60,12 @@ V14.0.3 polish:
 - Added a clearer “First action” card.
 - Added a live-style pass checklist with Start, Study, Worksheet, Correct, 95%, and Mastery evidence states.
 - Kept the graded worksheet shortcut, but made it clearly secondary.
+
+
+V14.0.4 One First Button + Levels Cleanup:
+- Today has one dominant first action: Start Today’s Path.
+- Study / Practice / Worksheet / Correct / Master are now non-clickable progress markers on Today.
+- Removed the “Jump to today’s worksheet” shortcut from Today.
+- Levels page now has one current-level action: Continue current level in Today.
+- Concept lists are for viewing the sequence, not launching random worksheets.
+- Curriculum audit is collapsed lower on Levels.
