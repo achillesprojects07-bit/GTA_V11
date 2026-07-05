@@ -7,28 +7,28 @@ const readme=fs.readFileSync('README.md','utf8');
 const pkg=fs.readFileSync('package.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V14.1</span></div>',
-  "const APP_VERSION='V14.1'",
+  '<div class="title">Καθημερινά <span class="versionMini">V14.1A</span></div>',
+  "const APP_VERSION='V14.1A'",
   "const LS='gta_v12_state'",
   'Today</span></button><button data-view="survival" aria-label="Levels"',
   '<span>Levels</span>', '<span>Library</span>', '<span>Worksheets</span>', '<span>Review</span>',
   'const V14_MASTERY_LEVELS', 'const V14_CONCEPTS',
   'function v14StartWorksheet', 'function v14AnswerWorksheet', 'function v14FinishWorksheet',
-  'v141EnsureMastery', 'v141MarkStudied', 'v141StartRepetitionRound', 'v141StartTodayPath',
+  'v141EnsureMastery', 'v141MarkStudied', 'v141StartRepetitionRound', 'v141StartTodayPath', 'window.v141MasteryBar=v141MasteryBar', 'window.v141GateLabel=v141GateLabel',
   'Kumon-style Greek Mastery Engine', 'Study → worksheet → correction → repetition → mastery',
   'Start Today’s Path', 'Library lesson · study before worksheet', 'correctionQueue', 'repetitionQueue',
-  'gta-v14-1-kumon-mastery-engine'
+  'gta-v14-1a-kumon-mastery-engine-hotfix'
 ];
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x));
 if(missing.length){console.error('Missing:',missing.join(' | '));process.exit(1)}
 if(!manifest.includes('Καθημερινά')){console.error('Manifest app name missing');process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v14-1-kumon-mastery-engine'")){console.error('Service worker cache mismatch');process.exit(1)}
-if(!readme.includes('# Καθημερινά V14.1 — Kumon-Style Greek Mastery Engine')){console.error('README heading mismatch');process.exit(1)}
-if(!pkg.includes('"version":"14.1.0"')){console.error('Package version mismatch');process.exit(1)}
+if(!sw.includes("const CACHE_NAME='gta-v14-1a-kumon-mastery-engine-hotfix'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V14.1A — Kumon-Style Greek Mastery Engine Hotfix')){console.error('README heading mismatch');process.exit(1)}
+if(!pkg.includes('"version":"14.1.1"')){console.error('Package version mismatch');process.exit(1)}
 const forbidden=["APP_VERSION='V13.6.44'",'gta-v13-6-44-weakspots-warmup','Jump to today’s worksheet'];
 const bad=forbidden.filter(x=>html.includes(x)||sw.includes(x)||pkg.includes(x));
 if(bad.length){console.error('Old/forbidden active labels remain:',bad.join(', '));process.exit(1)}
 const script=html.split('<script>')[1].split('</script>')[0];
-fs.writeFileSync('/tmp/kathimerina-v14-1.js',script);
-try{execSync('node --check /tmp/kathimerina-v14-1.js',{stdio:'pipe'})}catch(e){console.error('SYNTAX ERROR:\n'+e.stderr.toString().slice(0,2000));process.exit(1)}
-console.log('Καθημερινά V14.1 Kumon-Style Greek Mastery Engine smoke test passed.');
+fs.writeFileSync('/tmp/kathimerina-v14-1a.js',script);
+try{execSync('node --check /tmp/kathimerina-v14-1a.js',{stdio:'pipe'})}catch(e){console.error('SYNTAX ERROR:\n'+e.stderr.toString().slice(0,2000));process.exit(1)}
+console.log('Καθημερινά V14.1A Kumon-Style Greek Mastery Engine hotfix smoke test passed.');

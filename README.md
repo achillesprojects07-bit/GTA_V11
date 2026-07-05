@@ -1,12 +1,12 @@
-# Καθημερινά V14.1 — Kumon-Style Greek Mastery Engine
+# Καθημερινά V14.1A — Kumon-Style Greek Mastery Engine Hotfix
 
-V14.1 turns the app from a guided Greek study companion into a worksheet-centered mastery system inspired by the Kumon method.
+V14.1A turns the app from a guided Greek study companion into a worksheet-centered mastery system inspired by the Kumon method.
 
 The learning rule is now:
 
 **Study in the Library → answer the worksheet → correct mistakes → repeat missed concepts → prove mastery through accuracy.**
 
-Main V14.1 changes:
+Main V14.1A changes:
 - Added a Library-first mastery gate for the current concept.
 - Added study evidence: the learner can mark a concept as studied before worksheet work.
 - Added stronger worksheet result logic: first-try accuracy, wrong-count rules, correction queue, and repetition queue.
@@ -37,7 +37,7 @@ Preserved from V14.0.4:
 - Existing vocabulary, phrases, dialogues, SRS, saved state, review queues, recordings, audio guard, PWA behavior, icons, and offline shell
 
 Important note:
-V14.1 creates the mastery engine. It does not yet fully enrich every vocabulary item with verified plural fields or every verb with full tense tables. Those belong in the next content-manifest build after the engine is stable.
+V14.1A creates the mastery engine. It does not yet fully enrich every vocabulary item with verified plural fields or every verb with full tense tables. Those belong in the next content-manifest build after the engine is stable.
 
 Recommended next build:
 **V14.2 — Full Curriculum Manifest + Verified Content Fields**
