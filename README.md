@@ -1,48 +1,46 @@
-# Καθημερινά V14.1A — Kumon-Style Greek Mastery Engine Hotfix
+# Καθημερινά V14.2 — Full Curriculum Manifest + Verified Content Fields
 
-V14.1A turns the app from a guided Greek study companion into a worksheet-centered mastery system inspired by the Kumon method.
+V14.2 builds on the V14.1A Kumon-style mastery engine.
 
-The learning rule is now:
+The learning method remains:
 
 **Study in the Library → answer the worksheet → correct mistakes → repeat missed concepts → prove mastery through accuracy.**
 
-Main V14.1A changes:
-- Added a Library-first mastery gate for the current concept.
-- Added study evidence: the learner can mark a concept as studied before worksheet work.
-- Added stronger worksheet result logic: first-try accuracy, wrong-count rules, correction queue, and repetition queue.
-- Added typed-answer worksheet support, not only multiple-choice questions.
-- Added correction rounds for missed answers.
-- Added repetition rounds when a worksheet has 2 or more wrong answers.
-- Added concept mastery bars showing strong rounds, average accuracy, and corrected accuracy.
-- Added a V14.1 mastery contract panel explaining the method.
-- Updated Today so **Start Today’s Path** opens the current Library lesson first instead of offering a worksheet shortcut.
-- Updated Worksheets so they are framed as graded answer-work, not random practice.
-- Updated Review so corrections and repetitions are visible queues.
-- Updated Levels so every level is a stepping stone and current level continues through Today.
+V14.2 adds the missing curriculum spine:
 
-Mastery rules:
-- Speed is not the priority yet.
-- Accuracy is the proof.
-- 1 wrong answer = correction work.
-- 2 or more wrong answers = repetition round.
-- 90%+ with no wrong answers and prior Library study = a strong round.
-- 3 strong rounds = concept mastery.
-- Viewing a concept alone does not mark it mastered.
+**Level → Unit → Concept → Library lesson → Worksheet → Mastery**
 
-Preserved from V14.0.4:
+Main V14.2 changes:
+- Added a full curriculum manifest layer for the app content.
+- Every learnable item now receives a curriculum address inside the mastery ladder.
+- Added manifest statistics for mapped items, levels, noun records, verb-like records, and fields needing verification.
+- Added a Curriculum Manifest browser in the Library.
+- Added current-concept curriculum address cards inside Library lessons.
+- Added worksheet address labels so answer-work is tied to a level and concept.
+- Added verified-content field schema for nouns, verbs, phrases, and dialogues.
+- Noun records now expose article, inferred gender from the existing article, singular, pending plural, pending example sentence, topic, and verification status.
+- Verb-like records now expose pending lemma/future/example fields instead of pretending unverified grammar is complete.
+- Curriculum audit is now a lower, collapsible manifest audit.
+- Levels now include a manifest-by-level view.
+- Progress now includes manifest coverage so the learner can see whether the whole app is mapped.
+
+Important content rule:
+V14.2 does **not** invent Greek plural forms, verb tables, or example sentences. Missing grammar fields are marked **pending verification** until supplied or checked by the user, a tutor, or a verified source.
+
+Preserved from V14.1A:
 - `const LS='gta_v12_state'`
-- One-first-button Today philosophy
-- Levels cleanup
-- Exact Library lesson routing for current concept
+- Library-first mastery gate
+- Worksheet accuracy scoring
+- Correction queue
+- Repetition queue
+- 90% gate and 3 strong-round mastery logic
+- Exact Library lesson routing for the current concept
 - Existing vocabulary, phrases, dialogues, SRS, saved state, review queues, recordings, audio guard, PWA behavior, icons, and offline shell
 
-Important note:
-V14.1A creates the mastery engine. It does not yet fully enrich every vocabulary item with verified plural fields or every verb with full tense tables. Those belong in the next content-manifest build after the engine is stable.
-
 Recommended next build:
-**V14.2 — Full Curriculum Manifest + Verified Content Fields**
-- Every vocabulary item should receive Level → Unit → Concept → Skill → Worksheet mapping.
-- Nouns should get verified article, gender, singular, plural, example sentence, and topic.
-- Verbs should get verified present/future forms and example sentences.
-- Grammar concepts should be organized per topic and linked to worksheets.
-- Unverified generated examples should remain visibly marked until tutor/user verified.
+**V14.3 — Grammar Concept Library + Topic Grammar Pages**
+- Build real grammar concept pages per topic.
+- Add verified noun plural tables.
+- Add verified verb present/future mini-tables.
+- Link grammar explanations directly to worksheet families.
+- Keep all unverified examples visibly marked until checked.
