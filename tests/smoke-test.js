@@ -7,8 +7,8 @@ const readme=fs.readFileSync('README.md','utf8');
 const pkg=fs.readFileSync('package.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V14.0</span></div>',
-  "const APP_VERSION='V14.0'",
+  '<div class="title">Καθημερινά <span class="versionMini">V14.0.1</span></div>',
+  "const APP_VERSION='V14.0.1'",
   "const LS='gta_v12_state'",
   'DAILY GREEK · MASTERY LADDER',
   'Today</span></button><button data-view="survival" aria-label="Levels"',
@@ -28,18 +28,18 @@ const required=[
   'renderPractice=function',
   'renderProgress=function',
   'Wrong answers create correction',
-  'gta-v14-0-mastery-ladder'
+  'gta-v14-0-1-today-polish'
 ];
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x));
 if(missing.length){console.error('Missing:',missing.join(' | '));process.exit(1)}
 if(!manifest.includes('Καθημερινά')){console.error('Manifest app name missing');process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v14-0-mastery-ladder'")){console.error('Service worker cache mismatch');process.exit(1)}
-if(!readme.includes('# Καθημερινά V14.0 — Mastery Ladder Foundation')){console.error('README heading mismatch');process.exit(1)}
-if(!pkg.includes('"version":"14.0.0"')){console.error('Package version mismatch');process.exit(1)}
+if(!sw.includes("const CACHE_NAME='gta-v14-0-1-today-polish'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V14.0.1 — Today Page Polish')){console.error('README heading mismatch');process.exit(1)}
+if(!pkg.includes('"version":"14.0.1"')){console.error('Package version mismatch');process.exit(1)}
 const forbidden=['V13.6.44</span>',"APP_VERSION='V13.6.44'",'gta-v13-6-44-weakspots-warmup'];
 const bad=forbidden.filter(x=>html.includes(x)||sw.includes(x)||pkg.includes(x));
 if(bad.length){console.error('Old active labels remain:',bad.join(', '));process.exit(1)}
 const script=html.split('<script>')[1].split('</script>')[0];
 fs.writeFileSync('/tmp/kathimerina-v14.js',script);
 try{execSync('node --check /tmp/kathimerina-v14.js',{stdio:'pipe'})}catch(e){console.error('SYNTAX ERROR:\n'+e.stderr.toString().slice(0,2000));process.exit(1)}
-console.log('Καθημερινά V14.0 Mastery Ladder Foundation smoke test passed.');
+console.log('Καθημερινά V14.0.1 Today Page Polish smoke test passed.');

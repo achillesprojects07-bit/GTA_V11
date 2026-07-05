@@ -1,6 +1,6 @@
-# Καθημερινά V14.0 — Mastery Ladder Foundation
+# Καθημερινά V14.0.1 — Today Page Polish
 
-V14.0 restructures the app into a Kumon-style mastery foundation instead of a menu of random practice.
+V14.0.1 polishes the Today page on top of the V14 mastery ladder foundation. It keeps the Kumon-style structure but makes Today clearer and less technical for daily use.
 
 Main tabs:
 - **Today** — assigned daily path and current concept worksheet.
@@ -28,3 +28,12 @@ Preserved:
 - Existing SRS/progress data
 
 V14.1 should deepen the worksheet engine with more concept iterations, explicit noun plural fields, verb tense tables, and a full curriculum manifest for every item.
+
+
+V14.0.1 Today polish:
+- Replaced unlabeled 1–5 boxes with Study → Practice → Worksheet → Correct → Master.
+- Moved curriculum audit language off the main Today emotion path.
+- Rewrote current concept into current level + today’s concept.
+- Made the graded worksheet feel required, not optional.
+- Clarified timer math: main path time versus correction/repetition reserve.
+- Replaced vague “Skip this step” during active session with “I know this · next step.”
