@@ -1,46 +1,69 @@
-# Καθημερινά V14.2 — Full Curriculum Manifest + Verified Content Fields
+# Καθημερινά V14.4 — Comprehensive Progression Ladder + Worksheet Volume Map
 
-V14.2 builds on the V14.1A Kumon-style mastery engine.
+V14.4 builds on V14.3, V14.2, and the V14.1A Kumon-style mastery engine.
 
-The learning method remains:
+The method is now explicitly workbook-based:
 
-**Study in the Library → answer the worksheet → correct mistakes → repeat missed concepts → prove mastery through accuracy.**
+**Study in the Library → answer worksheet family → correct mistakes → repeat missed ideas → prove mastery by accuracy.**
 
-V14.2 adds the missing curriculum spine:
+## Main V14.4 change
 
-**Level → Unit → Concept → Library lesson → Worksheet → Mastery**
+V14.4 turns the level outline into a visible progression ladder with expected worksheet volume.
 
-Main V14.2 changes:
-- Added a full curriculum manifest layer for the app content.
-- Every learnable item now receives a curriculum address inside the mastery ladder.
-- Added manifest statistics for mapped items, levels, noun records, verb-like records, and fields needing verification.
-- Added a Curriculum Manifest browser in the Library.
-- Added current-concept curriculum address cards inside Library lessons.
-- Added worksheet address labels so answer-work is tied to a level and concept.
-- Added verified-content field schema for nouns, verbs, phrases, and dialogues.
-- Noun records now expose article, inferred gender from the existing article, singular, pending plural, pending example sentence, topic, and verification status.
-- Verb-like records now expose pending lemma/future/example fields instead of pretending unverified grammar is complete.
-- Curriculum audit is now a lower, collapsible manifest audit.
-- Levels now include a manifest-by-level view.
-- Progress now includes manifest coverage so the learner can see whether the whole app is mapped.
+The full ladder is now shown as **2,820 target micro-rounds** across 12 stepping-stone levels:
 
-Important content rule:
-V14.2 does **not** invent Greek plural forms, verb tables, or example sentences. Missing grammar fields are marked **pending verification** until supplied or checked by the user, a tutor, or a verified source.
+- L0 — Greek Reading + Sound Foundation: 120 micro-rounds
+- L1 — Articles + Noun Gender: 220 micro-rounds
+- L2 — Singular + Plural Nouns: 220 micro-rounds
+- L3 — Survival + Repair Phrases: 160 micro-rounds
+- L4 — Questions + Short Answers: 180 micro-rounds
+- L5 — Food, Café, Shops: 260 micro-rounds
+- L6 — Home, Family, Daily Life: 240 micro-rounds
+- L7 — Core Verbs + Useful Tenses: 320 micro-rounds
+- L8 — Places, Directions, Time: 240 micro-rounds
+- L9 — Health, Pharmacy, Problems: 180 micro-rounds
+- L10 — Listening + Natural Dialogues: 420 micro-rounds
+- L11 — A1/A2 Bridge: 260 micro-rounds
 
-Preserved from V14.1A:
+A micro-round means one answer-work item, not one screen. The app now shows how every level is broken into workbook units and worksheet families.
+
+## Worksheet family sequence
+
+Each concept is now shown through the same Kumon-style family sequence:
+
+1. Recognition worksheet
+2. Production worksheet
+3. Correction round
+4. Repetition round
+5. Mixed review
+6. Mastery check
+
+Wrong answers still create correction and repetition through the V14.1 mastery engine.
+
+## Revised build roadmap
+
+- V14.1 — Kumon-style mastery engine
+- V14.2 — Full curriculum manifest
+- V14.3 — Grammar concept library
+- V14.4 — Comprehensive progression ladder + worksheet volume map
+- V14.5 — Worksheet materialization by skill
+- V14.6 — Listening + speaking worksheets
+- V14.7 — Reading + comprehension worksheets
+- V14.8 — A1/A2 mastery checks
+- V14.9 — Content cleanup + de-duplication
+- V15 — True Greek fluency path
+
+## Important content rule
+
+V14.4 does not invent unverified Greek plural tables, verb tables, or new official exam content. It creates the workbook structure and uses existing app content where worksheet questions can be generated safely. Missing plural/verb fields remain pending until verified.
+
+## Preserved
+
 - `const LS='gta_v12_state'`
-- Library-first mastery gate
+- V14.1A study-first mastery gate
 - Worksheet accuracy scoring
 - Correction queue
 - Repetition queue
-- 90% gate and 3 strong-round mastery logic
-- Exact Library lesson routing for the current concept
-- Existing vocabulary, phrases, dialogues, SRS, saved state, review queues, recordings, audio guard, PWA behavior, icons, and offline shell
-
-Recommended next build:
-**V14.3 — Grammar Concept Library + Topic Grammar Pages**
-- Build real grammar concept pages per topic.
-- Add verified noun plural tables.
-- Add verified verb present/future mini-tables.
-- Link grammar explanations directly to worksheet families.
-- Keep all unverified examples visibly marked until checked.
+- V14.2 Curriculum Manifest
+- V14.3 Grammar Concept Library
+- Existing vocabulary, phrases, dialogues, saved state, SRS, review queues, recordings, audio guard, PWA shell, icons, and offline behavior
