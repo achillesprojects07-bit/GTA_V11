@@ -1,6 +1,6 @@
-# Καθημερινά V14.0.2 — Clickable Mastery Steps
+# Καθημερινά V14.0.3 — Today Flow Compression + Live Checklist
 
-V14.0.2 continues the Today-page polish by making the mastery path cards clickable and making the first action clearer.
+V14.0.3 compresses the Today page so the first action appears sooner, the 1–5 mastery cards clearly behave as tappable steps, and the pass checklist behaves like live mastery proof instead of static instructions.
 
 Main tabs:
 - **Today** — assigned daily path and current concept worksheet.
@@ -52,3 +52,11 @@ V14.0.2 Levels/Library polish:
 - “Study in Library first” opens the exact study page for the current concept instead of dropping the learner on generic Library shelves.
 - Concept cards now offer Study and Worksheet separately.
 - Library keeps the exact concept study page above the browse shelves, so the learner is not forced to hunt.
+
+V14.0.3 polish:
+- Moved Start Today’s Path higher on Today.
+- Compressed the repeated weak-spots/timer explanation.
+- Added tap hints to Study → Practice → Worksheet → Correct → Master.
+- Added a clearer “First action” card.
+- Added a live-style pass checklist with Start, Study, Worksheet, Correct, 95%, and Mastery evidence states.
+- Kept the graded worksheet shortcut, but made it clearly secondary.
