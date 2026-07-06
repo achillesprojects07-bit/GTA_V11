@@ -1,56 +1,39 @@
-# Καθημερινά V14.10 — Full Worksheet Volume Fill by Level
+# Καθημερινά V14.11 — Mastery Lock + Unlock Enforcement
 
-This build continues from **V14.9 Content Cleanup + De-duplication Audit**.
+This build continues from **V14.10 Full Worksheet Volume Fill by Level** and adds the stricter Kumon-style progression rule:
 
-## Why this build exists
-V14.4 made the 2,820 micro-round ladder visible, and V14.4A made worksheet time separate from concept study. V14.10 makes the next correction: the selected worksheet block must actually be filled with answer-work. If the learner chooses 60 minutes, the app should prepare about 48 worksheet micro-rounds, excluding Library study and excluding post-session correction.
+**Library study teaches. Worksheet accuracy proves. Corrections repair. Repetition strengthens. Only then does the next concept unlock.**
 
-## What V14.10 adds
-- Full worksheet-volume fill layer for the complete ladder.
-- 20 / 30 / 45 / 60 / 90 minute worksheet blocks now request the full planned number of answer-work items.
-- A 60-minute block is treated as about **48 micro-rounds** of worksheet answering.
-- Each level now has a volume-fill audit connecting:
-  - level target
-  - unit targets
-  - concept steps
-  - available source records
-  - generated worksheet families
-- Worksheet queues are enriched with more forms from existing verified app content:
-  - choose meaning
-  - choose Greek
-  - type Greek
-  - read and copy Greek
-  - article identification where the article is already present
-  - say clearly / self-check sound proof
-- Worksheet records are tagged with `volumeVersion: "V14.10"`.
-- Roadmap updated so the next build is **V14.11 Strict Mastery Lock / Unlock Enforcement**.
+## What V14.11 adds
 
-## What this build deliberately does not do
-- It does not invent missing Greek plural tables.
-- It does not invent full verb conjugation tables.
-- It does not invent unverified A1/A2 passages.
-- It does not count Library study as worksheet time.
-- It does not count correction time as worksheet time.
+- Strict mastery lock/unlock layer across the whole ladder.
+- The app chooses the next concept by explicit level/order/prerequisite mastery.
+- A concept cannot unlock the next concept just because it was opened or studied.
+- A concept cannot be mastered by time spent.
+- Mastery now requires:
+  - Library study logged.
+  - 3 strong worksheet rounds.
+  - 90%+ accuracy.
+  - No wrong answers in a strong round.
+  - Correction queue cleared.
+  - Repetition queue cleared.
+- One wrong answer blocks unlock until corrected.
+- Two or more wrong answers assign repetition before new work.
+- Locked Library pages and worksheets route the learner back to the prerequisite/current concept.
+- New V14.11 lock panels in Today, Levels, Worksheets, Library, and Review.
+- Worksheet results now show whether unlock is blocked or proven.
 
-## Mastery rule preserved
-- Library study teaches the concept.
-- Timed worksheet block proves answer accuracy.
-- Corrections happen after the timed block.
-- Repetition is assigned when wrong answers appear.
-- Mastery is based on repeated accuracy, not browsing or time spent.
+## Preserved from earlier builds
 
-## Next build after this
-V14.11 should be **Strict Mastery Lock / Unlock Enforcement**: prevent advancement unless the learner has passed the accuracy threshold, corrected wrong answers, completed repetition, and satisfied prerequisites.
+- V14.7A foundation-first ladder: first lesson remains **L0.01 Greek vowels: α ε ι ο ου**.
+- **γαύρος** remains later as an applied integration lesson, not the first lesson.
+- V14.4A time contract: concept study is outside worksheet time, corrections are outside worksheet time.
+- V14.10 volume fill: 20 / 30 / 45 / 60 / 90 minute blocks still generate full answer-work volume.
+- No unverified plural tables, verb tables, or exam content are invented.
+- `const LS='gta_v12_state'` is preserved.
 
-## Smoke test
-Run:
+## Next recommended build
 
-```bash
-npm test
-```
+**V14.12 — Tutor/Partner Correction Mode**
 
-Expected:
-
-```text
-Καθημερινά V14.10 Full Worksheet Volume Fill smoke test passed.
-```
+This should add partner correction workflows: one sound/pattern at a time, 3-try limit, closer/not yet/correct marks, and saved notes.
