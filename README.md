@@ -1,4 +1,4 @@
-# Καθημερινά — V15.0B Clickable Navigation + Today Minimal Hotfix
+# Καθημερινά — V15.0C Clickable Navigation + Today Minimal Hotfix
 
 This is a hotfix after V15.0A.
 
@@ -19,3 +19,9 @@ Library study teaches. Timed worksheets prove. Corrections and repetition happen
 ## Deployment note
 
 After uploading, hard refresh and clear site data once if the old V15.0A cached file remains visible.
+
+
+## V15.0C — Anchor Navigation Failsafe
+- Rebuilt bottom tabs as real hash anchors.
+- Added CSS :target fallback so section switching works even if an old click handler is cached.
+- Today stays minimal; mastery rules unchanged.
