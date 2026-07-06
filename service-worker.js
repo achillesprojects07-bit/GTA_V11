@@ -1,4 +1,4 @@
-const CACHE_NAME='gta-v15-0-true-greek-fluency-path';
+const CACHE_NAME='gta-v15-0a-today-nav-cleanup';
 const APP_SHELL=['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png','./apple-touch-icon.png','./kathimerina-tile-1024.png'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(APP_SHELL)))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))));self.clients.claim()});

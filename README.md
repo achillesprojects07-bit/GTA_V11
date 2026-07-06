@@ -1,10 +1,10 @@
-# Καθημερινά V15.0 — True Greek Fluency Path
+# Καθημερινά V15.0A — True Greek Fluency Path
 
 This build continues from **V14.14 A1/A2 Exam Simulation Layer** and consolidates the app into the full learner-facing pathway.
 
-V15.0 is not just another feature layer. It is the system unification build: the learner should open the app and immediately know the next correct action.
+V15.0A is not just another feature layer. It is the system unification build: the learner should open the app and immediately know the next correct action.
 
-## What V15.0 adds
+## What V15.0A adds
 
 - A unified **True Greek Fluency Path** on Today.
 - One clear action: **Study / answer / correct / repeat / master / unlock**.
@@ -35,16 +35,26 @@ V15.0 is not just another feature layer. It is the system unification build: the
 - V14.14 A1/A2 exam simulation layer.
 - Offline-first single-file PWA behavior.
 
-## V15.0 learning rule
+## V15.0A learning rule
 
 The app is now organized around this complete flow:
 
 **Library study → timed worksheet answer-work → correction outside timer → repetition outside timer → 3 strong rounds → mastery → next concept unlock.**
 
-## Recommended next work after V15.0
+## Recommended next work after V15.0A
 
 Do not add random new features first. The next work should be a stability and QA pass:
 
 **V15.1 — Full QA, Console Error Sweep, and Live Deployment Hardening**
 
 Then continue with verified-content expansion only after the V15 system is proven stable on the phone.
+
+
+## V15.0A hotfix
+
+This hotfix cleans the Today tab and restores reliable navigation:
+
+- Today now shows only the required True Greek Fluency Path, not every historical V14 panel.
+- A top tab rail was added so Levels, Library, Worksheets, and Review remain easy to open even if the bottom PWA nav is hidden by the device/browser.
+- Bottom navigation is forced visible and clickable.
+- The mastery system is unchanged: Library study → timed worksheets → correction → repetition → 3 strong rounds → unlock.
