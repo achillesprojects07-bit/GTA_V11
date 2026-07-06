@@ -1,36 +1,35 @@
-# Καθημερινά V14.8 — Reading + A1/A2 Comprehension Worksheet Engine
+# Καθημερινά V14.9 — Content Cleanup + De-duplication Audit
 
-This build continues from **V14.7A Ladder Audit + Foundation-First Fix**.
+This build continues from **V14.8 Reading + A1/A2 Comprehension Worksheet Engine**.
 
 ## Why this build exists
-V14.7A corrected the learning ladder so the first concept is **L0.01 Greek vowels**, not `γαύρος`. V14.8 proceeds only after that audit and adds reading/comprehension as real worksheet answer-work.
+After the mastery engine, ladder audit, worksheet timing contract, Accent Lab, listening/speaking, and reading comprehension layers, the next danger is content bloat. A Kumon-style app cannot feel like a shelf of random cards. Every item must be purposeful, mapped, and useful for answer-work.
 
-## What V14.8 adds
-- Reading worksheet bank.
-- A1/A2 comprehension engine scaffold.
-- Read + choose meaning questions.
-- Find the Greek line questions.
-- Read + type exactly questions.
-- Short comprehension questions built from existing mapped app content.
-- Reading proof logs in Review/Progress.
-- Reading segment inside the timed worksheet block.
-- 20 / 30 / 45 / 60 / 90 minute worksheet plans now include recognition, listening, reading, production, speaking, mixed review, and mastery check.
+## What V14.9 adds
+- Content cleanup audit panels on Today, Worksheets, Levels, Library/More, and Review/Progress.
+- Exact duplicate detection using Greek + English signatures.
+- Same-Greek / same-English cluster review so repeated cards can be merged instead of confusing the learner.
+- Curated usable-record count versus raw-record count.
+- Unmapped / incomplete / verification-warning counts.
+- Placeholder and machine-translated warning detection.
+- Old-fragment audit so older V11/V12/V13 labels are treated as warnings, not active version truth.
+- Worksheet questions are tagged with `cleanupVersion: "V14.9"` and duplicate-looking generated questions are reduced when possible.
+- Revised roadmap: V14.10 should now fill the worksheet volume level by level.
+
+## What this build deliberately does not do
+- It does not invent missing Greek plurals, verb tables, or A1/A2 exam passages.
+- It does not remove intentional repetition. Mastery repetition is still required when the learner makes mistakes.
+- It does not delete raw content permanently; it audits and suppresses accidental duplication in the learning path where safe.
 
 ## Mastery rule preserved
-- Concept study is outside the worksheet timer.
-- Corrections are outside the worksheet timer.
-- Reading/comprehension still follows accuracy, correction, repetition, and mastery gates.
-- A wrong reading answer creates correction.
-- Repeated reading mistakes require repetition.
-
-## Verified-content boundary
-V14.8 does **not** invent long Greek exam passages. It creates reading worksheets from content already inside the app and leaves longer official A1/A2 passages as an engine/scaffold for verified content later.
-
-## Important V14.7A structural fix carried forward
-The V14.7A ladder code is now inside an executable `<script>` block. The ladder audit is no longer plain text after `</html>`.
+- Study time is outside the worksheet timer.
+- Worksheet minutes remain answer-work only.
+- Corrections happen after the timed block.
+- Repetition is assigned for wrong answers.
+- Mastery is based on accuracy, not browsing or time spent.
 
 ## Next build after this
-V14.9 should be **Content Cleanup + De-duplication**: remove repeated/useless cards and keep only purposeful content mapped to the ladder.
+V14.10 should be **Full Worksheet Volume Fill by Level**: turn each ladder unit into enough actual answer-work to support the target micro-round volume.
 
 ## Smoke test
 Run:
@@ -42,5 +41,5 @@ npm test
 Expected:
 
 ```text
-Καθημερινά V14.8 Reading Comprehension smoke test passed.
+Καθημερινά V14.9 Content Cleanup smoke test passed.
 ```
