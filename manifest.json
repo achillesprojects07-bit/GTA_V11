@@ -1,37 +1,12 @@
 {
-  "name": "Greek Fluency Companion V11.3",
-  "short_name": "GFC V11.3",
-  "description": "Greek Fluency Companion V11.3 — offline Greek learning PWA with mixed quizzes, mastery scoring, guided daily lessons, fluency pathway, travel mode, review, and partner practice.",
+  "name": "Καθημερινά",
+  "short_name": "Καθημερινά",
   "start_url": "./index.html",
-  "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#f6f9ff",
-  "theme_color": "#2563eb",
+  "background_color": "#f7f8fb",
+  "theme_color": "#0f172a",
   "icons": [
-    {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
-    }
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png"}
   ]
 }
