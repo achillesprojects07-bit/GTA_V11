@@ -1,35 +1,36 @@
-# Καθημερινά V14.7A — Full Ladder Audit + Foundation-First Fix
+# Καθημερινά V14.8 — Reading + A1/A2 Comprehension Worksheet Engine
 
-This is a correction build made before proceeding to V14.8.
+This build continues from **V14.7A Ladder Audit + Foundation-First Fix**.
 
 ## Why this build exists
-V14.7 had the mastery engine, worksheet bank, accent lab, and listening/speaking worksheets, but the first active concept was still `γ + αυ focus: γαύρος`. That was useful as an example from the earlier pronunciation discussion, but it was not correct as the first step of a true beginner/Kumon-style ladder.
+V14.7A corrected the learning ladder so the first concept is **L0.01 Greek vowels**, not `γαύρος`. V14.8 proceeds only after that audit and adds reading/comprehension as real worksheet answer-work.
 
-## What V14.7A fixes
-- The first lesson is now **L0.01 Greek vowels: α ε ι ο ου**.
-- `γαύρος` is moved later as an applied integration lesson after:
-  - vowels
-  - stress
-  - syllables
-  - easy word reading
-  - γ alone
-  - χ
-  - θ / δ
-  - ρ
-  - αυ / ευ
-- Every level L0–L11 now has explicit concept steps.
-- The app chooses the current lesson by explicit **level + order + prerequisite mastery**, not by whichever concept appears first in the array.
-- L8 and L9 are no longer empty level shells.
-- The Levels / Today / Worksheets / Library / Review screens show a ladder audit panel.
-- The method remains: **study first → timed answer-work → corrections outside timer → repetition → mastery**.
+## What V14.8 adds
+- Reading worksheet bank.
+- A1/A2 comprehension engine scaffold.
+- Read + choose meaning questions.
+- Find the Greek line questions.
+- Read + type exactly questions.
+- Short comprehension questions built from existing mapped app content.
+- Reading proof logs in Review/Progress.
+- Reading segment inside the timed worksheet block.
+- 20 / 30 / 45 / 60 / 90 minute worksheet plans now include recognition, listening, reading, production, speaking, mixed review, and mastery check.
 
 ## Mastery rule preserved
-- Studying a concept is not mastery.
-- Time spent is not mastery.
-- Mastery requires accurate worksheets, corrections, and repeated strong rounds.
+- Concept study is outside the worksheet timer.
+- Corrections are outside the worksheet timer.
+- Reading/comprehension still follows accuracy, correction, repetition, and mastery gates.
+- A wrong reading answer creates correction.
+- Repeated reading mistakes require repetition.
+
+## Verified-content boundary
+V14.8 does **not** invent long Greek exam passages. It creates reading worksheets from content already inside the app and leaves longer official A1/A2 passages as an engine/scaffold for verified content later.
+
+## Important V14.7A structural fix carried forward
+The V14.7A ladder code is now inside an executable `<script>` block. The ladder audit is no longer plain text after `</html>`.
 
 ## Next build after this
-Proceed to V14.8 only after confirming the ladder now starts with foundational reading and not with γαύρος.
+V14.9 should be **Content Cleanup + De-duplication**: remove repeated/useless cards and keep only purposeful content mapped to the ladder.
 
 ## Smoke test
 Run:
@@ -41,8 +42,5 @@ npm test
 Expected:
 
 ```text
-Καθημερινά V14.7A Ladder Audit smoke test passed.
+Καθημερινά V14.8 Reading Comprehension smoke test passed.
 ```
-
-## Time contract reminder
-Concept study is outside the worksheet timer. Corrections are outside the worksheet timer.
