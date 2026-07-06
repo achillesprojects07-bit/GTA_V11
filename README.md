@@ -1,24 +1,21 @@
-# Καθημερινά V14.12 — Tutor / Partner Correction Mode
+# Καθημερινά V14.13 — Writing + Sentence Production Engine
 
-This build continues from **V14.11 Mastery Lock + Unlock Enforcement** and adds a structured partner/tutor correction workflow.
+This build continues from **V14.12 Tutor / Partner Correction Mode** and adds controlled writing and sentence production to the Kumon-style Greek mastery path.
 
-**Important boundary:** partner correction supports speaking and pronunciation confidence. It does **not** replace Kumon-style mastery. A concept still unlocks only through Library study, worksheet accuracy, corrections cleared, repetition cleared, and the required strong rounds.
+**Important boundary:** V14.13 does not auto-grade open free writing. It uses verified Greek lines already inside the app so sentence production can be checked accurately. Writing supports mastery, but it does not bypass the V14.11 strict unlock rules.
 
-## What V14.12 adds
+## What V14.13 adds
 
-- New Tutor / Partner Correction Mode.
-- One correction target at a time: one sound, one article pattern, or one verb pattern.
-- Partner script: say it naturally, say it slowly, let the learner try up to three times.
-- Three-try limit per prompt to avoid exhausting correction loops.
-- Partner marks:
-  - Correct
-  - Closer
-  - Not yet
-- Saved partner/tutor notes in Review.
-- Recent partner logs with concept, focus, status, and mark count.
-- Tutor panels in Today, Levels, Worksheets, Library, and Review.
-- Current focus is inferred from the active ladder concept, for example γ, χ, θ/δ, ρ, αυ/ευ, stress/vowels, articles, or verb pattern.
-- Partner feedback is explicitly labeled as speaking evidence only, not mastery proof.
+- New Writing + Sentence Production Engine.
+- Full-line Greek typing worksheets.
+- Sentence-building from word tiles.
+- Missing-word sentence repair.
+- Controlled short writing using exact verified Greek lines.
+- Writing mastery checks.
+- Writing correction queue and writing proof logs in Review.
+- Timed worksheet plan now includes a writing segment.
+- A 60-minute worksheet block still means answer-work time; concept study and correction stay outside the timer.
+- Wrong writing answers are routed to correction/repetition like other worksheet mistakes.
 
 ## Preserved from earlier builds
 
@@ -26,11 +23,12 @@ This build continues from **V14.11 Mastery Lock + Unlock Enforcement** and adds 
 - **γαύρος** remains later as an applied integration lesson, not the first lesson.
 - V14.4A time contract: concept study is outside worksheet time, corrections are outside worksheet time.
 - V14.10 volume fill: 20 / 30 / 45 / 60 / 90 minute blocks generate full answer-work volume.
-- V14.11 strict unlocks remain active: studying alone, time spent, or partner approval cannot unlock the next concept.
+- V14.11 strict unlocks remain active: studying alone, time spent, partner approval, or free writing cannot unlock the next concept.
+- V14.12 partner mode remains available for focused pronunciation and speaking notes.
 - `const LS='gta_v12_state'` is preserved.
 
 ## Next recommended build
 
-**V14.13 — Writing + Sentence Production Engine**
+**V14.14 — A1/A2 Exam Simulation Layer**
 
-This should add controlled sentence production, short writing prompts, sentence repair, and a writing correction queue.
+This should add mini mock tests by skill: listening, reading, writing, speaking, grammar, and vocabulary.
