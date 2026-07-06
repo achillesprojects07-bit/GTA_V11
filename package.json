@@ -1,1 +1,1 @@
-{"scripts":{"test":"node tests/smoke-test.js"},"devDependencies":{},"version":"14.9.0"}
+{"scripts":{"test":"node tests/smoke-test.js"},"devDependencies":{},"version":"14.10.0"}
