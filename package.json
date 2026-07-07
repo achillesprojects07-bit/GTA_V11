@@ -1,1 +1,1 @@
-{"scripts":{"test":"node tests/smoke-test.js"},"version":"14.14.0","private":true}
+{"scripts":{"test":"node tests/smoke-test.js"},"version":"15.2.3","name":"gta-v15-2c-stable-tabs"}

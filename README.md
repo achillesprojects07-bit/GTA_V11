@@ -1,36 +1,17 @@
-# Καθημερινά V14.14 — A1/A2 Exam Simulation Layer
+# Καθημερινά V15.2c — Stable Tabs / Lag Recovery
 
-This build continues from **V14.13 Writing + Sentence Production Engine** and adds the exam-simulation layer for A1/A2-style practice.
+This is a recovery build for the broken V15 navigation/lag issue.
 
-**Important boundary:** this is a practice simulation layer, not an official exam claim. Practice-only content remains labelled practice-only. Imported official or tutor-checked content remains separate and must be marked verified only when it has been checked.
+## What changed
+- Replaces heavy tab rendering with a lightweight stability shell.
+- Bottom tabs and top tabs route to Today, Levels, Library, Worksheets, and Review.
+- Old engines remain in the file, but tabs no longer auto-render the heavy stacked V14/V15 panels that were freezing navigation.
+- Service worker cache is bumped to `gta-v15-2c-stable-tabs` and navigation is network-first/no-store.
 
-## What V14.14 adds
+## Important
+After uploading to GitHub Pages, clear the old site data once if the app keeps returning to V15.0C/V15.2b.
 
-- A1/A2 exam simulation dashboard.
-- Four-skill mock flow: Speaking → Listening → Reading → Writing.
-- Additional vocabulary and grammar sections when available.
-- Skill-by-skill score dashboard.
-- Mock run history.
-- Weakness report after a mock.
-- Missed objective items become repair/repetition work.
-- Writing and speaking use model-answer self-check / tutor-check rather than unsafe auto-grading.
-- Exam simulation panels appear in Today, Levels, Library, Worksheets, and Review.
-- Practice-only A1/A2 exam bank remains available.
-- Imported verified exam JSON remains supported.
-
-## Preserved from earlier builds
-
-- V14.7A foundation-first ladder: first lesson remains **L0.01 Greek vowels: α ε ι ο ου**.
-- **γαύρος** remains later as an applied integration lesson, not the first lesson.
-- V14.4A time contract: concept study is outside worksheet time, corrections are outside worksheet time.
-- V14.10 volume fill: worksheet sessions request the planned answer-work volume.
-- V14.11 strict unlocks remain active: exam simulation does not bypass mastery locks.
-- V14.12 partner/tutor mode remains available.
-- V14.13 writing engine remains active.
-- `const LS='gta_v12_state'` is preserved.
-
-## Next recommended build
-
-**V15.0 — True Greek Fluency Path**
-
-This should consolidate the whole system into a final learner-facing pathway: clean daily flow, stable workbook ladder, strict mastery, full review repair, and app-wide polish.
+## Preserved
+- `gta_v12_state`
+- Existing data and prior engines remain in the file.
+- Mastery philosophy remains: study first, timed worksheet answer-work, corrections outside timer, repetition, mastery.
