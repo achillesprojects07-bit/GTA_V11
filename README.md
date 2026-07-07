@@ -1,46 +1,38 @@
-# Καθημερινά V15.1a — Navigation Fix
+# Καθημερινά V15.2 — Navigation Rebuild (single authoritative router)
 
-Adds a Kumon-method mastery-worksheet system on top of V15.0C (and includes the anchor-tab
-click fix). Built per Jeffery's specification (27-year Kumon instructor).
+Fixes the unclickable tabs (Worksheets, Levels, Library, Review) by consolidating the
+navigation. Built from the pristine V15.0C base after two prior blind fixes failed.
 
-## The mastery model (as specified)
-- One worksheet SET mastered = 100% accuracy (no timer — accuracy only).
-- Wrong answers are CORRECTED to 100% every time (re-answer the same items) — this is the
-  learning mechanism.
-- More than 2–3 mistakes on a set → after correcting to 100%, a FRESH repeat set is required.
-- A topic unlocks the next only when mastered.
-- End of level → ACHIEVEMENT TEST: one question sampled from every topic; scored as a whole;
-  below 80% → the missed topics reopen for repeat.
-- Free writing/speaking stays OUTSIDE the mastery gate (separate practice / real-life use).
+## What was wrong
+The V15.0C build had accumulated multiple competing navigation systems from earlier
+versions: 2 `go()` routers, 3 versions of nav handlers (v150a/b/c), 3 document click
+listeners, touch + hashchange listeners, a document-wide translate click handler, and
+3 `:target` CSS rules making view visibility depend on the URL hash. These competed for
+the same taps; on iOS (touch fires before click) the wrong handler could cancel a tap
+before the correct router ran — leaving tabs dead.
 
-## What's in this build
-- Mastery engine: topic → set → 100% gate → same-item correction → >3-mistake fresh repeat →
-  achievement test → per-topic remediation.
-- Level 0 (The Greek Alphabet) authored as the working proof: vowels, easy consonants, the
-  hard sounds (γ, χ, θ/δ, αυ/ευ), and stress — 7 topics.
-- Wired to the "Worksheets" tab; new "Mastery Worksheets" levels screen.
-- Anchor-navigation tab fix (V15.0C tabs were `<a>` anchors not wired to the router).
+## The fix
+- Removed the conflicting `:target` CSS rules (exact-match removal, verified none remain).
+- Installed ONE authoritative router that runs in the capture phase on BOTH `touchend`
+  (iOS fires touch first) and `click`, using `stopImmediatePropagation()` so it wins over
+  the old bubble-phase handlers. It toggles `.view.active`, sets `display`, updates the
+  hash, and calls the correct render function.
 
-## HONESTY FLAGS (per Jeffery's preferences)
-- [UNCERTAIN] Level 0 content is AI-drafted and practice-only. The letter-sound mappings are
-  standard, but the teaching SEQUENCE and example choices are my inference — NOT verified by a
-  Greek pedagogue. Have a Greek speaker/teacher confirm before treating as authoritative.
-- [UNCERTAIN] The "re-answer the same items" mastery rule (Jeffery's explicit choice) is built
-  as specified. Note: in language learning this may train item-recall over pattern-transfer;
-  flagged for observation, not overridden.
-- [PLAUSIBLE] The "repeat = fresh items" on >3 mistakes was my design call within Jeffery's
-  "delegate to you" instruction; the correction step still uses same items as specified.
-- Only auto-gradable item types (MCQ) live inside the mastery gate. This is a hard technical
-  limit: the app cannot honestly grade free production.
+## HONEST LIMITATION (per Jeffery's preferences)
+[UNCERTAIN] This fix is validated in code (all script blocks parse, smoke test passes with
+a new router regression guard) but I CANNOT run it in iOS Safari from my environment — no
+browser/DOM available (jsdom install blocked by no network). Two prior nav fixes this
+session failed on-device despite validating in code. My confidence is "likely," not
+"certain." VERIFY by tapping all five tabs after deploy.
 
 ## Release checks
-- Header + APP_VERSION: V15.1
-- Service-worker cache: gta-v15-1-kumon-mastery
-- Package version: 15.1.0
-- Smoke test passing
-- gta_v12_state storage key preserved (all prior progress intact)
+- Header + APP_VERSION: V15.2
+- Service-worker cache: gta-v15-2-single-router
+- Package version: 15.2.0
+- Smoke test passing, with regression guard requiring the single router + no :target rules
+- gta_v12_state storage key preserved
 
-## Still to do (future stages)
-- Levels 1–7 content authoring (present tense → past → A2 consolidation).
-- Library "study first" screens (grammar concept + vocab per topic) feeding each worksheet.
-- Greek-speaker verification pass on all drafted content.
+## Note
+This build is from pristine V15.0C — it does NOT include the V15.1 Kumon mastery engine
+(that was built on a since-damaged copy). Once tabs are confirmed working, the Kumon engine
+can be cleanly re-added on top of this stable base.
