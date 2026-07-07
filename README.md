@@ -1,6 +1,6 @@
 # Καθημερινά V15.2b — Tap Feedback
 
-Adds instant, obvious tap feedback to the nav tabs (on top of V15.2a's network-first
+Adds instant, obvious tap feedback to the nav tabs (on top of V15.2a's  network-first
 cache fix and the single-router nav rebuild).
 
 ## What's new
