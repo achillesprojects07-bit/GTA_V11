@@ -1,1 +1,1 @@
-{"scripts":{"test":"node tests/smoke-test.js"},"version":"15.3.0","name":"gta-v15-3-gradual-content-restore","description":"Kathimerina V15.3 Restore Full Content Gradually"}
+{"scripts":{"test":"node tests/smoke-test.js"},"version":"15.4.0","name":"gta-v15-4-cache-hardening","description":"Kathimerina V15.4 Service Worker / Cache Hardening"}
