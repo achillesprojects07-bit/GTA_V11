@@ -1,1 +1,1 @@
-{"scripts":{"test":"node tests/smoke-test.js"},"version":"15.2.3","name":"gta-v15-2c-stable-tabs"}
+{"scripts":{"test":"node tests/smoke-test.js"},"version":"15.2.4","name":"gta-v15-2c-stable-tabs","description":"Kathimerina V15.2D Stability Polish + Loading Feedback"}
