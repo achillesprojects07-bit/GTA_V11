@@ -1,1 +1,1 @@
-{"scripts":{"test":"node tests/smoke-test.js"},"version":"15.4.0","name":"gta-v15-4-cache-hardening","description":"Kathimerina V15.4 Service Worker / Cache Hardening"}
+{"scripts":{"test":"node tests/smoke-test.js"},"version":"15.5.0","name":"gta-v15-5-mastery-audit","description":"Kathimerina V15.5 Mastery System Audit"}
