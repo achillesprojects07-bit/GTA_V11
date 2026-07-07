@@ -1,33 +1,26 @@
-# Καθημερινά V15.5 — Mastery System Audit
+# Καθημερινά V15.6 — Premium UX Polish + Progressive Disclosure
 
-This build continues from the stable V15.4 cache-hardening baseline. It does **not** add another heavy feature layer. It audits the learning system to make sure the Kumon-style mastery method is still intact after the stability rebuild.
+This build continues from the working V15.5 Mastery System Audit baseline. It focuses on world-class learner experience instead of adding more content.
 
 ## What changed
-- Updates visible version to **V15.5**.
-- Adds a **Mastery System Audit** panel in Today, Levels, Library, Worksheets, and Review.
-- Checks the foundation-first ladder rule: **L0.01 Greek vowels first; γαύρος later as integration**.
-- Checks that the strict mastery function and current-concept resolver remain loaded.
-- Shows the current concept gate:
-  - Library studied
-  - average worksheet accuracy
-  - strong rounds
-  - open corrections
-  - repetition due
-- Reinforces the Kumon method:
-  - studying is not mastery
-  - worksheet minutes are answer-work only
-  - corrections happen outside the timer
-  - repetition is required after mistakes
-  - three strong rounds are required before unlock
-- Keeps the V15.4 cache-hardening tools and updates the cache name to `gta-v15-5-mastery-audit`.
-- Updates `manifest.json` start URL to `./index.html?v=15.5`.
+- Adds instant tap feedback for every tab.
+- Tabs change color immediately on press and active selection.
+- Adds a polished loading skeleton and status toast: “Opening Levels…”, “Opening Library…”, etc.
+- Rebuilds the tab experience as a premium, lightweight command interface.
+- Keeps Today minimal: one next step, one contract, optional tools hidden.
+- Moves heavy tab materials behind progressive disclosure sections.
+- Levels shows the current step and compact roadmap first.
+- Library shows the current concept first, with shelves hidden until opened.
+- Worksheets shows the timed answer-work block first, with queue details hidden.
+- Review shows repair/mastery status first, with audit details hidden.
+- Updates service worker cache to `gta-v15-6-premium-ux`.
 
 ## Preserved
-- Working V15.4 stable navigation shell.
-- Clean Today tab.
-- Restored Levels, Library, Worksheets, and Review content.
-- `gta_v12_state` saved practice data.
-- Service-worker old-cache clearing.
+- V15.5 mastery audit logic.
+- V15.4 cache hardening tools.
+- Stable navigation shell.
+- `gta_v12_state` saved data.
+- Kumon-style mastery rule: study first → timed answer-work → corrections outside timer → repetition → 3 strong rounds → unlock.
 
 ## Upload note
-After uploading to GitHub Pages, open Review → Version + cache hardening → tap **Clear old app caches** once if you still see an older version. Then reopen the app.
+After uploading to GitHub Pages, hard refresh once. If an older version appears, use Review → Clear old app caches.

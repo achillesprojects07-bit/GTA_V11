@@ -1,1 +1,1 @@
-{"scripts":{"test":"node tests/smoke-test.js"},"version":"15.5.0","name":"gta-v15-5-mastery-audit","description":"Kathimerina V15.5 Mastery System Audit"}
+{"scripts":{"test":"node tests/smoke-test.js"},"version":"15.6.0","name":"gta-v15-6-premium-ux","description":"Kathimerina V15.6 Premium UX Polish"}

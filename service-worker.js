@@ -1,5 +1,5 @@
-const BUILD_VERSION='V15.5';
-const CACHE_NAME='gta-v15-5-mastery-audit';
+const BUILD_VERSION='V15.6';
+const CACHE_NAME='gta-v15-6-premium-ux';
 const OLD_CACHE_PREFIX=/^gta-/i;
 const ASSETS=['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png','./apple-touch-icon.png','./kathimerina-tile-1024.png'];
 
