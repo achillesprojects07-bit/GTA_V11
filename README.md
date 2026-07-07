@@ -1,20 +1,31 @@
-# Καθημερινά V15.6B — Hard-Stop Study Path Router
+# Καθημερινά V15.6C — Reload Loop Fix
 
-This hotfix is specifically for the remaining loop:
+Surgical fix on ChatGPT's V15.6B (all its features preserved unchanged).
 
-Today / Study Path → Study in Library → back to Study Path → nonstop loading.
+## The fatal bug [ESTABLISHED]
+V15.6B never finished loading. Cause: the service-worker `controllerchange` handler
+called `location.reload()` guarded only by a `window` variable — which the reload itself
+wipes, so the guard never blocked the next reload. Result: infinite reload loop. (The
+V15.6A "Loop-Free" hotfix attempted this fix but used the same volatile guard.)
 
-## What changed
+## The fix
+The guard now persists in `sessionStorage`, which survives reloads within the tab —
+so the update-reload can fire at most ONCE per tab session. Loop broken regardless of
+what triggers controllerchange. All other reload calls in the app are button-triggered
+and untouched. ChatGPT's SW fetch strategy and CLEAR_CACHES handler are preserved.
 
-- Adds a final hard-stop router that becomes the only UI authority after the older scripts finish.
-- Uses its own safe route attributes: `data-v156b-route`.
-- Does **not** call the old `v1402OpenLibraryForConcept()` function from the study path.
-- Disarms older path functions by redirecting them into the safe Library/Worksheet route.
-- Removes hash-based navigation from the V15.6B flow so old hashchange routers do not wake up.
-- Library stays open after “I studied this concept.”
-- The learner manually chooses “Start worksheets” after study is logged.
-- Keeps the Kumon mastery rule: study → timed answer-work → correction → repetition → mastery.
+## Also fixed: the "changes to V14.3" confusion
+The Library/Levels/Worksheets/Review screens displayed hardcoded 'V14.3' badges from an
+old build — this looked like the app reverting versions. It never was; it was stale
+label text. Badges now show V15.6C. Historical manifest rows intentionally left intact.
 
-## Deployment note
+## ONE-TIME STEP REQUIRED ON YOUR DEVICE [ESTABLISHED — unavoidable]
+Your phone currently runs the OLD looping code, served by the OLD service worker. A
+looping client never fetches the new deploy, so no server upload alone can fix it.
+After deploying V15.6C: clear the site's data ONCE in your normal browser
+(Chrome → site settings for the github.io site → Clear data; or delete + re-add the
+installed icon). Then load fresh. Verify first in incognito if you want proof it works.
 
-After uploading to GitHub, clear old app caches once from Review, or clear site data if an older V15.6/V15.6A screen keeps appearing.
+## Release checks
+- APP_VERSION: V15.6C · SW cache: gta-v15-6c-loop-fix · package 15.6.3
+- Smoke test passing, incl. new regression guard: reload guard must be sessionStorage-based

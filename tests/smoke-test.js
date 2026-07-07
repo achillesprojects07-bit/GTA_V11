@@ -7,11 +7,11 @@ const pkg=fs.readFileSync('package.json','utf8');
 const manifest=fs.readFileSync('manifest.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<span class="versionMini">V15.6A</span>',
-  "const APP_VERSION='V15.6A'",
+  '<span class="versionMini">V15.6C</span>',
+  "const APP_VERSION='V15.6C'",
   "const LS='gta_v12_state'",
   'V15.6A LOOP-FREE STUDY PATH',
-  'V15.6A Loop-Free Study Path Hotfix',
+  'V15.6C — Reload Loop Fix',
   'v155AuditData',
   'v155AuditPanel',
   'Foundation starts first',
@@ -28,7 +28,7 @@ const required=[
   'v154CheckCacheStatus',
   'data-v156a-route',
   'v156aMarkStudied',
-  'gta-v15-6a-loop-free-study-path',
+  'gta-v15-6c-loop-fix',
   'CLEAR_CACHES',
   'SKIP_WAITING',
   'updateViaCache',
@@ -39,11 +39,11 @@ const required=[
 ];
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x)&&!manifest.includes(x));
 if(missing.length){console.error('Missing:',missing.join(' | '));process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v15-6a-loop-free-study-path'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!sw.includes("const CACHE_NAME='gta-v15-6c-loop-fix'")){console.error('Service worker cache mismatch');process.exit(1)}
 if(!sw.includes("cache:'no-store'")){console.error('SW should use no-store fetches');process.exit(1)}
-if(!readme.includes('# Καθημερινά V15.6A')){console.error('README heading mismatch');process.exit(1)}
-if(!pkg.includes('"version":"15.6.1"')){console.error('Package version mismatch');process.exit(1)}
-if(!manifest.includes('./index.html?v=15.6a')){console.error('Manifest start_url mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V15.6C')){console.error('README heading mismatch');process.exit(1)}
+if(!pkg.includes('"version":"15.6.3"')){console.error('Package version mismatch');process.exit(1)}
+if(!manifest.includes('./index.html?v=15.6c')){console.error('Manifest start_url mismatch');process.exit(1)}
 let scripts=[];let pos=0;
 while(true){let s=html.indexOf('<script',pos);if(s<0)break;let start=html.indexOf('>',s);let e=html.indexOf('</script>',start);if(e<0){console.error('Unclosed script');process.exit(1)}scripts.push(html.slice(start+1,e));pos=e+9}
 if(scripts.length<5){console.error('Expected main script plus extension scripts');process.exit(1)}
@@ -51,4 +51,6 @@ scripts.forEach((script,i)=>{let f=`/tmp/kathimerina-v15-6-${i}.js`;fs.writeFile
 const afterHtml=html.slice(html.lastIndexOf('</html>')+'</html>'.length).trim();
 if(afterHtml){console.error('Code/text found after </html>');process.exit(1)}
 if(html.includes('<span class="versionMini">V15.4</span>')){console.error('Old V15.4 visible version remains');process.exit(1)}
-console.log('Καθημερινά V15.6A Loop-Free Study Path Hotfix smoke test passed.');
+
+if(!html.includes("sessionStorage.getItem('gta_sw_reloaded')")){console.error('reload-loop guard missing (sessionStorage)');process.exit(1);}
+console.log('Καθημερινά V15.6C Reload Loop Fix smoke test passed.');

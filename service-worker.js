@@ -1,5 +1,5 @@
 const BUILD_VERSION='V15.6B';
-const CACHE_NAME='gta-v15-6b-hard-stop-router';
+const CACHE_NAME='gta-v15-6c-loop-fix';
 const APP_SHELL=['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png','./apple-touch-icon.png','./kathimerina-tile-1024.png'];
 self.addEventListener('install',event=>{self.skipWaiting();event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL.map(u=>u+'?v='+BUILD_VERSION)).catch(()=>cache.addAll(APP_SHELL))).catch(()=>{}));});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>/^gta-/i.test(k)&&k!==CACHE_NAME).map(k=>caches.delete(k)));await self.clients.claim();})());});
