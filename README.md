@@ -1,31 +1,36 @@
-# Καθημερινά V15.2b — Tap Feedback
+# Καθημερινά V14.14 — A1/A2 Exam Simulation Layer
 
-Adds instant, obvious tap feedback to the nav tabs (on top of V15.2a's  network-first
-cache fix and the single-router nav rebuild).
+This build continues from **V14.13 Writing + Sentence Production Engine** and adds the exam-simulation layer for A1/A2-style practice.
 
-## What's new
-- Tapping a tab now flashes it (color + slight press-scale) THE MOMENT you touch it,
-  before the view finishes rendering — so a tap always feels registered.
-- Uses CSS :active (press-scale) + a brief JS-added .tapFlash class (color flash), plus
-  the existing .active state for the current tab. Respects prefers-reduced-motion.
+**Important boundary:** this is a practice simulation layer, not an official exam claim. Practice-only content remains labelled practice-only. Imported official or tutor-checked content remains separate and must be marked verified only when it has been checked.
 
-## Why this matters
-When the tabs weren't working (the cache bug), there was no feedback so a tap felt dead.
-With this, even if something is slow, you SEE the tap land — which also makes any future
-issue easier to diagnose (tap registered vs. content not changing).
+## What V14.14 adds
 
-## Still required for the cache fix (from V15.2a)
-If your NORMAL browser window still shows the old version on tab-click, clear the old
-service worker once: Chrome → site settings → Clear data (or reinstall the icon).
-Incognito already works because it has no old cache.
+- A1/A2 exam simulation dashboard.
+- Four-skill mock flow: Speaking → Listening → Reading → Writing.
+- Additional vocabulary and grammar sections when available.
+- Skill-by-skill score dashboard.
+- Mock run history.
+- Weakness report after a mock.
+- Missed objective items become repair/repetition work.
+- Writing and speaking use model-answer self-check / tutor-check rather than unsafe auto-grading.
+- Exam simulation panels appear in Today, Levels, Library, Worksheets, and Review.
+- Practice-only A1/A2 exam bank remains available.
+- Imported verified exam JSON remains supported.
 
-## Release checks
-- Header + APP_VERSION: V15.2b
-- Service-worker cache: gta-v15-2b-tap-feedback (network-first for navigation retained)
-- Package version: 15.2.2
-- Smoke test passing (router + network-first guards retained)
-- gta_v12_state preserved
+## Preserved from earlier builds
 
-## Note
-Built on pristine V15.0C + single-router rebuild + network-first cache. Kumon mastery
-engine still to be re-added cleanly once navigation is fully confirmed on your device.
+- V14.7A foundation-first ladder: first lesson remains **L0.01 Greek vowels: α ε ι ο ου**.
+- **γαύρος** remains later as an applied integration lesson, not the first lesson.
+- V14.4A time contract: concept study is outside worksheet time, corrections are outside worksheet time.
+- V14.10 volume fill: worksheet sessions request the planned answer-work volume.
+- V14.11 strict unlocks remain active: exam simulation does not bypass mastery locks.
+- V14.12 partner/tutor mode remains available.
+- V14.13 writing engine remains active.
+- `const LS='gta_v12_state'` is preserved.
+
+## Next recommended build
+
+**V15.0 — True Greek Fluency Path**
+
+This should consolidate the whole system into a final learner-facing pathway: clean daily flow, stable workbook ladder, strict mastery, full review repair, and app-wide polish.
