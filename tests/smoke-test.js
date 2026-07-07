@@ -7,8 +7,8 @@ const readme=fs.readFileSync('README.md','utf8');
 const pkg=fs.readFileSync('package.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V15.2</span></div>',
-  "const APP_VERSION='V15.2'",
+  '<div class="title">Καθημερινά <span class="versionMini">V15.2b</span></div>',
+  "const APP_VERSION='V15.2b'",
   "const LS='gta_v12_state'",
   'V14.7A Full Ladder Audit',
   'V14.10 Full Worksheet Volume Fill by Level',
@@ -16,12 +16,12 @@ const required=[
   'V14.12 Tutor / Partner Correction Mode',
   'V14.13 Writing + Sentence Production Engine',
   'V14.14 · A1/A2 Exam Simulation Layer',
-  'V15.2 · Single Router',
+  'V15.2b · Single Router',
   'v150ContinuePath',
   'v150OpenCommandCenter',
   'v150CommandPanel',
   'V15.2 SINGLE AUTHORITATIVE ROUTER',
-  'gta-v15-2-single-router',
+  'gta-v15-2b-tap-feedback',
   'c0_vowels',
   "unit:'L0.01'",
   "id:'c0_gavros'",
@@ -30,9 +30,9 @@ const required=[
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x));
 if(missing.length){console.error('Missing:',missing.join(' | '));process.exit(1)}
 if(!manifest.includes('Καθημερινά')){console.error('Manifest app name missing');process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v15-2-single-router'")){console.error('Service worker cache mismatch');process.exit(1)}
-if(!readme.includes('# Καθημερινά V15.2 — Navigation Rebuild')){console.error('README heading mismatch');process.exit(1)}
-if(!pkg.includes('"version":"15.2.0"')){console.error('Package version mismatch');process.exit(1)}
+if(!sw.includes("const CACHE_NAME='gta-v15-2b-tap-feedback'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V15.2b — Tap Feedback')){console.error('README heading mismatch');process.exit(1)}
+if(!pkg.includes('"version":"15.2.2"')){console.error('Package version mismatch');process.exit(1)}
 const forbidden=["APP_VERSION='V14.14';",'<span class="versionMini">V14.14</span>','gta-v14-14-exam-simulation-layer'];
 const bad=forbidden.filter(x=>html.includes(x)||sw.includes(x)||pkg.includes(x));
 if(bad.length){console.error('Old/forbidden active labels remain:',bad.join(', '));process.exit(1)}
@@ -51,4 +51,5 @@ if(!html.includes('window.__go=show')){console.error('authoritative router windo
 if(!html.includes("addEventListener('touchend',tap,true)")){console.error('touchend capture handler missing');process.exit(1);}
 if(html.match(/\.view:target\{/g)){console.error('conflicting :target CSS still present');process.exit(1);}
 
-console.log('Καθημερινά V15.2 Navigation Rebuild smoke test passed.');
+if(!sw.includes("NETWORK-FIRST")){console.error("SW not network-first for nav");process.exit(1);}
+console.log('Καθημερινά V15.2b Tap Feedback smoke test passed.');
