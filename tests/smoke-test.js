@@ -7,8 +7,8 @@ const readme=fs.readFileSync('README.md','utf8');
 const pkg=fs.readFileSync('package.json','utf8');
 const required=[
   '<title>Καθημερινά</title>',
-  '<div class="title">Καθημερινά <span class="versionMini">V15.1</span></div>',
-  "const APP_VERSION='V15.1'",
+  '<div class="title">Καθημερινά <span class="versionMini">V15.1a</span></div>',
+  "const APP_VERSION='V15.1a'",
   "const LS='gta_v12_state'",
   'V14.7A Full Ladder Audit',
   'V14.10 Full Worksheet Volume Fill by Level',
@@ -21,7 +21,7 @@ const required=[
   'v150OpenCommandCenter',
   'v150CommandPanel',
   'KUMON_LEVELS',
-  'gta-v15-1-kumon-mastery',
+  'gta-v15-1a-nav-authoritative',
   'c0_vowels',
   "unit:'L0.01'",
   "id:'c0_gavros'",
@@ -30,9 +30,9 @@ const required=[
 const missing=required.filter(x=>!html.includes(x)&&!sw.includes(x)&&!readme.includes(x));
 if(missing.length){console.error('Missing:',missing.join(' | '));process.exit(1)}
 if(!manifest.includes('Καθημερινά')){console.error('Manifest app name missing');process.exit(1)}
-if(!sw.includes("const CACHE_NAME='gta-v15-1-kumon-mastery'")){console.error('Service worker cache mismatch');process.exit(1)}
-if(!readme.includes('# Καθημερινά V15.1 — Kumon Mastery Worksheets')){console.error('README heading mismatch');process.exit(1)}
-if(!pkg.includes('"version":"15.1.0"')){console.error('Package version mismatch');process.exit(1)}
+if(!sw.includes("const CACHE_NAME='gta-v15-1a-nav-authoritative'")){console.error('Service worker cache mismatch');process.exit(1)}
+if(!readme.includes('# Καθημερινά V15.1a — Navigation Fix')){console.error('README heading mismatch');process.exit(1)}
+if(!pkg.includes('"version":"15.1.1"')){console.error('Package version mismatch');process.exit(1)}
 const forbidden=["APP_VERSION='V14.14';",'<span class="versionMini">V14.14</span>','gta-v14-14-exam-simulation-layer'];
 const bad=forbidden.filter(x=>html.includes(x)||sw.includes(x)||pkg.includes(x));
 if(bad.length){console.error('Old/forbidden active labels remain:',bad.join(', '));process.exit(1)}
@@ -45,4 +45,4 @@ if(afterHtml){console.error('Code/text found after </html>; extension scripts mu
 const auditBlock=html.slice(html.indexOf('const V147A_LADDER'));
 if(auditBlock.indexOf("id:'c0_vowels'")<0||auditBlock.indexOf("id:'c0_gavros'")<0||auditBlock.indexOf("id:'c0_vowels'")>auditBlock.indexOf("id:'c0_gavros'")){console.error('V14.7A ladder order incorrect: γαύρος appears before vowels in audited ladder');process.exit(1)}
 if(html.indexOf('KUMON_LEVELS')<0){console.error('Kumon engine missing');process.exit(1)}
-console.log('Καθημερινά V15.1 Kumon Mastery Worksheets smoke test passed.');
+console.log('Καθημερινά V15.1a Navigation Fix smoke test passed.');

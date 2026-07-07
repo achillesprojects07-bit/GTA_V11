@@ -1,1 +1,1 @@
-{"name":"kathimerina","version":"15.1.0","private":true,"scripts":{"test":"node tests/smoke-test.js"}}
+{"name":"kathimerina","version":"15.1.1","private":true,"scripts":{"test":"node tests/smoke-test.js"}}

@@ -1,7 +1,7 @@
-# Καθημερινά V15.1 — Kumon Mastery Worksheets
+# Καθημερινά V15.1a — Navigation Fix
 
 Adds a Kumon-method mastery-worksheet system on top of V15.0C (and includes the anchor-tab
-click fix). Built per Jeffery's specification (27-year Kumon instructor) .
+click fix). Built per Jeffery's specification (27-year Kumon instructor).
 
 ## The mastery model (as specified)
 - One worksheet SET mastered = 100% accuracy (no timer — accuracy only).
