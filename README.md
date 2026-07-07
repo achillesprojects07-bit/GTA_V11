@@ -1,6 +1,6 @@
 # Καθημερινά V15.6C — Reload Loop Fix
 
-Surgical fix on ChatGPT's V15.6B (all its features preserved unchanged).
+Surgical fix on ChatGPT's V15.6B (all its features preserved  unchanged).
 
 ## The fatal bug [ESTABLISHED]
 V15.6B never finished loading. Cause: the service-worker `controllerchange` handler
