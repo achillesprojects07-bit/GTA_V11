@@ -1,7 +1,7 @@
 {
   "name": "Καθημερινά",
   "short_name": "Καθημερινά",
-  "start_url": "./index.html?v=15.6",
+  "start_url": "./index.html?v=15.6a",
   "display": "standalone",
   "background_color": "#f7f8fb",
   "theme_color": "#0f172a",
@@ -17,5 +17,5 @@
       "type": "image/png"
     }
   ],
-  "description": "Καθημερινά V15.6 Premium UX Polish"
+  "description": "Καθημερινά V15.6A Loop-Free Study Path Hotfix"
 }

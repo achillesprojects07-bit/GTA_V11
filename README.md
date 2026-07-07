@@ -1,26 +1,25 @@
-# Καθημερινά V15.6 — Premium UX Polish + Progressive Disclosure
+# Καθημερινά V15.6A — Loop-Free Study Path + Instant UX Hotfix
 
-This build continues from the working V15.5 Mastery System Audit baseline. It focuses on world-class learner experience instead of adding more content.
+This hotfix continues from V15.6 and specifically fixes the reported loop:
+
+**Study Today’s Path → Study in Library first → back to Today → loading/reloading loop.**
 
 ## What changed
-- Adds instant tap feedback for every tab.
-- Tabs change color immediately on press and active selection.
-- Adds a polished loading skeleton and status toast: “Opening Levels…”, “Opening Library…”, etc.
-- Rebuilds the tab experience as a premium, lightweight command interface.
-- Keeps Today minimal: one next step, one contract, optional tools hidden.
-- Moves heavy tab materials behind progressive disclosure sections.
-- Levels shows the current step and compact roadmap first.
-- Library shows the current concept first, with shelves hidden until opened.
-- Worksheets shows the timed answer-work block first, with queue details hidden.
-- Review shows repair/mastery status first, with audit details hidden.
-- Updates service worker cache to `gta-v15-6-premium-ux`.
+- The Today button no longer calls the old Library opener.
+- Study in Library now routes directly to the lightweight Library tab.
+- Library stays on the Library page after you click **I studied this concept**.
+- The learner chooses when to start worksheets after study.
+- Routes now use `data-v156a-route` instead of the old `data-route`, so older stacked routers cannot hijack the tap.
+- Tab rendering is immediate; no 90ms skeleton delay.
+- No hash navigation is used, reducing service-worker/router conflicts.
+- Bottom tabs and top tabs still give immediate color/press feedback.
+- Cache updated to `gta-v15-6a-loop-free-study-path`.
 
 ## Preserved
-- V15.5 mastery audit logic.
-- V15.4 cache hardening tools.
-- Stable navigation shell.
 - `gta_v12_state` saved data.
-- Kumon-style mastery rule: study first → timed answer-work → corrections outside timer → repetition → 3 strong rounds → unlock.
+- Kumon mastery rule: study first → timed answer-work → corrections outside timer → repetition → 3 strong rounds → unlock.
+- V15.6 premium UX visual direction.
+- V15.4 cache tools.
 
 ## Upload note
-After uploading to GitHub Pages, hard refresh once. If an older version appears, use Review → Clear old app caches.
+After uploading, use Review → Clear old app caches once, then reopen the app. If an older V15.6 screen appears, clear browser site data once.
