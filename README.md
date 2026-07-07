@@ -1,25 +1,20 @@
-# Καθημερινά V15.6A — Loop-Free Study Path + Instant UX Hotfix
+# Καθημερινά V15.6B — Hard-Stop Study Path Router
 
-This hotfix continues from V15.6 and specifically fixes the reported loop:
+This hotfix is specifically for the remaining loop:
 
-**Study Today’s Path → Study in Library first → back to Today → loading/reloading loop.**
+Today / Study Path → Study in Library → back to Study Path → nonstop loading.
 
 ## What changed
-- The Today button no longer calls the old Library opener.
-- Study in Library now routes directly to the lightweight Library tab.
-- Library stays on the Library page after you click **I studied this concept**.
-- The learner chooses when to start worksheets after study.
-- Routes now use `data-v156a-route` instead of the old `data-route`, so older stacked routers cannot hijack the tap.
-- Tab rendering is immediate; no 90ms skeleton delay.
-- No hash navigation is used, reducing service-worker/router conflicts.
-- Bottom tabs and top tabs still give immediate color/press feedback.
-- Cache updated to `gta-v15-6a-loop-free-study-path`.
 
-## Preserved
-- `gta_v12_state` saved data.
-- Kumon mastery rule: study first → timed answer-work → corrections outside timer → repetition → 3 strong rounds → unlock.
-- V15.6 premium UX visual direction.
-- V15.4 cache tools.
+- Adds a final hard-stop router that becomes the only UI authority after the older scripts finish.
+- Uses its own safe route attributes: `data-v156b-route`.
+- Does **not** call the old `v1402OpenLibraryForConcept()` function from the study path.
+- Disarms older path functions by redirecting them into the safe Library/Worksheet route.
+- Removes hash-based navigation from the V15.6B flow so old hashchange routers do not wake up.
+- Library stays open after “I studied this concept.”
+- The learner manually chooses “Start worksheets” after study is logged.
+- Keeps the Kumon mastery rule: study → timed answer-work → correction → repetition → mastery.
 
-## Upload note
-After uploading, use Review → Clear old app caches once, then reopen the app. If an older V15.6 screen appears, clear browser site data once.
+## Deployment note
+
+After uploading to GitHub, clear old app caches once from Review, or clear site data if an older V15.6/V15.6A screen keeps appearing.
